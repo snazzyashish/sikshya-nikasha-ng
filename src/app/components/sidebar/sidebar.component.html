@@ -1,0 +1,147 @@
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" [ngClass]="{'toggled' : !sidebarOpen}" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center my-5" href="index.html">
+            <div class="sidebar-brand-icon">
+                <!-- <i class="fas fa-laugh-wink"></i> -->
+                <img src="assets/img/moe-logo.png" alt="" [ngStyle]="{'height': sidebarOpen ? '120px' : (!sidebarOpen ? '50px' : null) }">
+            </div>
+        </a>
+        <div class="sidebar-brand-text mx-3 d-flex align-items-center justify-content-center"><b> मेनु बार</b>  <!-- Sidebar Toggler (Sidebar) -->
+        </div>
+        <div class="text-center d-none d-md-inline my-2">
+            <button class="rounded-circle border-0" id="sidebarToggle" (click)="onSidebarToggle()"></button>
+        </div>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> ड्यासबोर्ड </span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> विद्यालयको सूची </span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> शिक्षक/कर्मचारीको विवरण </span></a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>माग फारम (तलब)</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                    <a class="collapse-item" href="buttons.html"> सबै स्कुलको मागफारम भर्नुस  </a>
+                    <a class="collapse-item" href="cards.html"> अडिट  </a>
+                    <a class="collapse-item" href="cards.html">  वास्तविक/ अनुसार तलब  </a>
+                    <a class="collapse-item" href="cards.html">  बैंक प्रति   </a>
+                    <a class="collapse-item" href="cards.html">  समायोजन हिसाब   </a>
+                    <a class="collapse-item" href="cards.html"> माग फारमहरु   </a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                aria-expanded="true" aria-controls="collapseThree">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>अन्य निकाशा</span>
+            </a>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                    <a class="collapse-item" href="buttons.html">  छात्रबृति  </a>
+                    <a class="collapse-item" href="cards.html"> अडिट  </a>
+                    <a class="collapse-item" href="cards.html">   पाठ्यपुस्तक  </a>
+                    <a class="collapse-item" href="cards.html"> ब्यबस्थापन खर्च  </a>
+                    <a class="collapse-item" href="cards.html">  भौतिक निर्माण  </a>
+                    <a class="collapse-item" href="cards.html">दिवा खाजा खर्च </a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                aria-expanded="true" aria-controls="collapseFour">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>आवश्यक प्रतिवेदनहरु</span>
+            </a>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                    <a class="collapse-item" href="buttons.html">   तलब निकाशा कर्मचारी/<br/>विद्यालयको तह अनुसार    </a>
+                    <a class="collapse-item" href="cards.html"> शिक्षकको तलबी प्रतिवेदन   </a>
+                    <a class="collapse-item" href="cards.html">   वार्षिक निकाशा   </a>
+                    <a class="collapse-item" href="cards.html"> बिनियोजन बजेट र <br/>खर्च समरी रिपोर्ट  </a>
+                    <a class="collapse-item" href="cards.html">  मिति अनुसार निकाशा  </a>
+                    <a class="collapse-item" href="cards.html">ग्रेड जानकारी </a>
+                    <a class="collapse-item" href="cards.html">आ. व. कर्मचारीहरुको तलब </a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
+                aria-expanded="true" aria-controls="collapseFive">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>स्केल सम्बन्धित सेटिङ</span>
+            </a>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                    <a class="collapse-item" href="buttons.html">  कर्मचारीको ग्रेड सीमा </a>
+                    <a class="collapse-item" href="cards.html"> कर्मचारीको तलब स्केल   </a>
+                    <a class="collapse-item" href="cards.html">   कर्मचारीको ग्रेड स्केल   </a>
+                    <a class="collapse-item" href="cards.html">कर्मचारीको भट्टा स्केल  </a>
+                    <a class="collapse-item" href="cards.html">  पाठ्यपुस्तक/दिवा खाजा स्केल  </a>
+                    <a class="collapse-item" href="cards.html">छात्रबृति स्केल </a>
+                    <a class="collapse-item" href="cards.html">भौतिक निर्माण स्केल </a>
+                    <a class="collapse-item" href="cards.html">ब्यबस्थापन खर्च स्केल </a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
+                aria-expanded="true" aria-controls="collapseSix">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>सामान्य सेटिङ</span>
+            </a>
+            <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                    <a class="collapse-item" href="buttons.html">हस्ताक्षरकर्ता</a>
+                    <a class="collapse-item" href="cards.html">मागफारम सेटिंग</a>
+                    <a class="collapse-item" href="cards.html">मागफारम सेटिङ</a>
+                    <a class="collapse-item" href="cards.html">आर्थिक वर्ष</a>
+                    <a class="collapse-item" href="cards.html">शैक्षिक वर्ष  </a>
+                    <a class="collapse-item" href="cards.html">प्रयोगकर्ता व्यवस्थापन</a>
+                    <a class="collapse-item" href="cards.html">भूमिका व्यवस्थापन</a>
+                    <a class="collapse-item" href="cards.html">भूमिका तोक्ने</a>
+                    <a class="collapse-item" href="cards.html">प्रयोगकर्ता नाम/<br/>पासवर्डको सूची</a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> पासवर्ड परिवर्तन गर्नुहोस् </span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+    </ul>
+    
+    <!-- End of Sidebar -->
+
+    
