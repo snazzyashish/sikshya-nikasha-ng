@@ -2,7 +2,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" [ngClass]="{'toggled' : !sidebarOpen}" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center my-5" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center my-5" routerLink="/home">
             <div class="sidebar-brand-icon">
                 <!-- <i class="fas fa-laugh-wink"></i> -->
                 <img src="assets/img/moe-logo.png" alt="" [ngStyle]="{'height': sidebarOpen ? '120px' : (!sidebarOpen ? '50px' : null) }">
@@ -19,20 +19,23 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" routerLink="/home">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span> ड्यासबोर्ड </span></a>
         </li>
+        <hr class="sidebar-divider">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" routerLink="/home">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span> विद्यालयको सूची </span></a>
         </li>
+        <hr class="sidebar-divider">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" routerLink="/home">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span> शिक्षक/कर्मचारीको विवरण </span></a>
         </li>
+        <hr class="sidebar-divider">
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
@@ -53,6 +56,7 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider">
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                 aria-expanded="true" aria-controls="collapseThree">
@@ -71,6 +75,7 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider">
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
                 aria-expanded="true" aria-controls="collapseFour">
@@ -90,6 +95,7 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider">
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
                 aria-expanded="true" aria-controls="collapseFive">
@@ -110,6 +116,7 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider">
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
                 aria-expanded="true" aria-controls="collapseSix">
@@ -131,17 +138,17 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" routerLink="/change-password">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span> पासवर्ड परिवर्तन गर्नुहोस् </span>
             </a>
         </li>
+        <hr class="sidebar-divider">
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
     </ul>
-    
     <!-- End of Sidebar -->
+    
 
     
