@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ModalService } from 'src/app/services/modal.service';
 
 
 @Component({
@@ -9,13 +10,16 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 })
 export class ActionButtonsComponent {
   private params: any;
+  constructor(public modal:ModalService){
+    
+  }
 
   agInit(params: any): void {
     this.params = params;
   }
 
-  btnClickedHandler(event: any) {
-    this.params.clicked(this.params.value);
+  btnClickedHandler(event: any, type:any) {
+    this.params.clicked(this.params.value, type);
   }
 
   refresh() {

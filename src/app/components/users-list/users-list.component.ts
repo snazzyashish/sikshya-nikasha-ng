@@ -1,5 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { DataTableDirective } from 'angular-datatables';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
+import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastifyService } from 'src/app/services/toastify.service';
+import { ToastifyToastContainerComponent } from 'angular-toastify';
 
 @Component({
   selector: 'app-users-list',
@@ -7,19 +11,55 @@ import { DataTableDirective } from 'angular-datatables';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent {
+  @ViewChild('content') modalContent!: ElementRef;
+  @ViewChild('confirmDialog') confirmDialog!: ElementRef;
   public rowSelection: 'single' | 'multiple' = 'multiple';
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
+  public mode:any = 'new';
+  userForm: FormGroup;
+  ngAfterViewInit() {
+    
+  }
 
-  constructor(){
+  constructor(public modal:ModalService ,public fb:FormBuilder, public toastify: ToastifyService){
+    this.userForm =  this.fb.group({
+      id: [''],
+      school_name: ['', Validators.required],
+      principal_uname : ['', Validators.required], 
+      principal_pass : ['', Validators.required], 
+      data_entry_uname : ['', Validators.required], 
+      data_entry_pass : ['', Validators.required], 
+    });
+
     this.columnDefs=[
+      {
+        headerName : 'Action',
+        field: 'id',
+        width : 100,
+        suppressNavigable: true,
+        cellClass: 'no-border',
+        cellRenderer: ActionButtonsComponent,
+        cellRendererParams: {
+          clicked: (id: any, type:any) => {
+            if(type == 'edit'){
+              this.onEditModeOpen();
+            }else if(type=='delete'){
+              // this.toastify.openSnackBar('Deleted','OK')
+              this.toastify.openDialog(this.confirmDialog)
+            }
+          }
+        },
+      },
       {
         headerName : 'ID',
         field : 'id',
         width : 70,
         sortingOrder : ['asc','desc'],
-        filter:true
+        filter:true,
+        suppressNavigable: true,
+        cellClass: 'no-border'
       },
       {
         headerName : 'School Name',
@@ -53,13 +93,26 @@ export class UsersListComponent {
       },
       {
         headerName : 'DataEntry PSW',
-        field : 'data_entry_uname',
+        field : 'data_entry_pass',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
         filter: 'agTextColumnFilter',
       },
     ]
+  }
+
+  onEditModeOpen(){
+    this.mode = 'edit'
+    var me = this;
+    this.modal.open(this.modalContent);
+    setTimeout(function(){ 
+      me.userForm.patchValue(me.gridApi.getSelectedRows()[0]);
+    }, 50);
+  }
+  onNewModeOpen(){
+    var me = this;
+    this.modal.open(this.modalContent);
   }
   onGridReady(params:any){
     // this.getGroups();
@@ -85,6 +138,15 @@ export class UsersListComponent {
         this.gridApi.setRowData(obj);
       // }
     // })
+  }
+
+  onSaveClick(){
+    this.toastify.openSnackBar('Saved','OK')
+  }
+
+  onAddClick(){
+    this.mode = 'new'
+    this.onNewModeOpen();
   }
  
 }

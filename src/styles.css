@@ -66,3 +66,36 @@ html {
 table{
     color: rgb(40, 38, 38);
 }
+
+.btn-delete {
+    padding: 5px;
+    background: #880707;
+    color:white;
+
+}
+
+.btn-edit {
+    padding: 5px;
+    background: #041491;
+    color:white;
+}
+
+.no-border{
+    border:none !important;
+  }
+
+.btn-add{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 14px;
+}
+.btn-save{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 14px;
+}
+.btn-delete{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 14px;
+}
