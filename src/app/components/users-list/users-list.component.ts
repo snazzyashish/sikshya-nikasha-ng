@@ -7,60 +7,84 @@ import { DataTableDirective } from 'angular-datatables';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent {
-  @ViewChild(DataTableDirective, {static: false})
-  datatableElement:any;
-
-  dtOptions: DataTables.Settings = {};
+  public rowSelection: 'single' | 'multiple' = 'multiple';
+  private gridApi:any;
   public columnDefs:any;
+  private gridColumnApi:any;
+
   constructor(){
-  }
-
-  ngOnInit(): void {
-    this.dtOptions = {
-      ajax: 'assets/data/data.json',
-      // scrollY: '400px',
-      scrollX: true,
-      columns: [
-        {
-        title: 'ID',
-        data: 'id',
-        }, 
-        {
-          title: 'Name',
-          data: 'name'
-        }, 
-        {
-          title: 'Account',
-          data: 'account'
-        },
-        {
-          title: 'Type',
-          data: 'type'
-        },
-        {
-          title: 'Principal',
-          data: 'principal_name'
-        },
-        {
-          title: 'Principal No',
-          data: 'principal_no'
-        },
+    this.columnDefs=[
+      {
+        headerName : 'ID',
+        field : 'id',
+        width : 70,
+        sortingOrder : ['asc','desc'],
+        filter:true
+      },
+      {
+        headerName : 'School Name',
+        field : 'school_name',
+        width : 250,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        filter: 'agTextColumnFilter',
+      },
+      {
+        headerName : 'Principal UName',
+        field : 'principal_uname',
+        width : 150,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+      },
+      {
+        headerName : 'Principal PSW',
+        field : 'principal_pass',
+        width : 150,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+      },
+      {
+        headerName : 'DataEntry Username',
+        field : 'data_entry_uname',
+        width : 150,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        filter: 'agTextColumnFilter',
+      },
+      {
+        headerName : 'DataEntry PSW',
+        field : 'data_entry_uname',
+        width : 150,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        filter: 'agTextColumnFilter',
+      },
     ]
-    };
+  }
+  onGridReady(params:any){
+    // this.getGroups();
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    this.listUsers();
   }
 
-  ngAfterViewInit(): void {
-    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.columns().every(function () {
-        const that = this;
-        $('input', this.footer()).on('keyup change', function (event:any) {
-          if (that.search() !== event.target.value) {
-            that
-              .search(event.target.value)
-              .draw();
-          }
-        });
-      });
-    });
+  listUsers(){
+    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+      // if(res.success){
+        // this.storeName = res.store_name;
+        let obj = [
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         }
+      ]
+        this.gridApi.setRowData(obj);
+      // }
+    // })
   }
+ 
 }

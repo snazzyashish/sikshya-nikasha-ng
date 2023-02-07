@@ -18,14 +18,14 @@
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" routerLink="/home">
+        <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/home">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span> ड्यासबोर्ड </span></a>
         </li>
         <hr class="sidebar-divider">
         <li class="nav-item">
-            <a class="nav-link" routerLink="/home">
+            <a class="nav-link" routerLinkActive="active" routerLink="/schools-list">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span> विद्यालयको सूची </span></a>
         </li>
@@ -47,7 +47,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                    <a class="collapse-item" href="buttons.html"> सबै स्कुलको मागफारम भर्नुस  </a>
+                    <a class="collapse-item" routerLinkActive="active"> सबै स्कुलको मागफारम भर्नुस  </a>
                     <a class="collapse-item" href="cards.html"> अडिट  </a>
                     <a class="collapse-item" href="cards.html">  वास्तविक/ अनुसार तलब  </a>
                     <a class="collapse-item" href="cards.html">  बैंक प्रति   </a>
@@ -134,7 +134,7 @@
                     <a class="collapse-item" href="cards.html">प्रयोगकर्ता व्यवस्थापन</a>
                     <a class="collapse-item" href="cards.html">भूमिका व्यवस्थापन</a>
                     <a class="collapse-item" href="cards.html">भूमिका तोक्ने</a>
-                    <a class="collapse-item" href="cards.html">प्रयोगकर्ता नाम/<br/>पासवर्डको सूची</a>
+                    <a class="collapse-item" routerLinkActive="active" routerLink="users-list" >प्रयोगकर्ता नाम/<br/>पासवर्डको सूची</a>
                 </div>
             </div>
         </li>

@@ -11,6 +11,7 @@ import { MatSortModule} from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DataTablesModule } from "angular-datatables";
+import { AgGridModule } from 'ag-grid-angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { SchoolsListComponent } from './components/schools-list/schools-list.component';
+import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { SchoolsListComponent } from './components/schools-list/schools-list.com
     HomeComponent,
     ChangePasswordComponent,
     UsersListComponent,
-    SchoolsListComponent
+    SchoolsListComponent,
+    ActionButtonsComponent
   ],
   imports: [
     HttpClientModule,
@@ -46,7 +49,8 @@ import { SchoolsListComponent } from './components/schools-list/schools-list.com
     MatSortModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    DataTablesModule
+    DataTablesModule,
+    AgGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]
