@@ -1,0 +1,152 @@
+<!-- Page Heading -->
+<div class="card page-header">
+    <div class="card-body page-header text-gray-800">
+        <h4>कर्मचारीहरुको सूची</h4>
+    </div>
+</div>
+
+<div class="accordion accordion" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne" (click)="onFormHeaderClick()">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          Search Form
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse" [ngClass]="{'show': showSearchForm, 'collapse':!showSearchForm}" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <!-- <div class="card my-1"> -->
+            <div class="card-body">
+                <form class="row g-3" (ngSubmit)="onFormSubmit()">
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">लिङ्ग</label>
+                      <input type="email" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label">प्रकार</label>
+                      <input type="password" class="form-control">
+                    </div>
+                    <div class="col-6">
+                      <label for="inputAddress" class="form-label">तह</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="col-6">
+                      <label for="inputAddress2" class="form-label">पद</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                      <label for="inputCity" class="form-label">बिद्यालय *</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                  </form>
+            </div>
+        <!-- </div> -->
+      </div>
+    </div>
+</div>
+<!-- <div class="card my-1">
+    <div class="card-body">
+        <form class="row g-3" (ngSubmit)="onFormSubmit()">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">लिङ्ग</label>
+              <input type="email" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">प्रकार</label>
+              <input type="password" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="inputAddress" class="form-label">तह</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="inputAddress2" class="form-label">पद</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-12">
+              <label for="inputCity" class="form-label">बिद्यालय *</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </form>
+    </div>
+</div> -->
+
+<ng-container *ngIf="!showSearchForm">
+    <div>
+        <div class="my-2 action-btns" style="margin:0 auto">
+            <button type="button" class="btn btn-primary mx-1 btn-add" (click)="onAddClick()">Add</button>
+            <button type="button" class="btn btn-success mx-1 btn-save">Save</button>
+            <button type="button" class="btn btn-danger mx-1 btn-delete">Delete</button>
+        </div>
+    </div>
+    
+    <ag-grid-angular
+    style="width: 100%; height: 500px;" 
+    class="ag-theme-alpine"
+    (gridReady)="onGridReady($event)"
+    [rowSelection]="rowSelection"
+    [columnDefs]="columnDefs"
+    [pagination]="true"
+    [paginationPageSize]=20
+    >
+    </ag-grid-angular>
+</ng-container>
+
+
+
+<!-- modal -->
+<ng-template #content let-modal>
+	<div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Edit School Record</h4>
+        <button
+            type="button"
+            class="btn-close"
+            aria-label="Close button"
+            aria-describedby="modal-title"
+            (click)="modal.dismiss('Cross click')"
+        ></button>
+    </div>
+    <form [formGroup]="schoolForm">
+        <div class="modal-body">
+            <div class="password mb-3 form-group row">
+                <label for="inputPassword" class="col-sm-4 col-form-label">School Name</label>
+                <div class="col-sm-8">
+                    <input formControlName="school_name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                </div>
+            </div>
+            <div class="password mb-3 form-group row">
+                <label for="inputPassword" class="col-sm-4 col-form-label">Account</label>
+                <div class="col-sm-8">
+                    <input formControlName="account" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                </div>
+            </div>
+            <div class="password mb-3 form-group row">
+                <label for="inputPassword" class="col-sm-4 col-form-label">Type</label>
+                <div class="col-sm-8">
+                    <input formControlName="type" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                </div>
+            </div>
+            <div class="password mb-3 form-group row">
+                <label for="inputPassword" class="col-sm-4 col-form-label">Principal Name</label>
+                <div class="col-sm-8">
+                    <input formControlName="principal_name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                </div>
+            </div>
+            <div class="password mb-3 form-group row">
+                <label for="inputPassword" class="col-sm-4 col-form-label">Principal No</label>
+                <div class="col-sm-8">
+                    <input formControlName="principal_no" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+            <button type="submit" style="color: white;" ngbAutofocus class="btn btn-danger">Save</button>
+        </div>
+    </form>
+</ng-template>

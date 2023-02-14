@@ -28,6 +28,13 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { SchoolsListComponent } from './components/schools-list/schools-list.component';
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { FiscalYearComponent } from './components/fiscal-year/fiscal-year.component';
+import { MagFormItemComponent } from './components/magform-item/magform-item.component';
+import { SignatoryComponent } from './components/signatory/signatory.component';
+import { AcademicYearComponent } from './components/academic-year/academic-year.component';
+import { MagFormSettingComponent } from './components/magform-setting/magform-setting.component';
+import { GradeLimitsComponent } from './components/grade-limits/grade-limits.component';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,14 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
     UsersListComponent,
     SchoolsListComponent,
     ActionButtonsComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    FiscalYearComponent,
+    MagFormItemComponent,
+    SignatoryComponent,
+    AcademicYearComponent,
+    MagFormSettingComponent,
+    GradeLimitsComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     HttpClientModule,

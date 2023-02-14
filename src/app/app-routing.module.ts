@@ -8,6 +8,12 @@ import { HomeComponent } from './components/home/home.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { SchoolsListComponent } from './components/schools-list/schools-list.component';
+import { FiscalYearComponent } from './components/fiscal-year/fiscal-year.component';
+import { MagFormItemComponent } from './components/magform-item/magform-item.component';
+import { SignatoryComponent } from './components/signatory/signatory.component';
+import { AcademicYearComponent } from './components/academic-year/academic-year.component';
+import { MagFormSettingComponent } from './components/magform-setting/magform-setting.component';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
@@ -16,6 +22,12 @@ const routes: Routes = [
   { path:  'change-password', component:  ChangePasswordComponent},
   { path:  'schools-list', component:  SchoolsListComponent},
   { path:  'users-list', component:  UsersListComponent},
+  { path:  'fiscal-year', component:  FiscalYearComponent},
+  { path:  'academic-year', component:  AcademicYearComponent},
+  { path:  'magform-item-list', component:  MagFormItemComponent},
+  { path:  'magform-setting', component:  MagFormSettingComponent},
+  { path:  'signatory', component:  SignatoryComponent},
+  { path:  'employee-detail', component:  EmployeeDetailComponent},
 
 ];
 

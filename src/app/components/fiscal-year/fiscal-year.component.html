@@ -1,0 +1,71 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Manage Fiscal Years</h1>
+  </div>
+  <div class="my-2 action-btns">
+      <button type="button" class="btn btn-primary mx-1 btn-add" (click)="onAddClick()">Add</button>
+      <button type="button" class="btn btn-success mx-1 btn-save">Save</button>
+      <button type="button" class="btn btn-danger mx-1 btn-delete">Delete</button>
+  </div>
+  <ag-grid-angular 
+  style="width: 100%; height: 500px;" 
+  class="ag-theme-alpine"
+  (gridReady)="onGridReady($event)"
+  [rowSelection]="rowSelection"
+  [columnDefs]="columnDefs"
+  [pagination]="true"
+  [paginationPageSize]=20
+  >
+  </ag-grid-angular>
+  
+  
+  <!-- modal -->
+  <ng-template #content let-modal>
+      <div class="modal-header">
+          <h4 class="modal-title" id="modal-title">Manage Fiscal Years</h4>
+          <button
+              type="button"
+              class="btn-close"
+              aria-label="Close button"
+              aria-describedby="modal-title"
+              (click)="modal.dismiss('Cross click')"
+          ></button>
+      </div>
+      <form [formGroup]="fiscalYearForm">
+          <div class="modal-body">
+              <div class="password mb-3 form-group row">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">Name</label>
+                  <div class="col-sm-8">
+                      <input formControlName="name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                  </div>
+              </div>
+              <div class="password mb-3 form-group row">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">From Date</label>
+                  <div class="col-sm-8">
+                      <input formControlName="from_date" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                  </div>
+              </div>
+              <div class="password mb-3 form-group row">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">To Date</label>
+                  <div class="col-sm-8">
+                      <input formControlName="to_date" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                  </div>
+              </div>
+              <div class="password mb-3 form-group row">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">Status</label>
+                  <div class="col-sm-8">
+                    <select class="form-select" aria-label="Default select example" formControlName="status">
+                        <option selected></option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+              <button type="submit" style="color: white;" ngbAutofocus class="btn btn-danger">Save</button>
+          </div>
+      </form>
+  </ng-template>
+  

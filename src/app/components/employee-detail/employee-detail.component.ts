@@ -5,11 +5,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 declare var $ : any;
 @Component({
-  selector: 'app-schools-list',
-  templateUrl: './schools-list.component.html',
-  styleUrls: ['./schools-list.component.css']
+  selector: 'app-employee-detail',
+  templateUrl: './employee-detail.component.html',
+  styleUrls: ['./employee-detail.component.css']
 })
-export class SchoolsListComponent implements AfterViewInit {
+export class EmployeeDetailComponent implements AfterViewInit {
   @ViewChild('content') modalContent!: ElementRef;
   public rowSelection: 'single' | 'multiple' = 'multiple';
   private gridApi:any;
@@ -17,6 +17,7 @@ export class SchoolsListComponent implements AfterViewInit {
   private gridColumnApi:any;
   schoolForm: FormGroup;
   public mode = 'new';
+  public showSearchForm:boolean = true;
   ngAfterViewInit() {
     
   }
@@ -100,6 +101,14 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       
     ]
+  }
+
+  onFormHeaderClick(){
+    this.showSearchForm = !this.showSearchForm;
+  }
+
+  onFormSubmit(){
+    this.showSearchForm = !this.showSearchForm;
   }
 
   onGridReady(params:any){

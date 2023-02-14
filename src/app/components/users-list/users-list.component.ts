@@ -133,7 +133,111 @@ export class UsersListComponent {
             'principal_pass' : 'ac2bd348bf36a7128fbd',
             'data_entry_uname' : 'dataentry1',
             'data_entry_pass' : 'bardibas1',
-         }
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
+          {
+            'id' : 1,
+            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
+            'principal_uname' : 'headteacher1',
+            'principal_pass' : 'ac2bd348bf36a7128fbd',
+            'data_entry_uname' : 'dataentry1',
+            'data_entry_pass' : 'bardibas1',
+         },
       ]
         this.gridApi.setRowData(obj);
       // }
@@ -146,6 +250,13 @@ export class UsersListComponent {
 
   onAddClick(){
     this.mode = 'new'
+    this.userForm.patchValue({
+      school_name: '',
+      principal_uname : '', 
+      principal_pass : '', 
+      data_entry_uname : '', 
+      data_entry_pass : '', 
+    })
     this.onNewModeOpen();
   }
  

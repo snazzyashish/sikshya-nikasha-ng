@@ -17,7 +17,7 @@ export class ModalService {
 	}
 
 	openLarge(content:any) {
-		this._modalService.open(content, { ariaLabelledBy: 'modal-basic-title', modalDialogClass:'modal-xl' });
+		this._modalService.open(content, { ariaLabelledBy: 'modal-basic-title', modalDialogClass:'modal-md' });
 		
 	}
 	close(action:any){

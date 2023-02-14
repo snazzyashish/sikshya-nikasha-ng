@@ -67,17 +67,25 @@ table{
     color: rgb(40, 38, 38);
 }
 
-.btn-delete {
+.action-btn-delete {
     padding: 5px;
     background: #880707;
     color:white;
+    border-radius: 50%;
+    font-size: 12px;
+    padding-right: 7px;
+    padding-left: 7px;
 
 }
 
-.btn-edit {
+.action-btn-edit {
     padding: 5px;
     background: #041491;
     color:white;
+    border-radius: 50%;
+    font-size: 12px;
+    padding-right: 7px;
+    padding-left: 7px;
 }
 
 .no-border{
@@ -98,4 +106,9 @@ table{
     padding-top: 2px;
     padding-bottom: 2px;
     font-size: 14px;
+}
+
+.page-header{
+    margin: 0 auto !important;
+    background-color: #dcdcdc;
 }
