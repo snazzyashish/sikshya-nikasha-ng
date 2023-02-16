@@ -14,6 +14,7 @@ import { SignatoryComponent } from './components/signatory/signatory.component';
 import { AcademicYearComponent } from './components/academic-year/academic-year.component';
 import { MagFormSettingComponent } from './components/magform-setting/magform-setting.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
+import { EmployeeDetailUpdateComponent } from './components/employee-detail-update/employee-detail-update.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path:  'magform-setting', component:  MagFormSettingComponent},
   { path:  'signatory', component:  SignatoryComponent},
   { path:  'employee-detail', component:  EmployeeDetailComponent},
+  { path:  'employee-detail/update/:id', component:  EmployeeDetailUpdateComponent},
 
 ];
 

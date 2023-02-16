@@ -2,6 +2,8 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router'
+
 
 declare var $ : any;
 @Component({
@@ -22,7 +24,7 @@ export class EmployeeDetailComponent implements AfterViewInit {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder){
+  constructor(public router:Router, public modal:ModalService ,public fb:FormBuilder){
     this.schoolForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -42,7 +44,7 @@ export class EmployeeDetailComponent implements AfterViewInit {
         cellRendererParams: {
           clicked: (id: any, type:any) => {
             if(type == 'edit'){
-              this.onEditModeOpen();
+              this.onEditModeOpen(id);
             }
           }
         },
@@ -232,12 +234,13 @@ export class EmployeeDetailComponent implements AfterViewInit {
     this.onNewModeOpen();
   }
 
-  onEditModeOpen(){
+  onEditModeOpen(id:any){
     var me = this;
-    this.modal.open(this.modalContent);
-    setTimeout(function(){ 
-      me.schoolForm.patchValue(me.gridApi.getSelectedRows()[0]);
-    }, 50);
+    this.router.navigate(['/employee-detail/update/'+id]);
+    // this.modal.open(this.modalContent);
+    // setTimeout(function(){ 
+    //   me.schoolForm.patchValue(me.gridApi.getSelectedRows()[0]);
+    // }, 50);
   }
 
   onNewModeOpen(){

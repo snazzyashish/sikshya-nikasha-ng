@@ -1,0 +1,263 @@
+<!-- Page Heading -->
+<div class="card page-header">
+    <div class="card-body page-header text-gray-800">
+        <h4>कर्मचारी विवरण अद्यावधिक गर्नुहोस्</h4>
+    </div>
+</div>
+<div>
+    <div class="my-2 action-btns" style="margin:0 auto">
+        <button type="button" class="btn btn-primary mx-1 btn-add">Add</button>
+        <button type="button" class="btn btn-success mx-1 btn-save">Save</button>
+        <button type="button" class="btn btn-danger mx-1 btn-delete">Delete</button>
+    </div>
+</div>
+
+<div class="card o-hidden border-0 shadow-lg my-3">
+    <div class="card-body p-4">
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">Name : </label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">नाम (देवनागरिमा) : </label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">बुबा/आमाको नाम : </label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-5">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">संकेत नं. : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">जन्म मिति : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">लिङ्ग : </label>
+            <div class="col-sm-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="1">महिला</option>
+                    <option value="2">पुरुष</option>
+                    <option value="3">अन्य</option>
+                </select>
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">पद : </label>
+            <div class="col-sm-2">
+                <select class="form-select" aria-label="Default select example">
+                        <option></option>
+                        <option value="अन्य">अन्य</option>
+                        <option value="शिक्षक">शिक्षक</option>
+                        <option value="प्र.अ.">प्र.अ.</option>
+                        <option value="प्रशिक्षक">प्रशिक्षक</option>
+                        <option value="प्रशिक्षक सहायक">प्रशिक्षक सहायक</option>
+                </select>
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">तह : </label>
+            <div class="col-sm-2">
+                <select class="form-select">
+                    <option></option>
+                    <option value="उ.मा.शि.">उ.मा.शि.</option>
+                    <option value="मा.शि.">मा.शि.</option>
+                    <option value="नि.मा.शि.">नि.मा.शि.</option>
+                    <option value="प्रा.शि.">प्रा.शि.</option>
+                    <option value="प्रशिक्षक">प्रशिक्षक</option>
+                    <option value="प्रशिक्षक सहायक">प्रशिक्षक सहायक</option>
+                    <option value="का.सहायक">का.सहायक</option>
+                    <option value="बिधालय सहयोगी">बिधालय सहयोगी</option>
+                    <option value="बा.शि">बा.शि</option>
+                    <option value="परिचर">परिचर</option>
+                    <option value="का.स">का.स</option>
+                    <option value="लेखापाल">लेखापाल</option>
+                    <option value="सि.के">सि.के</option>
+                    </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">प्रकार : </label>
+            <div class="col-sm-2">
+                <select class="form-control">
+                    <option></option>
+                    <option value="स्थायी" selected="selected">स्थायी</option>
+                    <option value="अस्थायी">अस्थायी</option>
+                    <option value="राहत">राहत</option>
+                    <option value="अनुदान">अनुदान</option>
+                    <option value="करार">करार</option>
+                    <option value="दरदन्दी">दरदन्दी</option>
+                    <option value="नगर शिक्षक"> शिक्षक</option>
+                    </select>
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">श्रेणी : </label>
+            <div class="col-sm-2">
+                <select class="form-select">
+                    <option value="">श्रेणी चयन गर्नुहोस्</option>
+                    <option value="1">प्रथम श्रेणी</option>
+                    <option value="2">दोस्रो श्रेणी</option>
+                    <option value="3" selected="selected">त्रितिय श्रेणी</option>
+                </select>
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">ग्रेड : </label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <hr/>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">जातीय : </label>
+            <div class="col-sm-4">
+                <select class="form-select">
+                    <option value=""> छानुहोस </option>
+                    <option value="1">Brahaman/Chhetri</option>
+                    <option value="2">Tarai/Madhesi  </option>
+                    <option value="3">Dalits</option>
+                    <option value="4">Janajati</option>
+                    <option value="5">Other</option>
+                    </select>
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">अस्थायी ठेगाना : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">जात : </label>
+            <div class="col-sm-4">
+                <select class="form-select">
+                    <option value="">छानुहोस</option>
+                    </select>
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">स्थाई ठेगाना : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">विवाहित/अविवाहित : </label>
+            <div class="col-sm-4">
+                <select class="form-select">
+                    <option value="1">विवाहित</option>
+                    <option value="0" selected="selected">अविवाहित</option>
+                    </select>
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">अस्थाई नियुक्ती मिति: </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">सम्पर्क नम्बर : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">स्थाई नियुक्ती मिति : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <hr>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">बीमा नं. : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">बडुवा मिति : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">कर्मचारी संञ्चयकोष नं. : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">Retired : </label>
+            <div class="col-sm-1">
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-1">
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-1">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">बैंक : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">PAN नम्बर : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">खाता नम्बर : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">क्रम संख्या : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">नागरिक लगानी कोष नं. : </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control">
+            </div>
+            <label for="inputName" class="col-sm-2 col-form-label">कैफियत : </label>
+            <div class="col-sm-4">
+              <textarea type="text" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">अवस्था : </label>
+            <div class="col-sm-10">
+                <select class="form-select">
+                    <option value=""></option>
+                    <option value="1">सक्रिय</option>
+                    <option value="2">स्थानान्तरण</option>
+                    <option value="3">अवकाश</option>
+                    <option value="0">निष्क्रिय</option>
+                    </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">बिद्यालय * : </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary" style="width:100%">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
