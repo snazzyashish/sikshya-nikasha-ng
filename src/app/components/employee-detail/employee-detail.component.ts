@@ -3,6 +3,7 @@ import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
+import { TABLE_CONFIG } from 'src/app/data/constants';
 
 
 declare var $ : any;
@@ -19,7 +20,8 @@ export class EmployeeDetailComponent implements AfterViewInit {
   private gridColumnApi:any;
   schoolForm: FormGroup;
   public mode = 'new';
-  public showSearchForm:boolean = true;
+  public showSearchForm:boolean = false;
+  public tableConfig = TABLE_CONFIG;
   ngAfterViewInit() {
     
   }
@@ -37,7 +39,7 @@ export class EmployeeDetailComponent implements AfterViewInit {
       {
         headerName : 'Action',
         field: 'id',
-        width : 110,
+        width : 140,
         suppressNavigable: true,
         cellClass: 'no-border',
         cellRenderer: ActionButtonsComponent,
@@ -45,6 +47,8 @@ export class EmployeeDetailComponent implements AfterViewInit {
           clicked: (id: any, type:any) => {
             if(type == 'edit'){
               this.onEditModeOpen(id);
+            }else if(type == 'view'){
+              this.onViewModeOpen(id);
             }
           }
         },
@@ -241,6 +245,10 @@ export class EmployeeDetailComponent implements AfterViewInit {
     // setTimeout(function(){ 
     //   me.schoolForm.patchValue(me.gridApi.getSelectedRows()[0]);
     // }, 50);
+  }
+  onViewModeOpen(id:any){
+    var me = this;
+    this.router.navigate(['/employee-detail/view/'+id]);
   }
 
   onNewModeOpen(){

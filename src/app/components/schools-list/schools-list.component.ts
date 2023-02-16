@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TABLE_CONFIG } from 'src/app/data/constants';
 
 declare var $ : any;
 @Component({
@@ -17,6 +18,7 @@ export class SchoolsListComponent implements AfterViewInit {
   private gridColumnApi:any;
   schoolForm: FormGroup;
   public mode = 'new';
+  public tableConfig = TABLE_CONFIG;
   ngAfterViewInit() {
     
   }
@@ -34,7 +36,7 @@ export class SchoolsListComponent implements AfterViewInit {
       {
         headerName : 'Action',
         field: 'id',
-        width : 110,
+        width : 100,
         suppressNavigable: true,
         cellClass: 'no-border',
         cellRenderer: ActionButtonsComponent,

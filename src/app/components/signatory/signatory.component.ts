@@ -3,7 +3,7 @@ import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastifyService } from 'src/app/services/toastify.service';
-import { ToastifyToastContainerComponent } from 'angular-toastify';
+import { TABLE_CONFIG } from 'src/app/data/constants';
 
 @Component({
   selector: 'app-signatory',
@@ -19,6 +19,7 @@ export class SignatoryComponent {
   private gridColumnApi:any;
   public mode:any = 'new';
   userForm: FormGroup;
+  public tableConfig = TABLE_CONFIG;
   ngAfterViewInit() {
     
   }

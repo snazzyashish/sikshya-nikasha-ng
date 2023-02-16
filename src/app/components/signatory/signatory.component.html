@@ -10,12 +10,13 @@
     <button type="button" class="btn btn-danger mx-1 btn-delete">Delete</button>
 </div>
 <ag-grid-angular 
-style="width: 100%; height: 500px;" 
-class="ag-theme-alpine"
+[style]="tableConfig.style" 
+[class]="tableConfig.class"
 (gridReady)="onGridReady($event)"
 [rowSelection]="rowSelection"
 [columnDefs]="columnDefs"
 [pagination]="true"
+[paginationPageSize]="tableConfig.paginationSize"
 >
 </ag-grid-angular>
 

@@ -36,6 +36,7 @@ import { MagFormSettingComponent } from './components/magform-setting/magform-se
 import { GradeLimitsComponent } from './components/grade-limits/grade-limits.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { EmployeeDetailUpdateComponent } from './components/employee-detail-update/employee-detail-update.component';
+import { EmployeeDetailViewComponent } from './components/employee-detail-view/employee-detail-view.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { EmployeeDetailUpdateComponent } from './components/employee-detail-upda
     MagFormSettingComponent,
     GradeLimitsComponent,
     EmployeeDetailComponent,
-    EmployeeDetailUpdateComponent
+    EmployeeDetailUpdateComponent,
+    EmployeeDetailViewComponent
   ],
   imports: [
     HttpClientModule,

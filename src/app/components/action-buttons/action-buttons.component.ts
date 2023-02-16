@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -10,8 +11,10 @@ import { ModalService } from 'src/app/services/modal.service';
 })
 export class ActionButtonsComponent {
   private params: any;
-  constructor(public modal:ModalService){
-    
+  public showViewIconsRoute:any = [
+    'employee-detail'
+  ]
+  constructor(public modal:ModalService, public router:Router){
   }
 
   agInit(params: any): void {
@@ -24,6 +27,14 @@ export class ActionButtonsComponent {
 
   refresh() {
     return false;
+  }
+
+  checkRoute(){
+    if(this.router.url.includes(this.showViewIconsRoute)){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }
