@@ -37,6 +37,11 @@ import { GradeLimitsComponent } from './components/grade-limits/grade-limits.com
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { EmployeeDetailUpdateComponent } from './components/employee-detail-update/employee-detail-update.component';
 import { EmployeeDetailViewComponent } from './components/employee-detail-view/employee-detail-view.component';
+import { ScholarshipListComponents } from './components/scholarship-list/scholarship-list.component';
+import { StationaryComponent } from './components/stationary/stationary.component';
+import { AdministrativeExpensesComponent } from './components/administrative-expenses/administrative-expenses.component';
+import { InfrastructureListComponent } from './components/insfrastructure-list/insfrastructure-list.component';
+import { GradeLimitComponent } from './components/grade-limit/grade-limit.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,12 @@ import { EmployeeDetailViewComponent } from './components/employee-detail-view/e
     GradeLimitsComponent,
     EmployeeDetailComponent,
     EmployeeDetailUpdateComponent,
-    EmployeeDetailViewComponent
+    EmployeeDetailViewComponent,
+    ScholarshipListComponents,
+    StationaryComponent,
+    AdministrativeExpensesComponent,
+    InfrastructureListComponent,
+    GradeLimitComponent
   ],
   imports: [
     HttpClientModule,

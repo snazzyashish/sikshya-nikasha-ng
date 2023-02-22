@@ -16,6 +16,10 @@ import { MagFormSettingComponent } from './components/magform-setting/magform-se
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { EmployeeDetailUpdateComponent } from './components/employee-detail-update/employee-detail-update.component';
 import { EmployeeDetailViewComponent } from './components/employee-detail-view/employee-detail-view.component';
+import { ScholarshipListComponents } from './components/scholarship-list/scholarship-list.component';
+import { StationaryComponent } from './components/stationary/stationary.component';
+import { AdministrativeExpensesComponent } from './components/administrative-expenses/administrative-expenses.component';
+import { InfrastructureListComponent } from './components/insfrastructure-list/insfrastructure-list.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
@@ -31,7 +35,10 @@ const routes: Routes = [
   { path:  'signatory', component:  SignatoryComponent},
   { path:  'employee-detail', component:  EmployeeDetailComponent},
   { path:  'employee-detail/update/:id', component:  EmployeeDetailUpdateComponent},
-  { path:  'employee-detail/view/:id', component:  EmployeeDetailViewComponent},
+  { path:  'scholarship-list', component:  ScholarshipListComponents},
+  { path:  'stationary-list', component:  StationaryComponent},
+  { path:  'administrative-expenses', component:  AdministrativeExpensesComponent},
+  { path:  'infrastructure-list', component:  InfrastructureListComponent},
 
 ];
 
