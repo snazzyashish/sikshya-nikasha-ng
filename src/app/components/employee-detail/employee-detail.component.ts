@@ -49,6 +49,8 @@ export class EmployeeDetailComponent implements AfterViewInit {
               this.onEditModeOpen(id);
             }else if(type == 'view'){
               this.onViewModeOpen(id);
+            }else if(type == 'add'){
+              this.onAddClick();
             }
           }
         },
@@ -228,14 +230,15 @@ export class EmployeeDetailComponent implements AfterViewInit {
 
   onAddClick(){
     this.mode = 'new'
-    this.schoolForm.patchValue({
-      school_name: '',
-      account : '', 
-      type : '', 
-      principal_name : '', 
-      principal_no : '',
-    })
-    this.onNewModeOpen();
+    // this.schoolForm.patchValue({
+    //   school_name: '',
+    //   account : '', 
+    //   type : '', 
+    //   principal_name : '', 
+    //   principal_no : '',
+    // })
+    // this.onNewModeOpen();
+    this.router.navigate(['employee-detail/create']);
   }
 
   onEditModeOpen(id:any){

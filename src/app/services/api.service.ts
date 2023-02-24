@@ -7,7 +7,7 @@ import { HttpService } from './http.service';
 export class ApiService {
 
   public serverUrl = 'http://localhost:8000/'
-  constructor(public _http : HttpService) { }
+  constructor(public _http : HttpService) {}
 
   public getDashboardData(params:any){
     let url = 'dashboard/get-dashboard-data';

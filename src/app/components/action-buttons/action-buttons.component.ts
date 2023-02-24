@@ -12,7 +12,10 @@ import { ModalService } from 'src/app/services/modal.service';
 export class ActionButtonsComponent {
   private params: any;
   public showViewIconsRoute:any = [
-    'employee-detail'
+    '/employee-detail/list',
+    '/grade-limit/list',
+    '/basic-scale/list',
+    '/grade-scale/list'
   ]
   constructor(public modal:ModalService, public router:Router){
   }
@@ -30,7 +33,7 @@ export class ActionButtonsComponent {
   }
 
   checkRoute(){
-    if(this.router.url.includes(this.showViewIconsRoute)){
+    if(this.showViewIconsRoute.includes(this.router.url)){
       return true;
     }else{
       return false;

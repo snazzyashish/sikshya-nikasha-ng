@@ -32,7 +32,7 @@
         </li>
         <hr class="sidebar-divider">
         <li class="nav-item">
-            <a class="nav-link" routerLink="employee-detail" routerLinkActive="active">
+            <a class="nav-link" routerLink="employee-detail/list" routerLinkActive="active">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span> शिक्षक/कर्मचारीको विवरण </span>
             </a>
@@ -68,11 +68,11 @@
             <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                    <a class="collapse-item" routerLink="scholarship-list" routerLinkActive="active">  छात्रबृति  </a>
-                    <a class="collapse-item" routerLink="stationary-list" routerLinkActive="active"> पाठ्यपुस्तक </a>
+                    <a class="collapse-item" routerLink="scholarship/list" routerLinkActive="active">  छात्रबृति  </a>
+                    <a class="collapse-item" routerLink="stationary/list" routerLinkActive="active"> पाठ्यपुस्तक </a>
                     <a class="collapse-item" routerLink="administrative-expenses" routerLinkActive="active"> ब्यबस्थापन खर्च  </a>
-                    <a class="collapse-item" routerLink="infrastructure-list" routerLinkActive="active">  भौतिक निर्माण  </a>
-                    <a class="collapse-item" href="cards.html">दिवा खाजा खर्च </a>
+                    <a class="collapse-item" routerLink="infrastructure/list" routerLinkActive="active">  भौतिक निर्माण  </a>
+                    <a class="collapse-item" routerLink="cards.html">दिवा खाजा खर्च </a>
                 </div>
             </div>
         </li>
@@ -106,9 +106,9 @@
             <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                    <a class="collapse-item" href="buttons.html">  कर्मचारीको ग्रेड सीमा </a>
-                    <a class="collapse-item" href="cards.html"> कर्मचारीको तलब स्केल   </a>
-                    <a class="collapse-item" href="cards.html">   कर्मचारीको ग्रेड स्केल   </a>
+                    <a class="collapse-item" routerLink="grade-limit/list" routerLinkActive="active">  कर्मचारीको ग्रेड सीमा </a>
+                    <a class="collapse-item" routerLink="basic-scale/list" routerLinkActive="active"> कर्मचारीको तलब स्केल   </a>
+                    <a class="collapse-item" routerLink="grade-scale/list" routerLinkActive="active">   कर्मचारीको ग्रेड स्केल   </a>
                     <a class="collapse-item" href="cards.html">कर्मचारीको भट्टा स्केल  </a>
                     <a class="collapse-item" href="cards.html">  पाठ्यपुस्तक/दिवा खाजा स्केल  </a>
                     <a class="collapse-item" href="cards.html">छात्रबृति स्केल </a>

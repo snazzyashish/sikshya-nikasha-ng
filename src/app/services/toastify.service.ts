@@ -22,7 +22,7 @@ export class ToastifyService {
 
  openDialog(templateRef:any) {
   let dialogRef = this.dialog.open(templateRef, {
-   width: '300px',
+   width: '350px',
  });
 }
 }

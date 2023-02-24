@@ -42,6 +42,17 @@ import { StationaryComponent } from './components/stationary/stationary.componen
 import { AdministrativeExpensesComponent } from './components/administrative-expenses/administrative-expenses.component';
 import { InfrastructureListComponent } from './components/insfrastructure-list/insfrastructure-list.component';
 import { GradeLimitComponent } from './components/grade-limit/grade-limit.component';
+import { CreateGradeLimitComponent } from './components/create-grade-limit/create-grade-limit.component';
+import { GradeLimitViewComponent } from './components/grade-limit-view/grade-limit-view.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { BasicScaleListComponent } from './components/basic-scale-list/basic-scale-list.component';
+import { CreateBasicScaleComponent } from './components/create-basic-scale/create-basic-scale.component';
+import { ViewBasicScaleComponent } from './components/view-basic-scale/view-basic-scale.component';
+import { GradeScaleListComponent } from './components/grade-scale-list/grade-scale-list.component';
+import { GradeScaleViewComponent } from './components/grade-scale-view/grade-scale-view.component';
+import { GradeScaleCreateComponent } from './components/grade-scale-create/grade-scale-create.component';
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
+import { LogoutConfirmComponent } from './components/logout-confirm/logout-confirm.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +79,18 @@ import { GradeLimitComponent } from './components/grade-limit/grade-limit.compon
     StationaryComponent,
     AdministrativeExpensesComponent,
     InfrastructureListComponent,
-    GradeLimitComponent
+    GradeLimitComponent,
+    CreateGradeLimitComponent,
+    GradeLimitViewComponent,
+    PageHeaderComponent,
+    BasicScaleListComponent,
+    CreateBasicScaleComponent,
+    ViewBasicScaleComponent,
+    GradeScaleListComponent,
+    GradeScaleViewComponent,
+    GradeScaleCreateComponent,
+    DeleteConfirmComponent,
+    LogoutConfirmComponent
   ],
   imports: [
     HttpClientModule,

@@ -3,6 +3,7 @@ import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TABLE_CONFIG } from 'src/app/data/constants';
+import { Router } from '@angular/router';
 
 declare var $ : any;
 @Component({
@@ -23,7 +24,7 @@ export class SchoolsListComponent implements AfterViewInit {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder){
+  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router){
     this.schoolForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],

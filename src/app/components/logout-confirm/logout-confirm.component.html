@@ -1,0 +1,10 @@
+    <div class="alert alert-danger text-center" style="font-weight: bold;" role="alert">
+        Logout Confirm <i class="bi bi-exclamation-triangle"></i>
+      </div>
+    <div mat-dialog-content style="font-weight: bold;" class="text-center">
+        Are you sure you want to logout?
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close style="margin:0 auto">No</button>
+        <button mat-button mat-dialog-close cdkFocusInitial (click)="onConfirmCLick()" style="margin:0 auto">Yes</button>
+    </div>
