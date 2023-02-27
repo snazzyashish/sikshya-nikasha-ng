@@ -29,6 +29,15 @@ import { ViewBasicScaleComponent } from './components/view-basic-scale/view-basi
 import { GradeScaleListComponent } from './components/grade-scale-list/grade-scale-list.component';
 import { GradeScaleViewComponent } from './components/grade-scale-view/grade-scale-view.component';
 import { GradeScaleCreateComponent } from './components/grade-scale-create/grade-scale-create.component';
+import { AdministrativeSettingsListComponent } from './components/administrative-settings-list/administrative-settings-list.component';
+import { CreateAdministrativeSettingsComponent } from './components/create-administrative-settings/create-administrative-settings.component';
+import { ViewAdminitrativeSettingsComponent } from './components/view-administrative-settings/view-administrative-settings.component';
+import { InfrastructureScaleListComponent } from './components/insfrastructure-scale-list/insfrastructure-scale-list.component';
+import { CreateInsfrastructureScaleComponent } from './components/create-insfrastructure-scale/create-insfrastructure-scale.component';
+import { ViewInsfrastructureScaleComponent } from './components/view-insfrastructure-scale/view-insfrastructure-scale.component';
+import { StationaryKhajaScaleListComponent } from './components/stationary-khaja-scale-list/stationary-khaja-scale-list.component';
+import { ViewStationaryKhajaScaleComponent } from './components/view-stationary-khaja-scale/view-stationary-khaja-scale.component';
+import { CreateStationaryKhajaScaleComponent } from './components/create-stationary-khaja-scale/create-stationary-khaja-scale.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
@@ -69,6 +78,21 @@ const routes: Routes = [
   { path:  'grade-scale/create', component:  GradeScaleCreateComponent, data: { title: 'CREATE GRADE SCALE' }},
   { path:  'grade-scale/update/:id', component:  GradeScaleCreateComponent, data: { title: 'UPDATE GRADE SCALE' }},
   { path:  'grade-scale/view/:id', component:  GradeScaleViewComponent, data: { title: 'VIEW GRADE SCALE' }},
+
+  { path:  'admin-setting/list', component:  AdministrativeSettingsListComponent, data: { title: 'LIST ADMINISTRATIVE SETTINGS' }},
+  { path:  'admin-setting/create', component:  CreateAdministrativeSettingsComponent, data: { title: 'CREATE ADMINISTRATIVE SETTINGS' }},
+  { path:  'admin-setting/update/:id', component:  CreateAdministrativeSettingsComponent, data: { title: 'UPDATE ADMINISTRATIVE SETTINGS' }},
+  { path:  'admin-setting/view/:id', component:  ViewAdminitrativeSettingsComponent, data: { title: 'VIEW ADMINISTRATIVE SETTINGS' }},
+  
+  { path:  'infrastructure-scale/list', component:  InfrastructureScaleListComponent, data: { title: 'LIST INFRASTRUCTURE SETTINGS' }},
+  { path:  'infrastructure-scale/create', component:  CreateInsfrastructureScaleComponent, data: { title: 'CREATE INFRASTRUCTURE SETTINGS' }},
+  { path:  'infrastructure-scale/update/:id', component:  CreateInsfrastructureScaleComponent, data: { title: 'UPDATE INFRASTRUCTURE SETTINGS' }},
+  { path:  'infrastructure-scale/view/:id', component:  ViewInsfrastructureScaleComponent, data: { title: 'VIEW INFRASTRUCTURE SETTINGS' }},
+  
+  { path:  'stationary-khaja/list', component:  StationaryKhajaScaleListComponent, data: { title: 'STATIONERY/DIWA KHAJA FINANCIAL SETTING LIST CLASS WISE' }},
+  { path:  'stationary-khaja/create', component:  CreateStationaryKhajaScaleComponent, data: { title: 'GENERATE CLASSWISE FINANCIAL SETTING' }},
+  { path:  'stationary-khaja/view/:id', component:  ViewStationaryKhajaScaleComponent, data: { title: 'VIEW CLASSWISE FINANCIAL SETTING' }},
+  { path:  'stationary-khaja/update/:id', component:  CreateStationaryKhajaScaleComponent, data: { title: 'UPDATE CLASSWISE FINANCIAL SETTING' }},
 
 ];
 

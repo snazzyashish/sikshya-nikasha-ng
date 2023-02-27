@@ -53,7 +53,15 @@ import { GradeScaleViewComponent } from './components/grade-scale-view/grade-sca
 import { GradeScaleCreateComponent } from './components/grade-scale-create/grade-scale-create.component';
 import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 import { LogoutConfirmComponent } from './components/logout-confirm/logout-confirm.component';
-
+import { AdministrativeSettingsListComponent } from './components/administrative-settings-list/administrative-settings-list.component';
+import { CreateAdministrativeSettingsComponent } from './components/create-administrative-settings/create-administrative-settings.component';
+import { ViewAdminitrativeSettingsComponent } from './components/view-administrative-settings/view-administrative-settings.component';
+import { ViewInsfrastructureScaleComponent } from './components/view-insfrastructure-scale/view-insfrastructure-scale.component';
+import { CreateInsfrastructureScaleComponent } from './components/create-insfrastructure-scale/create-insfrastructure-scale.component';
+import { InfrastructureScaleListComponent } from './components/insfrastructure-scale-list/insfrastructure-scale-list.component';
+import { StationaryKhajaScaleListComponent } from './components/stationary-khaja-scale-list/stationary-khaja-scale-list.component';
+import { ViewStationaryKhajaScaleComponent } from './components/view-stationary-khaja-scale/view-stationary-khaja-scale.component';
+import { CreateStationaryKhajaScaleComponent } from './components/create-stationary-khaja-scale/create-stationary-khaja-scale.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +98,16 @@ import { LogoutConfirmComponent } from './components/logout-confirm/logout-confi
     GradeScaleViewComponent,
     GradeScaleCreateComponent,
     DeleteConfirmComponent,
-    LogoutConfirmComponent
+    LogoutConfirmComponent,
+    AdministrativeSettingsListComponent,
+    CreateAdministrativeSettingsComponent,
+    ViewAdminitrativeSettingsComponent,
+    InfrastructureScaleListComponent,
+    ViewInsfrastructureScaleComponent,
+    CreateInsfrastructureScaleComponent,
+    StationaryKhajaScaleListComponent,
+    ViewStationaryKhajaScaleComponent,
+    CreateStationaryKhajaScaleComponent
   ],
   imports: [
     HttpClientModule,

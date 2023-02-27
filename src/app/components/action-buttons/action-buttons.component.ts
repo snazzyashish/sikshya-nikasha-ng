@@ -15,7 +15,9 @@ export class ActionButtonsComponent {
     '/employee-detail/list',
     '/grade-limit/list',
     '/basic-scale/list',
-    '/grade-scale/list'
+    '/grade-scale/list',
+    '/admin-setting/list',
+    '/infrastructure-scale/list'
   ]
   constructor(public modal:ModalService, public router:Router){
   }

@@ -1,3 +1,5 @@
+export const SERVER_URL = "http://localhost:8000/";
+export const SERVER_API_URL = "http://localhost:8000/api";
 export const SITE_HEADER = 'डेमो नगरपालिकाको विद्यालय निकासा प्रणाली';
 
 //ag-grid table default config

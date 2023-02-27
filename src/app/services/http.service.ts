@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { AuthService } from './auth.service';
-// import {serverApiUrl} from '../data/environment';
+import { SERVER_API_URL } from '../data/constants';
 declare var alertify : any;
 
 @Injectable({
@@ -15,7 +15,7 @@ export class HttpService {
   constructor(public http: HttpClient, public auth: AuthService) { }
 
   // public apiUrl:string =  serverApiUrl;
-  public apiUrl:string =  'serverApiUrl';
+  public apiUrl:string =  SERVER_API_URL;
 
   public postJson(url: string, data: any): Observable<any> {
     let userInfo:any = this.auth.getUserInfo();
