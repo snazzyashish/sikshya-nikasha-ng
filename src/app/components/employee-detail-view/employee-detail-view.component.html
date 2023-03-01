@@ -15,7 +15,7 @@
                         <tbody>
                             <tr>
                                 <td>NAME (नाम)</td>
-                                <td>: ( 256_कर्मचारी साह )</td>
+                                <td>{{record.name}}</td>
                             </tr>
                             <tr>
                                 <td>लिङ्ग</td>
@@ -23,7 +23,7 @@
                             </tr>
                             <tr>
                                 <td>प्रकार/तह/पद/ग्रेड</td>
-                                <td>स्थायी/नि.मा.शि./शिक्षक/8</td>
+                                <td>{{record.type}}/{{record.level}}/{{record.post}}/{{record.grade}}</td>
                             </tr>
                             <tr>
                                 <td>अस्थायी/स्थाई पदमा नियुक्ती / बढुवा मिति</td>
@@ -35,11 +35,11 @@
                             </tr>
                             <tr>
                                 <td>सम्पर्क नम्बर</td>
-                                <td></td>
+                                <td>{{record.phone}}</td>
                             </tr>
                             <tr>
                                 <td>बिद्यालयको नाम</td>
-                                <td>24-विद्यालय - ६टोल</td>
+                                <td>{{record.school_name}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -77,8 +77,8 @@
                     <td>स्थिति : सक्रिय</td>
                 </tr>
                 <tr>
-                    <td>सिर्जना द्वारा / मा : 0/0000-00-00 00:00:00</td>
-                    <td>परिवर्तन द्वारा / मा : 1/2023-01-29 15:18:31</td>
+                    <td>सिर्जना द्वारा / मा : 0/{{record.created_at}}</td>
+                    <td>परिवर्तन द्वारा / मा : 1/{{record.updated_at}}</td>
                 </tr>
             </tbody>
         </table>

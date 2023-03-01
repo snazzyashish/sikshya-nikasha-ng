@@ -1,0 +1,72 @@
+<!-- Page Heading -->
+<app-page-header></app-page-header>
+
+<div class="card o-hidden border-0 shadow-lg my-3">
+    <div class="card-body p-4 border-1">
+        <div class="row g-3">
+            <div class="col-sm-12">
+                <div class="card-body p-0">
+                    <table class="table table-bordered text-justify ">
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td colspan="2" class="view-edit-btn">
+                                    <a routerLink="/school/update/{{record.id}}"><i class="bi bi-pencil-fill"></i> UPDATE</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> NAME </td>
+                                <td>{{record.name}}</td>
+                            </tr>
+                            <tr>
+                                <td> TYPE </td>
+                                <td>{{record.type}}</td>
+                            </tr>
+                            <tr>
+                                <td> CODE </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td> ADDRESS </td>
+                                <td>डेमो नगरपालिका-१, टोल</td>
+                            </tr>
+                            <tr>
+                                <td> CONTACT NO.</td>
+                                <td>{{record.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td> EST. YEAR </td>
+                                <td>2039</td>
+                            </tr>
+                            <tr>
+                                <td> CONTACT PERSON </td>
+                                <td>{{record.principal}}</td>
+                            </tr>
+                        
+                            <tr>
+                                <td> BANK A/C</td>
+                                <td>{{record.account}}</td>
+                            </tr>
+                            <tr>
+                                <td> ENROLL CLASSES </td>
+                                <td>ECD,१ कक्षा,२ कक्षा,३ कक्षा,४ कक्षा,५ कक्षा,६ कक्षा,७ कक्षा,८ कक्षा,९ कक्षा,१० कक्षा,११ कक्षा,१२ कक्षा</td>
+                            </tr>
+                            <tr>
+                                <td> Moto </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td> Subject List </td>
+                                <td> <a href="/nikasa/basicInformation/SchoolSubject/1" class="btn btn-sm"> ADD  SCHOOL SUBJECT</a></td>
+                            </tr>
+                            <tr>
+                                <td> Status  </td>
+                                <td>Active</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

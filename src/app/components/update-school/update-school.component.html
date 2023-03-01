@@ -1,0 +1,159 @@
+<!-- Page Heading -->
+<app-page-header></app-page-header>
+<!-- <div>
+    <div class="my-2 action-btns" style="margin:0 auto">
+        <button type="button" class="btn btn-primary mx-1 btn-add">Add</button>
+        <button type="button" class="btn btn-success mx-1 btn-save">Save</button>
+        <button type="button" class="btn btn-danger mx-1 btn-delete">Delete</button>
+    </div>
+</div> -->
+
+<div class="card o-hidden border-0 shadow-lg my-3">
+    <div class="card-body p-4">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="cmpForm">
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">School Type </label>
+                <div class="col-sm-4">
+                    <select class="form-select" formControlName="type">
+                        <option value="">Community</option>
+                        <option value="">Institutional</option>
+                    </select>
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Logo </label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">School</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Tole </label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="tole">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">Title Nepali </label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="title_np">
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Establish Year </label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="year">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">School Code</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="code">
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Principal Name</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="principal_name">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">School Email</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="email">
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Principal Number</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="principal_no">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">School Ph. No.</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="phone">
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Principal Email</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="principal_email">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">Ward No.</label>
+                <div class="col-sm-4">
+                    <select class="form-select" formControlName="ward_no">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Bank Name</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" formControlName="bank_name">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">School Level</label>
+                <div class="col-sm-4">
+                    <select class="form-select" formControlName="school_level">
+                        <option value="उ.मा.शि.">उ.मा.शि.</option>
+                        <option value="मा.शि." selected="selected">मा.शि.</option>
+                        <option value="नि.मा.शि.">नि.मा.शि.</option>
+                        <option value="प्रा.शि.">प्रा.शि</option>
+                    </select>
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Account Number</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="account_no">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">Class Eight</label>
+                <div class="col-sm-4">
+                    <select class="form-select" formControlName="class_eight">
+                        <option value="YES">YES</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+                <label for="inputName" class="col-sm-2 col-form-label">Status</label>
+                <div class="col-sm-4">
+                    <select class="form-select" formControlName="status">
+                        <option value="1">ACTIVE</option>
+                        <option value="0">INACTIVE</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">Enroll Classes</label>
+                <div class="col-sm-10">
+                    <select class="form-select" multiple aria-label="multiple select example" formControlName="enroll_classes">
+                            <option value="ECD">ECD</option>
+                            <option value="1">१ कक्षा</option>
+                            <option value="2">२ कक्षा</option>
+                            <option value="3">३ कक्षा</option>
+                            <option value="4">४ कक्षा</option>
+                            <option value="5">५ कक्षा</option>
+                            <option value="6">६ कक्षा</option>
+                            <option value="7">७ कक्षा</option>
+                            <option value="8">८ कक्षा</option>
+                            <option value="9">९ कक्षा</option>
+                            <option value="10">१० कक्षा</option>
+                            <option value="11">११ कक्षा</option>
+                            <option value="12">१२ कक्षा</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputName" class="col-sm-2 col-form-label">Moto</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" rows="5" formControlName="moto"></textarea>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-4 btn-cnt">
+                    <button type="submit" class="btn btn-primary" style="width:100%">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

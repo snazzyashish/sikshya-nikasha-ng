@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ToastService } from 'angular-toastify';
 import {MatSnackBar, MatSnackBarRef} from '@angular/material/snack-bar';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
 
 @Injectable({
   providedIn: 'root'

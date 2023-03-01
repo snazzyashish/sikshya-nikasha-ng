@@ -62,6 +62,11 @@ import { InfrastructureScaleListComponent } from './components/insfrastructure-s
 import { StationaryKhajaScaleListComponent } from './components/stationary-khaja-scale-list/stationary-khaja-scale-list.component';
 import { ViewStationaryKhajaScaleComponent } from './components/view-stationary-khaja-scale/view-stationary-khaja-scale.component';
 import { CreateStationaryKhajaScaleComponent } from './components/create-stationary-khaja-scale/create-stationary-khaja-scale.component';
+import { ViewSchoolComponent } from './components/view-school/view-school.component';
+import { UpdateSchoolComponent } from './components/update-school/update-school.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
+import { UserCreateComponent } from './components/user-create/user-create.component';
+import { ScholarshipSettingsComponent } from './components/scholarship-settings/scholarship-settings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +112,12 @@ import { CreateStationaryKhajaScaleComponent } from './components/create-station
     CreateInsfrastructureScaleComponent,
     StationaryKhajaScaleListComponent,
     ViewStationaryKhajaScaleComponent,
-    CreateStationaryKhajaScaleComponent
+    CreateStationaryKhajaScaleComponent,
+    ViewSchoolComponent,
+    UpdateSchoolComponent,
+    UserManagementComponent,
+    UserCreateComponent,
+    ScholarshipSettingsComponent
   ],
   imports: [
     HttpClientModule,

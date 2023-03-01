@@ -3,15 +3,15 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-employee-detail-view',
-  templateUrl: './employee-detail-view.component.html',
-  styleUrls: ['./employee-detail-view.component.css']
+  selector: 'app-view-school',
+  templateUrl: './view-school.component.html',
+  styleUrls: ['./view-school.component.css']
 })
-export class EmployeeDetailViewComponent {
+export class ViewSchoolComponent {
   public id:any;
   public record:any = {};
   constructor(public route:ActivatedRoute, public api:ApiService){
-    this.id = this.route.snapshot.paramMap.get('id'); 
+    this.id = this.route.snapshot.paramMap.get('id');
     this.getViewRecord();
   }
 
@@ -19,7 +19,7 @@ export class EmployeeDetailViewComponent {
     let params = {
       id : this.id
     }
-    this.api.viewEmployee(params).subscribe(res=>{
+    this.api.viewSchool(params).subscribe(res=>{
       this.record = res.data;
     })
   }

@@ -8,6 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { SchoolsListComponent } from './components/schools-list/schools-list.component';
+import { ViewSchoolComponent } from './components/view-school/view-school.component';
+import { UpdateSchoolComponent } from './components/update-school/update-school.component';
 import { FiscalYearComponent } from './components/fiscal-year/fiscal-year.component';
 import { MagFormItemComponent } from './components/magform-item/magform-item.component';
 import { SignatoryComponent } from './components/signatory/signatory.component';
@@ -38,13 +40,21 @@ import { ViewInsfrastructureScaleComponent } from './components/view-insfrastruc
 import { StationaryKhajaScaleListComponent } from './components/stationary-khaja-scale-list/stationary-khaja-scale-list.component';
 import { ViewStationaryKhajaScaleComponent } from './components/view-stationary-khaja-scale/view-stationary-khaja-scale.component';
 import { CreateStationaryKhajaScaleComponent } from './components/create-stationary-khaja-scale/create-stationary-khaja-scale.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
+import { UserCreateComponent } from './components/user-create/user-create.component';
+import { ScholarshipSettingsComponent } from './components/scholarship-settings/scholarship-settings.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
   { path:  'home', component:  DashboardComponent, data: { title: 'DASHBOARD' }},
   { path:  'login', component:  LoginComponent, data: { title: 'LOGIN' }},
   { path:  'change-password', component:  ChangePasswordComponent, data: { title: 'CHANGE PASSWORD' }},
+
   { path:  'schools-list', component:  SchoolsListComponent, data: { title: 'LIST SCHOOLS' }},
+  { path:  'school/view/:id', component:  ViewSchoolComponent, data: { title: 'VIEW SCHOOL' }},
+  { path:  'school/update/:id', component:  UpdateSchoolComponent, data: { title: 'UPDATE SCHOOL' }},
+  { path:  'school/create', component:  UpdateSchoolComponent, data: { title: 'ADD SCHOOL' }},
+
   { path:  'users-list', component:  UsersListComponent, data: { title: 'LIST USERS' }},
   { path:  'fiscal-year', component:  FiscalYearComponent, data: { title: 'LIST FISCAL YEARS' }},
   { path:  'academic-year', component:  AcademicYearComponent, data: { title: 'LIST ACADEMIC YEARS' }},
@@ -93,6 +103,12 @@ const routes: Routes = [
   { path:  'stationary-khaja/create', component:  CreateStationaryKhajaScaleComponent, data: { title: 'GENERATE CLASSWISE FINANCIAL SETTING' }},
   { path:  'stationary-khaja/view/:id', component:  ViewStationaryKhajaScaleComponent, data: { title: 'VIEW CLASSWISE FINANCIAL SETTING' }},
   { path:  'stationary-khaja/update/:id', component:  CreateStationaryKhajaScaleComponent, data: { title: 'UPDATE CLASSWISE FINANCIAL SETTING' }},
+  
+  { path:  'user-management', component:  UserManagementComponent, data: { title: 'USER MANAGEMENT' }},
+  { path:  'user/create', component:  UserCreateComponent, data: { title: 'CREATE USER' }},
+  { path:  'user/update/:id', component:  UserCreateComponent, data: { title: 'CREATE USER' }},
+
+  { path:  'scholarship-setting', component:  ScholarshipSettingsComponent, data: { title: 'SCHOLARSHIP SETTING' }},
 
 ];
 

@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-administrative-settings.component.css']
 })
 export class CreateAdministrativeSettingsComponent {
-public id:any;
+  public id:any;
   public mode='new';
   constructor(private route: ActivatedRoute) {
   }

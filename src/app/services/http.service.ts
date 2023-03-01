@@ -19,10 +19,10 @@ export class HttpService {
 
   public postJson(url: string, data: any): Observable<any> {
     let userInfo:any = this.auth.getUserInfo();
-    if(userInfo){
-      let userId = userInfo.id;
-      data.user_id = userId;
-    }
+    // if(userInfo){
+    //   let userId = userInfo.id;
+    //   data.user_id = userId;
+    // }
     url = this.apiUrl + url;
     const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
 
@@ -31,10 +31,10 @@ export class HttpService {
 
   public getRequest(url:any, params:any): Observable<any> {
     let userInfo:any = this.auth.getUserInfo();
-    if(userInfo){
-      let userId = userInfo.id;
-      params.user_id = userId;
-    }
+    // if(userInfo){
+    //   let userId = userInfo.id;
+    //   params.user_id = userId;
+    // }
     let httpHeaders = new HttpHeaders()
         .set('Content-Type', 'application/json');
 
@@ -50,7 +50,7 @@ export class HttpService {
   }
   public handleError(error: HttpErrorResponse){
     // alertify.alert(APP_NAME, 'Could not connect to the server at the moment. <br/> Please try again later !');
-    alertify.error(error.error.message);
+    // alertify.error(error.error.message);
     return throwError(error);
   }
 

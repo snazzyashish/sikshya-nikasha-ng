@@ -13,6 +13,7 @@ export class ActionButtonsComponent {
   private params: any;
   public showViewIconsRoute:any = [
     '/employee-detail/list',
+    '/schools-list',
     '/grade-limit/list',
     '/basic-scale/list',
     '/grade-scale/list',
@@ -27,7 +28,7 @@ export class ActionButtonsComponent {
   }
 
   btnClickedHandler(event: any, type:any) {
-    this.params.clicked(this.params.value, type);
+    this.params.clicked(this.params.data.id, type);
   }
 
   refresh() {

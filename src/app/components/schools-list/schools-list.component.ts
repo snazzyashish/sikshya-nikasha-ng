@@ -4,6 +4,8 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { ToastifyService } from 'src/app/services/toastify.service';
 
 declare var $ : any;
 @Component({
@@ -20,11 +22,12 @@ export class SchoolsListComponent implements AfterViewInit {
   schoolForm: FormGroup;
   public mode = 'new';
   public tableConfig = TABLE_CONFIG;
+  public modifiedRecords:any;
   ngAfterViewInit() {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router){
+  constructor(public toastify:ToastifyService, public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService){
     this.schoolForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -37,14 +40,16 @@ export class SchoolsListComponent implements AfterViewInit {
       {
         headerName : 'Action',
         field: 'id',
-        width : 100,
+        width : 140,
         suppressNavigable: true,
         cellClass: 'no-border',
         cellRenderer: ActionButtonsComponent,
         cellRendererParams: {
           clicked: (id: any, type:any) => {
             if(type == 'edit'){
-              this.onEditModeOpen();
+              this.onEditModeOpen(id);
+            }else if(type == 'view'){
+              this.onViewModeOpen(id);
             }
           }
         },
@@ -58,7 +63,7 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       {
         headerName : 'School Name',
-        field : 'school_name',
+        field : 'name',
         width : 250,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -85,7 +90,7 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       {
         headerName : 'Principal',
-        field : 'principal_name',
+        field : 'principal',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -94,7 +99,7 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       {
         headerName : 'Principal No.',
-        field : 'principal_no',
+        field : 'phone',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -116,122 +121,45 @@ export class SchoolsListComponent implements AfterViewInit {
   }
 
   listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
-      // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'type' : 'Community',
-            'principal_name' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-      ]
-        this.gridApi.setRowData(obj);
-      // }
-    // })
+    this.api.listSchools({}).subscribe(res=>{
+      if(res.success){
+        this.gridApi.setRowData(res.data);
+      }
+    })
   }
 
   onAddClick(){
     this.mode = 'new'
-    this.schoolForm.patchValue({
-      school_name: '',
-      account : '', 
-      type : '', 
-      principal_name : '', 
-      principal_no : '',
-    })
-    this.onNewModeOpen();
+    this.router.navigate(['school/create']);
   }
 
-  onEditModeOpen(){
+  onSaveClick(){
     var me = this;
-    this.modal.open(this.modalContent);
-    setTimeout(function(){ 
-      me.schoolForm.patchValue(me.gridApi.getSelectedRows()[0]);
-    }, 50);
+      me.modifiedRecords = [];
+      let items: any = [];
+      this.gridApi.forEachNode(function(node:any) { 
+        me.modifiedRecords.push(node.data);
+      });
+
+      let params = {
+        modifiedRecords : this.modifiedRecords
+      }
+
+      this.api.saveSchoolGrid(params).subscribe(res=>{
+        if(res.success){
+          this.toastify.openSnackBar(res.message,'OK');
+        }
+      })
+  }
+
+  onEditModeOpen(id:any){
+    var me = this;
+   this.router.navigate(['school/update/'+id]);
+  }
+
+  onViewModeOpen(id:any){
+    var me = this;
+   this.router.navigate(['school/view/'+id]);
   }
 
   onNewModeOpen(){

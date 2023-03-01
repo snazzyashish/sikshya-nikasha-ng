@@ -54,4 +54,65 @@ export class ApiService {
     let url = 'user/list';
     return this._http.getRequest(url, params);
   }
+
+  //------------------------------------------------------------------//
+
+  public listUsers(params:any){
+    let url = 'user/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewUser(params:any){
+    let url = 'user/'+params.id;
+    return this._http.getRequest(url,{});
+
+  }
+  public saveUser(params:any){
+    let url = 'user/save';
+    return this._http.postJson(url, params);
+  }
+
+  //------------------------------------------------------------------//
+  //------------------------------------------------------------------//
+
+  public listEmployees(params:any){
+    let url = 'employee/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewEmployee(params:any){
+    let url = 'employee/'+params.id;
+    return this._http.getRequest(url,{});
+
+  }
+  public saveEmployees(params:any){
+    let url = 'employee';
+    return this._http.postJson(url, params);
+  }
+
+  public searchEmployees(params:any){
+    let url = 'employee/search';
+    return this._http.postJson(url, params);
+  }
+  //------------------------------------------------------------------//
+  public listSchools(params:any){
+    let url = 'school/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewSchool(params:any){
+    let url = 'school/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveSchool(params:any){
+    let url = 'school';
+    return this._http.postJson(url, params);
+
+  }
+  public saveSchoolGrid(params:any){
+    let url = 'school/save';
+    return this._http.postJson(url, params);
+  }
+  //------------------------------------------------------------------//
 }

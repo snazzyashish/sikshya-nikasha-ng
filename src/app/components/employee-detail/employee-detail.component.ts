@@ -4,6 +4,7 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 import { TABLE_CONFIG } from 'src/app/data/constants';
+import { ApiService } from 'src/app/services/api.service';
 
 
 declare var $ : any;
@@ -18,7 +19,7 @@ export class EmployeeDetailComponent implements AfterViewInit {
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
-  schoolForm: FormGroup;
+  searchForm: FormGroup;
   public mode = 'new';
   public showSearchForm:boolean = false;
   public tableConfig = TABLE_CONFIG;
@@ -26,14 +27,13 @@ export class EmployeeDetailComponent implements AfterViewInit {
     
   }
 
-  constructor(public router:Router, public modal:ModalService ,public fb:FormBuilder){
-    this.schoolForm =  this.fb.group({
-      id: [''],
-      school_name: ['', Validators.required],
-      account : ['', Validators.required], 
-      type : ['', Validators.required], 
-      principal_name : ['', Validators.required], 
-      principal_no : ['', Validators.required], 
+  constructor(public router:Router, public modal:ModalService ,public fb:FormBuilder, public api:ApiService){
+    this.searchForm =  this.fb.group({
+      gender: [''],
+      type: [''],
+      level: [''],
+      post: [''],
+      school: [''],
     });
     this.columnDefs=[
       {
@@ -63,7 +63,7 @@ export class EmployeeDetailComponent implements AfterViewInit {
         filter:true
       },
       {
-        headerName : 'School Name',
+        headerName : 'School',
         field : 'school_name',
         width : 250,
         sortingOrder : ['asc','desc'],
@@ -72,8 +72,26 @@ export class EmployeeDetailComponent implements AfterViewInit {
         floatingFilter : true
       },
       {
-        headerName : 'Account',
-        field : 'account',
+        headerName : 'Name',
+        field : 'name',
+        width : 150,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        floatingFilter : true,
+        filter: 'agTextColumnFilter',
+      },
+      {
+        headerName : 'Level',
+        field : 'level',
+        width : 150,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        floatingFilter : true,
+        filter: 'agTextColumnFilter',
+      },
+      {
+        headerName : 'Category',
+        field : 'category',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -86,21 +104,30 @@ export class EmployeeDetailComponent implements AfterViewInit {
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
-        floatingFilter : true,
         filter: 'agTextColumnFilter',
+        floatingFilter : true
       },
       {
-        headerName : 'Principal',
-        field : 'principal_name',
+        headerName : 'Post',
+        field : 'post',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
-        floatingFilter : true,
         filter: 'agTextColumnFilter',
+        floatingFilter : true
       },
       {
-        headerName : 'Principal No.',
-        field : 'principal_no',
+        headerName : 'Grade',
+        field : 'grade',
+        width : 150,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        filter: 'agTextColumnFilter',
+        floatingFilter : true
+      },
+      {
+        headerName : 'Status',
+        field : 'status',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -117,10 +144,18 @@ export class EmployeeDetailComponent implements AfterViewInit {
 
   onFormSubmit(){
     this.showSearchForm = !this.showSearchForm;
+    this.api.searchEmployees(this.searchForm.value).subscribe(res=>{
+      if(res.success){
+        //set grid records
+      }
+    })
+  }
+
+  onFormReset(){
+    this.listUsers();
   }
 
   onGridReady(params:any){
-    // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.listUsers();
@@ -130,124 +165,21 @@ export class EmployeeDetailComponent implements AfterViewInit {
   }
 
   listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
-      // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'type' : 'Community',
-            'principal_name' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-         {
-          'id' : 2,
-          'school_name' : '2-SCHOOL, DEMO-1 टोल 2-विद्यालय , डेमो नगरपालिका-१',
-          'account' : '1006301214777019',
-          'type' : 'Community',
-          'principal_name' : '	सरस्वती मिश्रा',
-          'principal_no' : '9860564810',
-         },
-      ]
-        this.gridApi.setRowData(obj);
-      // }
-    // })
+    this.api.listEmployees({}).subscribe(res=>{
+      if(res.success){
+        this.gridApi.setRowData(res.data);
+      }
+    })
   }
 
   onAddClick(){
     this.mode = 'new'
-    // this.schoolForm.patchValue({
-    //   school_name: '',
-    //   account : '', 
-    //   type : '', 
-    //   principal_name : '', 
-    //   principal_no : '',
-    // })
-    // this.onNewModeOpen();
     this.router.navigate(['employee-detail/create']);
   }
 
   onEditModeOpen(id:any){
     var me = this;
     this.router.navigate(['/employee-detail/update/'+id]);
-    // this.modal.open(this.modalContent);
-    // setTimeout(function(){ 
-    //   me.schoolForm.patchValue(me.gridApi.getSelectedRows()[0]);
-    // }, 50);
   }
   onViewModeOpen(id:any){
     var me = this;
