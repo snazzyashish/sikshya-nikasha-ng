@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ToastifyService } from './toastify.service';
+import { AlertService } from './alert.service';
 
 describe('ToastifyService', () => {
-  let service: ToastifyService;
+  let service:AlertService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

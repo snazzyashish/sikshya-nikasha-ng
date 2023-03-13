@@ -127,7 +127,7 @@ table{
         margin-bottom: 1% !important;
 }
 
-input[type="text"], input[type="password"], input[type="email"], textarea {
+input[type="text"], input[type="password"], input[type="email"], input[type="number"], textarea {
     background-color : #f2f2f2; 
 }
 

@@ -14,9 +14,10 @@
             <div class="mb-3 row">
                 <label for="inputName" class="col-sm-2 col-form-label">School Type </label>
                 <div class="col-sm-4">
-                    <select class="form-select" formControlName="type">
-                        <option value="">Community</option>
-                        <option value="">Institutional</option>
+                    <select class="form-select" formControlName="school_type">
+                        <option value=""></option>
+                        <option value="community">Community</option>
+                        <option value="instituitional">Institutional</option>
                     </select>
                 </div>
                 <label for="inputName" class="col-sm-2 col-form-label">Logo </label>
@@ -27,7 +28,7 @@
             <div class="mb-3 row">
                 <label for="inputName" class="col-sm-2 col-form-label">School</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" formControlName="name">
+                    <input type="text" class="form-control" formControlName="school">
                 </div>
                 <label for="inputName" class="col-sm-2 col-form-label">Tole </label>
                 <div class="col-sm-4">
@@ -37,17 +38,17 @@
             <div class="mb-3 row">
                 <label for="inputName" class="col-sm-2 col-form-label">Title Nepali </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" formControlName="title_np">
+                  <input type="text" class="form-control" formControlName="title_nepali">
                 </div>
                 <label for="inputName" class="col-sm-2 col-form-label">Establish Year </label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" formControlName="year">
+                  <input type="text" class="form-control" formControlName="est_year">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="inputName" class="col-sm-2 col-form-label">School Code</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" formControlName="code">
+                  <input type="text" class="form-control" formControlName="school_code">
                 </div>
                 <label for="inputName" class="col-sm-2 col-form-label">Principal Name</label>
                 <div class="col-sm-4">
@@ -57,7 +58,7 @@
             <div class="mb-3 row">
                 <label for="inputName" class="col-sm-2 col-form-label">School Email</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" formControlName="email">
+                  <input type="text" class="form-control" formControlName="school_email">
                 </div>
                 <label for="inputName" class="col-sm-2 col-form-label">Principal Number</label>
                 <div class="col-sm-4">
@@ -67,7 +68,7 @@
             <div class="mb-3 row">
                 <label for="inputName" class="col-sm-2 col-form-label">School Ph. No.</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" formControlName="phone">
+                  <input type="text" class="form-control" formControlName="school_phone">
                 </div>
                 <label for="inputName" class="col-sm-2 col-form-label">Principal Email</label>
                 <div class="col-sm-4">
@@ -111,8 +112,8 @@
                 <label for="inputName" class="col-sm-2 col-form-label">Class Eight</label>
                 <div class="col-sm-4">
                     <select class="form-select" formControlName="class_eight">
-                        <option value="YES">YES</option>
-                        <option value="NO">NO</option>
+                        <option value="1">YES</option>
+                        <option value="0">NO</option>
                     </select>
                 </div>
                 <label for="inputName" class="col-sm-2 col-form-label">Status</label>
@@ -126,7 +127,7 @@
             <div class="mb-3 row">
                 <label for="inputName" class="col-sm-2 col-form-label">Enroll Classes</label>
                 <div class="col-sm-10">
-                    <select class="form-select" multiple aria-label="multiple select example" formControlName="enroll_classes">
+                    <select class="form-select" multiple aria-label="multiple select example" formControlName="enroll_class">
                             <option value="ECD">ECD</option>
                             <option value="1">१ कक्षा</option>
                             <option value="2">२ कक्षा</option>

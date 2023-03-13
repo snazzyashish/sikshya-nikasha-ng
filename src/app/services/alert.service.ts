@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import { ToastService } from 'angular-toastify';
 import {MatSnackBar, MatSnackBarRef} from '@angular/material/snack-bar';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
+import { DeleteConfirmComponent } from '../components/delete-confirm/delete-confirm.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ToastifyService {
+
+export class AlertService {
+  public messageSource = new BehaviorSubject<boolean>(false);
+  changeVar = this.messageSource.asObservable();
 
   constructor(private _toastService: ToastService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
@@ -24,7 +28,12 @@ export class ToastifyService {
  openDialog(templateRef:any) {
   let dialogRef = this.dialog.open(templateRef, {
    width: '350px',
- });
-}
+  });
+  }
+ showDeleteConfirm() {
+  let dialogRef = this.dialog.open(DeleteConfirmComponent, {
+   width: '350px',
+  });
+  }
 }
 

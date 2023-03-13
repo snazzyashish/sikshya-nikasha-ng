@@ -2,8 +2,9 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastifyService } from 'src/app/services/toastify.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { TABLE_CONFIG } from 'src/app/data/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -24,7 +25,7 @@ export class UsersListComponent {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public toastify: ToastifyService){
+  constructor(public router:Router, public modal:ModalService ,public fb:FormBuilder, public alert: AlertService){
     this.userForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -38,17 +39,19 @@ export class UsersListComponent {
       {
         headerName : 'Action',
         field: 'id',
-        width : 100,
+        width : 140,
         suppressNavigable: true,
         cellClass: 'no-border',
         cellRenderer: ActionButtonsComponent,
         cellRendererParams: {
           clicked: (id: any, type:any) => {
             if(type == 'edit'){
-              this.onEditModeOpen();
+              this.onEditModeOpen(id);
             }else if(type=='delete'){
-              // this.toastify.openSnackBar('Deleted','OK')
-              this.toastify.openDialog(this.confirmDialog)
+              // this.alert.openSnackBar('Deleted','OK')
+              this.alert.openDialog(this.confirmDialog)
+            } else if(type == 'view'){
+              this.onViewModeOpen(id);
             }
           }
         },
@@ -103,13 +106,14 @@ export class UsersListComponent {
     ]
   }
 
-  onEditModeOpen(){
-    this.mode = 'edit'
+  onEditModeOpen(id:any){
     var me = this;
-    this.modal.open(this.modalContent);
-    setTimeout(function(){ 
-      me.userForm.patchValue(me.gridApi.getSelectedRows()[0]);
-    }, 50);
+   this.router.navigate(['school/update/'+id]);
+  }
+
+  onViewModeOpen(id:any){
+    var me = this;
+   this.router.navigate(['school/view/'+id]);
   }
   onNewModeOpen(){
     var me = this;
@@ -246,19 +250,12 @@ export class UsersListComponent {
   }
 
   onSaveClick(){
-    this.toastify.openSnackBar('Saved','OK')
+    this.alert.openSnackBar('Saved','OK')
   }
 
   onAddClick(){
     this.mode = 'new'
-    this.userForm.patchValue({
-      school_name: '',
-      principal_uname : '', 
-      principal_pass : '', 
-      data_entry_uname : '', 
-      data_entry_pass : '', 
-    })
-    this.onNewModeOpen();
+    this.router.navigate(['school/create']);
   }
  
 }

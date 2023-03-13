@@ -5,13 +5,12 @@ import { USER_ROLES } from 'src/app/data/constants';
 import { ApiService } from 'src/app/services/api.service';
 import { AlertService } from 'src/app/services/alert.service';
 
-
 @Component({
-  selector: 'app-user-create',
-  templateUrl: './user-create.component.html',
-  styleUrls: ['./user-create.component.css']
+  selector: 'app-create-employee-bhatta',
+  templateUrl: './create-employee-bhatta.component.html',
+  styleUrls: ['./create-employee-bhatta.component.css']
 })
-export class UserCreateComponent {
+export class CreateEmployeeBhattaComponent {
   public userRoles = USER_ROLES;
   public id:any;
   public mode='new';
@@ -20,11 +19,11 @@ export class UserCreateComponent {
   constructor(private route: ActivatedRoute, public api:ApiService, public fb:FormBuilder, public toastify:AlertService) {
     this.cmpForm =  this.fb.group({
       id : [''],
-      name : ['', Validators.required],
-      email : ['', Validators.required],
-      password : ['', Validators.required],
-      role : ['', Validators.required],
-      school : ['', Validators.required],
+      level : ['', Validators.required],
+      title : ['', Validators.required],
+      area : ['', Validators.required],
+      amount : ['', Validators.required],
+      comment : ['', Validators.required],
 
     })
   }
@@ -46,8 +45,9 @@ export class UserCreateComponent {
   }
 
   onFormSubmit(){
-    this.api.signup(this.cmpForm.value).subscribe(res=>{
-      this.toastify.openSnackBar(res.message, 'OK');
+    this.api.saveEmployeeBhatta(this.cmpForm.value).subscribe(res=>{
+      debugger;
     })
+    this.toastify.openSnackBar('User Created', 'OK');
   }
 }

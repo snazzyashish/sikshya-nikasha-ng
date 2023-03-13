@@ -73,7 +73,7 @@ export class EmployeeDetailComponent implements AfterViewInit {
       },
       {
         headerName : 'Name',
-        field : 'name',
+        field : 'fname_eng',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -109,7 +109,7 @@ export class EmployeeDetailComponent implements AfterViewInit {
       },
       {
         headerName : 'Post',
-        field : 'post',
+        field : 'position',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,

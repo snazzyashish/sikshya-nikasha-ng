@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd   } from '@angular/router';
 import { LogoutConfirmComponent } from './components/logout-confirm/logout-confirm.component';
 import { SITE_HEADER } from './data/constants';
-import { ToastifyService } from './services/toastify.service';
+import { AlertService } from './services/alert.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent {
   title = 'ng-app';
   currentRoute:any;
   siteHeader = SITE_HEADER;
-  constructor(public route:ActivatedRoute, public router:Router, public toastify:ToastifyService){
+  constructor(public route:ActivatedRoute, public router:Router, public toastify:AlertService){
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.currentRoute = val.url;

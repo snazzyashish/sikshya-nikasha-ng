@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-delete-confirm',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-confirm.component.css']
 })
 export class DeleteConfirmComponent {
+  constructor(public alert:AlertService){
 
+  }
+
+  onConfirmClick(){
+    this.alert.messageSource.next(true);
+  }
 }

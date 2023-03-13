@@ -43,6 +43,8 @@ import { CreateStationaryKhajaScaleComponent } from './components/create-station
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { ScholarshipSettingsComponent } from './components/scholarship-settings/scholarship-settings.component';
+import { EmployeeBhattaComponent } from './components/employee-bhatta/employee-bhatta.component';
+import { CreateEmployeeBhattaComponent } from './components/create-employee-bhatta/create-employee-bhatta.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
@@ -109,6 +111,10 @@ const routes: Routes = [
   { path:  'user/update/:id', component:  UserCreateComponent, data: { title: 'CREATE USER' }},
 
   { path:  'scholarship-setting', component:  ScholarshipSettingsComponent, data: { title: 'SCHOLARSHIP SETTING' }},
+  
+  { path:  'employee-bhatta', component:  EmployeeBhattaComponent, data: { title: 'EMPLOYEE BHATTA' }},
+  
+  { path:  'employee-bhatta/create', component:  CreateEmployeeBhattaComponent, data: { title: 'CREATE EMPLOYEE BHATTA' }},
 
 ];
 

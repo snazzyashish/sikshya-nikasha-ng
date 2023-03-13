@@ -73,7 +73,6 @@ export class ApiService {
   }
 
   //------------------------------------------------------------------//
-  //------------------------------------------------------------------//
 
   public listEmployees(params:any){
     let url = 'employee/list';
@@ -81,14 +80,20 @@ export class ApiService {
 
   }
   public viewEmployee(params:any){
-    let url = 'employee/'+params.id;
+    let url = 'employee/view/'+params.id;
     return this._http.getRequest(url,{});
 
   }
   public saveEmployees(params:any){
-    let url = 'employee';
+    let url = 'employee/save';
     return this._http.postJson(url, params);
   }
+
+  public udpdateEmployees(params:any){
+    let url = 'employee/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+
 
   public searchEmployees(params:any){
     let url = 'employee/search';
@@ -101,17 +106,128 @@ export class ApiService {
 
   }
   public viewSchool(params:any){
-    let url = 'school/'+params.id;
+    let url = 'school/view/'+params.id;
     return this._http.getRequest(url, {});
 
   }
   public saveSchool(params:any){
-    let url = 'school';
+    let url = 'school/save';
     return this._http.postJson(url, params);
 
   }
   public saveSchoolGrid(params:any){
     let url = 'school/save';
+    return this._http.postJson(url, params);
+  }
+  public updateSchool(params:any){
+    let url = 'school/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  //------------------------------------------------------------------//
+  public listEmployeeBhatta(params:any){
+    let url = 'school/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewEmployeeBhatta(params:any){
+    let url = 'school/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveEmployeeBhatta(params:any){
+    let url = 'employeeAllowanceScale/save';
+    return this._http.postJson(url, params);
+
+  }
+  public saveEmployeeBhattaGrid(params:any){
+    let url = 'school/save';
+    return this._http.postJson(url, params);
+  }
+  //------------------------------------------------------------------//
+  public listSignature(params:any){
+    let url = 'signature/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewSignature(params:any){
+    let url = 'signature/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveSignature(params:any){
+    let url = 'signature/save';
+    return this._http.postJson(url, params);
+
+  }
+  //------------------------------------------------------------------//
+  public listFiscalYear(params:any){
+    let url = 'fiscalyear/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewFiscalYear(params:any){
+    let url = 'fiscalyear/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveFiscalYear(params:any){
+    let url = 'fiscalyear/save';
+    return this._http.postJson(url, params);
+  }
+  public updateFiscalYear(params:any){
+    let url = 'fiscalyear/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteFiscalYear(params:any){
+    let url = 'fiscalyear/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  //------------------------------------------------------------------//
+  public listAcademicYear(params:any){
+    let url = 'educationyear/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewAcademicYear(params:any){
+    let url = 'educationyear/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveAcademicYear(params:any){
+    let url = 'educationyear/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateAcademicYear(params:any){
+    let url = 'educationyear/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteAcademicYear(params:any){
+    let url = 'educationyear/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  //------------------------------------------------------------------//
+  public listEmployeeGradeLimit(params:any){
+    let url = 'employeegradelimit/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewEmployeeGradeLimit(params:any){
+    let url = 'employeegradelimit/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveEmployeeGradeLimit(params:any){
+    let url = 'employeegradelimit/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateEmployeeGradeLimit(params:any){
+    let url = 'employeegradelimit/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteEmployeeGradeLimit(params:any){
+    let url = 'employeegradelimit/delete/'+params.id;
     return this._http.postJson(url, params);
   }
   //------------------------------------------------------------------//

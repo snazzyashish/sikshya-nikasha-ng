@@ -2,6 +2,10 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { Router } from '@angular/router';
+import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.component';
 
 declare var $ : any;
 @Component({
@@ -15,14 +19,19 @@ export class FiscalYearComponent implements AfterViewInit {
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
-  fiscalYearForm: FormGroup;
+  cmpForm: FormGroup;
   public mode = 'new';
   ngAfterViewInit() {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder){
-    this.fiscalYearForm =  this.fb.group({
+  constructor(public router:Router, public api:ApiService, public modal:ModalService ,public fb:FormBuilder, public alert:AlertService){
+    this.alert.changeVar.subscribe(message => {
+      if(message){
+        this.onDeleteRecord();
+      }
+    })
+    this.cmpForm =  this.fb.group({
       id: [''],
       name: ['', Validators.required],
       from_date : ['', Validators.required], 
@@ -41,6 +50,8 @@ export class FiscalYearComponent implements AfterViewInit {
           clicked: (id: any, type:any) => {
             if(type == 'edit'){
               this.onEditModeOpen();
+            }else if(type == 'delete'){
+              this.alert.showDeleteConfirm();
             }
           }
         },
@@ -95,41 +106,22 @@ export class FiscalYearComponent implements AfterViewInit {
     // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.listFiscalYear();
+    this.loadGrid();
   }
   open(content:any){
     this.modal.open(content);
   }
-
-  listFiscalYear(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
-      // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            id : 1,
-            name: '2078/2079',
-            from_date : '2021-07-17', 
-            to_date : '2022-07-16', 
-            status : '1', 
-         },
-          {
-            id : 2,
-            name: '2078/2079',
-            from_date : '2021-07-17', 
-            to_date : '2022-07-16', 
-            status : '0', 
-         }
-        
-      ]
-        this.gridApi.setRowData(obj);
-      // }
-    // })
+  loadGrid(){
+    this.api.listFiscalYear({}).subscribe(res=>{
+      if(res.success){
+        this.gridApi.setRowData(res.data);
+      }
+    })
   }
 
   onAddClick(){
     this.mode = 'new'
-    this.fiscalYearForm.patchValue({
+    this.cmpForm.patchValue({
       name: '',
       from_date : '', 
       to_date : '', 
@@ -139,15 +131,48 @@ export class FiscalYearComponent implements AfterViewInit {
   }
 
   onEditModeOpen(){
+    this.mode = 'edit';
     var me = this;
     this.modal.open(this.modalContent);
     setTimeout(function(){ 
-      me.fiscalYearForm.patchValue(me.gridApi.getSelectedRows()[0]);
+      me.cmpForm.patchValue(me.gridApi.getSelectedRows()[0]);
     }, 50);
   }
 
   onNewModeOpen(){
     var me = this;
     this.modal.open(this.modalContent);
+  }
+
+  onDeleteRecord(){
+    let params = {
+      id : this.gridApi.getSelectedRows()[0].id
+    }
+    this.api.deleteFiscalYear(params).subscribe(res=>{
+      if(res.success){
+        this.alert.openSnackBar(res.message,'OK');
+        this.loadGrid();
+      }
+    })
+  }
+
+  onFormSubmit(){
+    if(this.mode == 'new'){
+      this.api.saveFiscalYear(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.modal.close('');
+          this.alert.openSnackBar(res.message,'OK');
+          this.loadGrid();
+        }
+      })
+    }else if(this.mode == 'edit'){
+      this.api.updateFiscalYear(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.modal.close('');
+          this.alert.openSnackBar(res.message,'OK');
+          this.loadGrid();
+        }
+      })
+    }
   }
 }

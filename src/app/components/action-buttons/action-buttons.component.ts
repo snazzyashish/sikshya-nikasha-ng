@@ -18,7 +18,9 @@ export class ActionButtonsComponent {
     '/basic-scale/list',
     '/grade-scale/list',
     '/admin-setting/list',
-    '/infrastructure-scale/list'
+    '/infrastructure-scale/list',
+    '/users-list',
+
   ]
   constructor(public modal:ModalService, public router:Router){
   }

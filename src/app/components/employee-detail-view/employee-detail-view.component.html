@@ -15,11 +15,11 @@
                         <tbody>
                             <tr>
                                 <td>NAME (नाम)</td>
-                                <td>{{record.name}}</td>
+                                <td>{{record.fname_eng}} {{record.mname_eng}} {{record.lname_eng}}</td>
                             </tr>
                             <tr>
                                 <td>लिङ्ग</td>
-                                <td>पुरुष</td>
+                                <td>{{record.gender}}</td>
                             </tr>
                             <tr>
                                 <td>प्रकार/तह/पद/ग्रेड</td>
@@ -27,15 +27,15 @@
                             </tr>
                             <tr>
                                 <td>अस्थायी/स्थाई पदमा नियुक्ती / बढुवा मिति</td>
-                                <td> //</td>
+                                <td> {{record.temporary_appointment}}/{{record.permenant_appointment}}/{{record.promotion_date}}</td>
                             </tr>
                             <tr>
                                 <td>विवाहित/अविवाहित</td>
-                                <td>अविवाहित</td>
+                                <td>{{record.marital_status}}</td>
                             </tr>
                             <tr>
                                 <td>सम्पर्क नम्बर</td>
-                                <td>{{record.phone}}</td>
+                                <td>{{record.contact_no}}</td>
                             </tr>
                             <tr>
                                 <td>बिद्यालयको नाम</td>
@@ -58,23 +58,23 @@
             <tbody>
                 <tr>
                     <td>विशेष मामला : </td>
-                    <td>जातीय : /</td>
+                    <td>जातीय : {{record.caste}}</td>
                 </tr>
                 <tr>
-                    <td>स्थाई ठेगाना :</td>
-                    <td>अस्थायी ठेगाना :</td>
+                    <td>स्थाई ठेगाना : {{record.permanent_address}}</td>
+                    <td>अस्थायी ठेगाना : {{record.temp_address}}</td>
                 </tr>
                 <tr>
-                    <td>बैंक :</td>
-                    <td>खाता नम्बर :</td>
+                    <td>बैंक : {{record.bank}}</td>
+                    <td>खाता नम्बर : {{record.account_no}}</td>
                 </tr>
                 <tr>
-                    <td>बीमा नं. :</td>
-                    <td>कर्मचारी संञ्चयकोष नं. : 0</td>
+                    <td>बीमा नं. {{record.insurance_no}}:</td>
+                    <td>कर्मचारी संञ्चयकोष नं. : {{record.citizen_investment_no}}</td>
                 </tr>
                 <tr>
-                    <td>नागरिक लगानी कोष नं. :</td>
-                    <td>स्थिति : सक्रिय</td>
+                    <td>नागरिक लगानी कोष नं. : {{record.citizen_investment_no}}</td>
+                    <td>स्थिति : {{record.status}}</td>
                 </tr>
                 <tr>
                     <td>सिर्जना द्वारा / मा : 0/{{record.created_at}}</td>

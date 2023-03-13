@@ -27,7 +27,6 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { SchoolsListComponent } from './components/schools-list/schools-list.component';
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
-import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { FiscalYearComponent } from './components/fiscal-year/fiscal-year.component';
 import { MagFormItemComponent } from './components/magform-item/magform-item.component';
 import { SignatoryComponent } from './components/signatory/signatory.component';
@@ -67,6 +66,8 @@ import { UpdateSchoolComponent } from './components/update-school/update-school.
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { ScholarshipSettingsComponent } from './components/scholarship-settings/scholarship-settings.component';
+import { EmployeeBhattaComponent } from './components/employee-bhatta/employee-bhatta.component';
+import { CreateEmployeeBhattaComponent } from './components/create-employee-bhatta/create-employee-bhatta.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +79,6 @@ import { ScholarshipSettingsComponent } from './components/scholarship-settings/
     UsersListComponent,
     SchoolsListComponent,
     ActionButtonsComponent,
-    DeleteDialogComponent,
     FiscalYearComponent,
     MagFormItemComponent,
     SignatoryComponent,
@@ -117,7 +117,9 @@ import { ScholarshipSettingsComponent } from './components/scholarship-settings/
     UpdateSchoolComponent,
     UserManagementComponent,
     UserCreateComponent,
-    ScholarshipSettingsComponent
+    ScholarshipSettingsComponent,
+    EmployeeBhattaComponent,
+    CreateEmployeeBhattaComponent
   ],
   imports: [
     HttpClientModule,

@@ -23,6 +23,9 @@ export class HttpService {
     //   let userId = userInfo.id;
     //   data.user_id = userId;
     // }
+    if(data){
+      data.created_by = '1';
+    }
     url = this.apiUrl + url;
     const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
 
@@ -35,6 +38,9 @@ export class HttpService {
     //   let userId = userInfo.id;
     //   params.user_id = userId;
     // }
+    if(params){
+      params.created_by = '1';
+    }
     let httpHeaders = new HttpHeaders()
         .set('Content-Type', 'application/json');
 

@@ -2,6 +2,8 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 declare var $ : any;
 @Component({
@@ -15,16 +17,21 @@ export class AcademicYearComponent implements AfterViewInit {
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
-  componentForm: FormGroup;
+  cmpForm: FormGroup;
   public mode = 'new';
   ngAfterViewInit() {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder){
-    this.componentForm =  this.fb.group({
+  constructor(public modal:ModalService ,public fb:FormBuilder, public api:ApiService, public alert:AlertService){
+    this.alert.changeVar.subscribe(message => {
+      if(message){
+        this.onDeleteRecord();
+      }
+    })
+    this.cmpForm =  this.fb.group({
       id: [''],
-      year: ['', Validators.required],
+      name: ['', Validators.required],
       starting_nepali_date : ['', Validators.required], 
       starting_english_date : ['', Validators.required], 
       end_nepali_date : ['', Validators.required], 
@@ -43,6 +50,8 @@ export class AcademicYearComponent implements AfterViewInit {
           clicked: (id: any, type:any) => {
             if(type == 'edit'){
               this.onEditModeOpen();
+            }else if(type == 'delete'){
+              this.alert.showDeleteConfirm();
             }
           }
         },
@@ -57,7 +66,7 @@ export class AcademicYearComponent implements AfterViewInit {
       },
       {
         headerName : 'Year',
-        field : 'year',
+        field : 'title',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -124,45 +133,24 @@ export class AcademicYearComponent implements AfterViewInit {
     // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.listGridItems();
+    this.loadGrid();
   }
   open(content:any){
     this.modal.open(content);
   }
 
-  listGridItems(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
-      // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            id: '1',
-            year: '2023',
-            starting_nepali_date : '2079-01-01',
-            starting_english_date : '2023-01-01',
-            end_nepali_date : '2023-01-01',
-            end_english_date : '2023-01-01',
-            status : '1',
-          },
-          {
-            id: '2',
-            year: '2023',
-            starting_nepali_date : '2079-01-01',
-            starting_english_date : '2023-01-01',
-            end_nepali_date : '2023-01-01',
-            end_english_date : '2023-01-01',
-            status : '1',
-          }
-      ]
-        this.gridApi.setRowData(obj);
-      // }
-    // })
+  loadGrid(){
+    this.api.listAcademicYear({}).subscribe(res=>{
+      if(res.success){
+        this.gridApi.setRowData(res.data);
+      }
+    })
   }
 
   onAddClick(){
     this.mode = 'new'
-    this.componentForm.patchValue({
-      year:'',
+    this.cmpForm.patchValue({
+      name:'',
       starting_nepali_date :'',
       starting_english_date :'',
       end_nepali_date :'',
@@ -176,12 +164,44 @@ export class AcademicYearComponent implements AfterViewInit {
     var me = this;
     this.modal.open(this.modalContent);
     setTimeout(function(){ 
-      me.componentForm.patchValue(me.gridApi.getSelectedRows()[0]);
+      me.cmpForm.patchValue(me.gridApi.getSelectedRows()[0]);
     }, 50);
   }
 
   onNewModeOpen(){
     var me = this;
     this.modal.open(this.modalContent);
+  }
+
+  onDeleteRecord(){
+    let params = {
+      id : this.gridApi.getSelectedRows()[0].id
+    }
+    this.api.deleteAcademicYear(params).subscribe(res=>{
+      if(res.success){
+        this.alert.openSnackBar(res.message,'OK');
+        this.loadGrid();
+      }
+    })
+  }
+
+  onFormSubmit(){
+    if(this.mode == 'new'){
+      this.api.saveAcademicYear(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.modal.close('');
+          this.alert.openSnackBar(res.message,'OK');
+          this.loadGrid();
+        }
+      })
+    }else if(this.mode == 'edit'){
+      this.api.updateAcademicYear(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.modal.close('');
+          this.alert.openSnackBar(res.message,'OK');
+          this.loadGrid();
+        }
+      })
+    }
   }
 }

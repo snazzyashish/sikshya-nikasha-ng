@@ -2,9 +2,10 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastifyService } from 'src/app/services/toastify.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-user-management',
@@ -25,7 +26,7 @@ export class UserManagementComponent {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public toastify: ToastifyService, public router:Router){
+  constructor(public api:ApiService, public modal:ModalService ,public fb:FormBuilder, public toastify:AlertService, public router:Router){
     this.userForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -154,6 +155,7 @@ export class UserManagementComponent {
       // }
     // })
   }
+
 
   onSaveClick(){
     this.toastify.openSnackBar('Saved','OK')

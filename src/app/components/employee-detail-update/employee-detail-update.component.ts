@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { ToastifyService } from 'src/app/services/toastify.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-employee-detail-update',
@@ -13,63 +13,80 @@ export class EmployeeDetailUpdateComponent {
   cmpForm: FormGroup;
   public id:any;
   public schoolList:any;
-  constructor(public api:ApiService, private route: ActivatedRoute, public fb:FormBuilder, public toast:ToastifyService, public router:Router) {
+  public mode:any = 'new'
+  constructor(public api:ApiService, private route: ActivatedRoute, public fb:FormBuilder, public toast:AlertService, public router:Router) {
     this.cmpForm =  this.fb.group({
       id: [''],
-      first_name: ['', Validators.required],
-      middle_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-      first_name_np: ['', Validators.required],
-      middle_name_np: ['', Validators.required],
-      last_name_np: ['', Validators.required],
+      fname_eng: ['', Validators.required],
+      mname_eng: ['', Validators.required],
+      lname_eng: ['', Validators.required],
+      fname_nep: ['', Validators.required],
+      mname_nep: ['', Validators.required],
+      lname_nep: ['', Validators.required],
       father_name: ['', Validators.required],
       mother_name: ['', Validators.required],
-      sanket_no:[''],
+      signal_no:[''],
       dob: ['', Validators.required],
       gender: ['', Validators.required],
-      post: ['', Validators.required],
+      account_no: ['', Validators.required],
+      position: ['', Validators.required],
       level: ['', Validators.required],
       type: ['', Validators.required],
       category: ['', Validators.required],
       grade: ['', Validators.required],
-      jaatiya: ['', Validators.required],
+      caste: ['', Validators.required],
       temp_address: ['', Validators.required],
       jaat: ['', Validators.required],
-      per_address: ['', Validators.required],
+      permanent_address: ['', Validators.required],
       martial_status: ['', Validators.required],
-      temp_appointment_date: ['', Validators.required],
+      temporary_appointment: ['', Validators.required],
       contact_no: ['', Validators.required],
-      per_appointment_date: ['', Validators.required],
+      permenant_appointment: ['', Validators.required],
       insurance_no: ['', Validators.required],
       promotion_date: ['', Validators.required],
-      epf_no: ['', Validators.required],
-      retired: ['', Validators.required],
+      provident_fund: ['', Validators.required],
+      retire: ['', Validators.required],
       bank: ['', Validators.required],
       pan_no: ['', Validators.required],
-      acc_no: ['', Validators.required],
-      kram_no: ['', Validators.required],
-      cit_no: ['', Validators.required],
-      kaifiyat: ['', Validators.required],
+      sequence_no: ['', Validators.required],
+      citizen_investment_no: ['', Validators.required],
+      remark: ['', Validators.required],
       status: ['', Validators.required],
-      school: ['', Validators.required],
+      school_name: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.getSchoolList();
+    if(this.id){
+      this.mode = 'edit';
+      this.getFormData();
+    }
+  }
+
+  getFormData(){
+    let params = {
+      id : this.id
+    }
+    this.api.viewEmployee(params).subscribe(res=>{
+      this.cmpForm.patchValue(res.data);
+    })
   }
 
   onFormSubmit(){
-    this.api.saveEmployees({}).subscribe(res=>{
-      if(res.success){
-        this.toast.openSnackBar(res.message,'OK');
-      }else{
-        this.toast.openSnackBar(res.message,'ERROR');
-      }
-    })
-    // this.toast.openSnackBar('Saved','OK');
-    // this.router.navigate(['schools-list']);
+    if(this.mode == 'edit'){
+      this.api.udpdateEmployees(this.cmpForm.value).subscribe(res=>{
+        debugger;
+      })
+    }else{
+      this.api.saveEmployees(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+  
+        }else{
+          this.toast.openSnackBar(res.message,'OK');
+        }
+      })
+    }
   }
 
   getSchoolList(){

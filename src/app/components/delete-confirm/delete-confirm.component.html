@@ -1,12 +1,10 @@
-<ng-template #confirmDialog>
-    <div class="alert alert-danger" role="alert">
-        Confirm Delete <i class="bi bi-exclamation-triangle"></i>
-      </div>
-    <div mat-dialog-content>
-        Would you like to delete this record?
+<div class="alert alert-danger" role="alert">
+    Confirm Delete <i class="bi bi-exclamation-triangle"></i>
     </div>
-    <div mat-dialog-actions>
-        <button mat-button mat-dialog-close>No</button>
-        <button mat-button mat-dialog-close cdkFocusInitial>Yes</button>
-    </div>
-</ng-template>
+<div mat-dialog-content>
+    Would you like to delete this record?
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>No</button>
+    <button mat-button mat-dialog-close cdkFocusInitial (click)="onConfirmClick()">Yes</button>
+</div>

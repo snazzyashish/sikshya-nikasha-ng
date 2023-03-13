@@ -2,8 +2,9 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ToastifyService } from 'src/app/services/toastify.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { TABLE_CONFIG } from 'src/app/data/constants';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-signatory',
@@ -24,7 +25,7 @@ export class SignatoryComponent {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public toastify: ToastifyService){
+  constructor(public modal:ModalService ,public fb:FormBuilder, public alert: AlertService, public api:ApiService){
     this.userForm =  this.fb.group({
       id: [''],
       name: ['', Validators.required],
@@ -46,8 +47,8 @@ export class SignatoryComponent {
             if(type == 'edit'){
               this.onEditModeOpen();
             }else if(type=='delete'){
-              // this.toastify.openSnackBar('Deleted','OK')
-              this.toastify.openDialog(this.confirmDialog)
+              // this.alert.openSnackBar('Deleted','OK')
+              this.alert.openDialog(this.confirmDialog)
             }
           }
         },
@@ -116,110 +117,19 @@ export class SignatoryComponent {
     this.modal.open(this.modalContent);
   }
   onGridReady(params:any){
-    // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.listGrid();
+    this.loadGrid();
   }
-
-  listGrid(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
-      // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          {
-            'id' : 1,
-            'name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'post' : 'headteacher1',
-            'signature' : 'ac2bd348bf36a7128fbd',
-            'status' : 'dataentry1',
-          },
-          
-      ]
-        this.gridApi.setRowData(obj);
-      // }
-    // })
+  loadGrid(){
+    this.api.listSignature({}).subscribe(res=>{
+      if(res.success){
+        this.gridApi.setRowData(res.data);
+      }
+    })
   }
-
   onSaveClick(){
-    this.toastify.openSnackBar('Saved','OK')
+    this.alert.openSnackBar('Saved','OK')
   }
 
   onAddClick(){

@@ -18,25 +18,25 @@
         <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">Name : </label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="first_name">
+              <input type="text" class="form-control" formControlName="fname_eng">
             </div>
             <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="middle_name">
+              <input type="text" class="form-control" formControlName="name_eng">
             </div>
             <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="last_name">
+              <input type="text" class="form-control" formControlName="lname_eng">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">नाम (देवनागरिमा) : </label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="first_name_np">
+              <input type="text" class="form-control" formControlName="fname_nep">
             </div>
             <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="middle_name_np">
+              <input type="text" class="form-control" formControlName="mname_nep">
             </div>
             <div class="col-sm-3">
-              <input type="text" class="form-control" formControlName="last_name_np">
+              <input type="text" class="form-control" formControlName="lname_nep">
             </div>
         </div>
         <div class="mb-3 row">
@@ -51,7 +51,7 @@
         <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">संकेत नं. : </label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" formControlName="sanket_no">
+              <input type="text" class="form-control" formControlName="signal_no">
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">जन्म मिति : </label>
             <div class="col-sm-4">
@@ -63,14 +63,14 @@
             <div class="col-sm-2">
                 <select class="form-select" aria-label="Default select example" formControlName="gender">
                     <option selected></option>
-                    <option value="1">महिला</option>
-                    <option value="2">पुरुष</option>
-                    <option value="3">अन्य</option>
+                    <option value="महिला">महिला</option>
+                    <option value="पुरुष">पुरुष</option>
+                    <option value="अन्य">अन्य</option>
                 </select>
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">पद : </label>
             <div class="col-sm-2">
-                <select class="form-select" aria-label="Default select example" formControlName="post">
+                <select class="form-select" aria-label="Default select example" formControlName="position">
                         <option></option>
                         <option value="अन्य">अन्य</option>
                         <option value="शिक्षक">शिक्षक</option>
@@ -117,9 +117,9 @@
             <div class="col-sm-2">
                 <select class="form-select" formControlName="category">
                     <option value="">श्रेणी चयन गर्नुहोस्</option>
-                    <option value="1">प्रथम श्रेणी</option>
-                    <option value="2">दोस्रो श्रेणी</option>
-                    <option value="3" selected="selected">त्रितिय श्रेणी</option>
+                    <option value="प्रथम श्रेणी">प्रथम श्रेणी</option>
+                    <option value="दोस्रो श्रेणी">दोस्रो श्रेणी</option>
+                    <option value="त्रितिय श्रेणी" selected="selected">त्रितिय श्रेणी</option>
                 </select>
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">ग्रेड : </label>
@@ -131,7 +131,7 @@
         <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">जातीय : </label>
             <div class="col-sm-4">
-                <select class="form-select" formControlName="jaatiya">
+                <select class="form-select" formControlName="caste">
                     <option value=""> छानुहोस </option>
                     <option value="1">Brahaman/Chhetri</option>
                     <option value="2">Tarai/Madhesi  </option>
@@ -154,7 +154,7 @@
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">स्थाई ठेगाना : </label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" formControlName="per_address">
+              <input type="text" class="form-control" formControlName="permanent_address">
             </div>
         </div>
         <div class="mb-3 row">
@@ -167,7 +167,7 @@
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">अस्थाई नियुक्ती मिति: </label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" formControlName="temp_appointment_date">
+              <input type="text" class="form-control" formControlName="temporary_appointment">
             </div>
         </div>
         <div class="mb-3 row">
@@ -177,7 +177,7 @@
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">स्थाई नियुक्ती मिति : </label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" formControlName="per_appointment_date">
+              <input type="text" class="form-control" formControlName="permenant_appointment">
             </div>
         </div>
         <hr>
@@ -194,7 +194,7 @@
         <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">कर्मचारी संञ्चयकोष नं. : </label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" formControlName="epf_no">
+              <input type="text" class="form-control" formControlName="provident_fund">
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">Retired : </label>
             <div class="col-sm-1">
@@ -224,17 +224,17 @@
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">क्रम संख्या : </label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" formControlName="kram_no">
+              <input type="text" class="form-control" formControlName="sequence_no">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">नागरिक लगानी कोष नं. : </label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" formControlName="cit_no">
+              <input type="text" class="form-control" formControlName="citizen_investment_no">
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">कैफियत : </label>
             <div class="col-sm-4">
-              <textarea type="text" class="form-control" formControlName="kaifiyat"></textarea>
+              <textarea type="text" class="form-control" formControlName="remark"></textarea>
             </div>
         </div>
         <div class="mb-3 row">
@@ -252,9 +252,9 @@
         <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">बिद्यालय * : </label>
             <div class="col-sm-10">
-              <select class="form-select" formControlName="school">
+              <select class="form-select" formControlName="school_name">
                 <option value=""></option>
-                <option value="{{item.id}}" *ngFor="let item of schoolList">{{item.name}}</option>
+                <option value="{{item.school}}" *ngFor="let item of schoolList">{{item.school}}</option>
               </select>
             </div>
         </div>

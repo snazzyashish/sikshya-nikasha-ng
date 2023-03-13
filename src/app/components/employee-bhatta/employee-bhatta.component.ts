@@ -7,11 +7,11 @@ import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-scholarship-settings',
-  templateUrl: './scholarship-settings.component.html',
-  styleUrls: ['./scholarship-settings.component.css']
+  selector: 'app-employee-bhatta',
+  templateUrl: './employee-bhatta.component.html',
+  styleUrls: ['./employee-bhatta.component.css']
 })
-export class ScholarshipSettingsComponent {
+export class EmployeeBhattaComponent {
   @ViewChild('content') modalContent!: ElementRef;
   @ViewChild('confirmDialog') confirmDialog!: ElementRef;
   public rowSelection: 'single' | 'multiple' = 'multiple';
@@ -64,16 +64,16 @@ export class ScholarshipSettingsComponent {
         cellClass: 'no-border',
       },
       {
-        headerName : 'Type',
-        field : 'type',
+        headerName : 'Level',
+        field : 'level',
         width : 200,
         sortingOrder : ['asc','desc'],
         editable: true,
         filter: 'agTextColumnFilter',
       },
       {
-        headerName : 'Class',
-        field : 'class',
+        headerName : 'Topic',
+        field : 'topic',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -88,14 +88,6 @@ export class ScholarshipSettingsComponent {
       {
         headerName : 'Status',
         field : 'status',
-        width : 150,
-        sortingOrder : ['asc','desc'],
-        editable: true,
-        filter: 'agTextColumnFilter',
-      },
-      {
-        headerName : 'Created At',
-        field : 'created_at',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -127,11 +119,10 @@ export class ScholarshipSettingsComponent {
         let obj = [
           {
             'id' : 1,
-            'username' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'principal_uname' : 'headteacher1',
-            'principal_pass' : 'ac2bd348bf36a7128fbd',
-            'data_entry_uname' : 'dataentry1',
-            'data_entry_pass' : 'bardibas1',
+            'level' : 'मा.शि.',
+            'topic' : 'pra_a_bhatta',
+            'amount' : '500',
+            'status' : 'सक्रिय',
          },
       ]
         this.gridApi.setRowData(obj);
@@ -145,7 +136,7 @@ export class ScholarshipSettingsComponent {
 
   onAddClick(){
     this.mode = 'new';
-    this.router.navigate(['user/create']);
+    this.router.navigate(['employee-bhatta/create']);
     // this.userForm.patchValue({
     //   school_name: '',
     //   principal_uname : '', 

@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { ToastifyService } from 'src/app/services/toastify.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 declare var $ : any;
 @Component({
@@ -27,7 +27,7 @@ export class SchoolsListComponent implements AfterViewInit {
     
   }
 
-  constructor(public toastify:ToastifyService, public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService){
+  constructor(public toastify:AlertService, public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService){
     this.schoolForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -63,7 +63,7 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       {
         headerName : 'School Name',
-        field : 'name',
+        field : 'school',
         width : 250,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -72,7 +72,7 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       {
         headerName : 'Account',
-        field : 'account',
+        field : 'account_no',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -81,7 +81,7 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       {
         headerName : 'Type',
-        field : 'type',
+        field : 'school_type',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -90,7 +90,7 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       {
         headerName : 'Principal',
-        field : 'principal',
+        field : 'principal_name',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -99,7 +99,7 @@ export class SchoolsListComponent implements AfterViewInit {
       },
       {
         headerName : 'Principal No.',
-        field : 'phone',
+        field : 'principal_no',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,

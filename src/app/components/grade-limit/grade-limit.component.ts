@@ -4,6 +4,8 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 declare var $ : any;
 @Component({
@@ -17,15 +19,20 @@ export class GradeLimitComponent implements AfterViewInit {
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
-  schoolForm: FormGroup;
+  cmpForm: FormGroup;
   public mode = 'new';
   public tableConfig = TABLE_CONFIG;
   ngAfterViewInit() {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router){
-    this.schoolForm =  this.fb.group({
+  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService, public alert:AlertService){
+    this.alert.changeVar.subscribe(message => {
+      if(message){
+        this.onDeleteRecord();
+      }
+    })
+    this.cmpForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
       account : ['', Validators.required], 
@@ -47,6 +54,8 @@ export class GradeLimitComponent implements AfterViewInit {
               this.onEditModeOpen(id);
             }else if(type == 'view'){
               this.onViewModeOpen(id);
+            }else if(type == 'delete'){
+              this.alert.showDeleteConfirm();
             }
           }
         },
@@ -77,7 +86,7 @@ export class GradeLimitComponent implements AfterViewInit {
       },
       {
         headerName : 'Sherni',
-        field : 'grade',
+        field : 'position',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -86,7 +95,7 @@ export class GradeLimitComponent implements AfterViewInit {
       },
       {
         headerName : 'Grade Limit',
-        field : 'grade_limit',
+        field : 'gradelimit',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -119,40 +128,22 @@ export class GradeLimitComponent implements AfterViewInit {
     // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.listUsers();
+    this.loadGrid();
   }
   open(content:any){
     this.modal.open(content);
   }
 
-  listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
-      // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'type' : 'Community',
-            'principal_name' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-         },
-      ]
-        this.gridApi.setRowData(obj);
-      // }
-    // })
+  loadGrid(){
+    this.api.listEmployeeGradeLimit({}).subscribe(res=>{
+      if(res.success){
+        this.gridApi.setRowData(res.data);
+      }
+    })
   }
 
   onAddClick(){
-    this.mode = 'new'
-    this.schoolForm.patchValue({
-      school_name: '',
-      account : '', 
-      type : '', 
-      principal_name : '', 
-      principal_no : '',
-    })
+    this.mode = 'new';
     this.router.navigate(['grade-limit/create'])
     // this.onNewModeOpen();
   }
@@ -169,5 +160,17 @@ export class GradeLimitComponent implements AfterViewInit {
   onNewModeOpen(){
     var me = this;
     this.modal.open(this.modalContent);
+  }
+
+  onDeleteRecord(){
+    let params = {
+      id : this.gridApi.getSelectedRows()[0].id
+    }
+    this.api.deleteEmployeeGradeLimit(params).subscribe(res=>{
+      if(res.success){
+        this.alert.openSnackBar(res.message,'OK');
+        this.loadGrid();
+      }
+    })
   }
 }

@@ -20,7 +20,8 @@
   <!-- modal -->
   <ng-template #content let-modal>
       <div class="modal-header">
-          <h4 class="modal-title" id="modal-title">Manage Fiscal Years</h4>
+          <h4 class="modal-title" id="modal-title" *ngIf="mode=='new'">Add New Fiscal Year</h4>
+          <h4 class="modal-title" id="modal-title" *ngIf="mode=='edit'">Edit Fiscal Year</h4>
           <button
               type="button"
               class="btn-close"
@@ -29,7 +30,7 @@
               (click)="modal.dismiss('Cross click')"
           ></button>
       </div>
-      <form [formGroup]="fiscalYearForm">
+      <form [formGroup]="cmpForm" (ngSubmit)="onFormSubmit()">
           <div class="modal-body">
               <div class="password mb-3 form-group row">
                   <label for="inputPassword" class="col-sm-4 col-form-label">Name</label>
