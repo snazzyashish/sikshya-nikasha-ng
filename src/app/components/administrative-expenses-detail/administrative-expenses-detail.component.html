@@ -1,0 +1,38 @@
+<!-- Page Heading -->
+<app-page-header></app-page-header>
+
+<div class="card o-hidden border-0 shadow-lg my-3">
+    <div class="card-body p-4 border-1">
+        <div class="row g-3">
+            <div class="col-sm-12">
+                <div class="card-body p-0">
+                    <table class="table table-bordered text-justify ">
+                        <tbody>
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    <h5>{{SITE_NAGARPALIKA}} </h5>
+                                    <h5>{{SITE_ADDRESS}} </h5>
+                                    <h5> आ. व. {{record.finacialyear}} प्रशासनिक खर्च </h5>
+                                    <h5>{{record.school}} , डेमो-१     बैंक :     खाता न. : {{record.account}}</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>तह</td>
+                                <td>रकम</td>
+                                <td>चेकबक्स</td>
+                            </tr>
+                            <tr *ngFor="let item of administrativeScale;let i=index">
+                                <td> {{item.level}} </td>
+                                <td>{{item.amount}}</td>
+                                <td> <input class="form-check-input mx-2" type="checkbox" value="" id="flexCheckDefault" (change)="onCheckboxSelectionChange(item,i)" [checked]="setChecked(item)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <label>Remarks</label>
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                    <button (click)="onSubmitClick()" type="button" class="btn btn-primary my-2" style="float:right">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-logout-confirm',
@@ -7,10 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./logout-confirm.component.css']
 })
 export class LogoutConfirmComponent {
-  constructor(public router:Router){
+  constructor(public router:Router, public auth:AuthService){
   }
 
   onConfirmCLick(){
-    this.router.navigate(['/login']);
+    this.auth.logout();
+    // this.router.navigate(['/login']);
   }
 }

@@ -71,6 +71,8 @@ import { CreateEmployeeBhattaComponent } from './components/create-employee-bhat
 import { MagformSettingViewComponent } from './components/magform-setting-view/magform-setting-view.component';
 import { MagformSettingItemdetailComponent } from './components/magform-setting-itemdetail/magform-setting-itemdetail.component';
 import { CreateScholarshipAmountComponent } from './components/create-scholarship-amount/create-scholarship-amount.component';
+import { AdministrativeExpensesDetailComponent } from './components/administrative-expenses-detail/administrative-expenses-detail.component';
+import { AdministrativeExpensesDetailViewComponent } from './components/administrative-expenses-detail-view/administrative-expenses-detail-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,7 +127,9 @@ import { CreateScholarshipAmountComponent } from './components/create-scholarshi
     CreateEmployeeBhattaComponent,
     MagformSettingViewComponent,
     MagformSettingItemdetailComponent,
-    CreateScholarshipAmountComponent
+    CreateScholarshipAmountComponent,
+    AdministrativeExpensesDetailComponent,
+    AdministrativeExpensesDetailViewComponent
   ],
   imports: [
     HttpClientModule,

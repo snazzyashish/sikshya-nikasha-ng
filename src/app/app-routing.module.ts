@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
@@ -48,88 +49,91 @@ import { EmployeeBhattaComponent } from './components/employee-bhatta/employee-b
 import { CreateEmployeeBhattaComponent } from './components/create-employee-bhatta/create-employee-bhatta.component';
 import { MagformSettingItemdetailComponent } from './components/magform-setting-itemdetail/magform-setting-itemdetail.component';
 import { CreateScholarshipAmountComponent } from './components/create-scholarship-amount/create-scholarship-amount.component';
+import { AdministrativeExpensesDetailComponent } from './components/administrative-expenses-detail/administrative-expenses-detail.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
-  { path:  'home', component:  DashboardComponent, data: { title: 'DASHBOARD' }},
   { path:  'login', component:  LoginComponent, data: { title: 'LOGIN' }},
-  { path:  'change-password', component:  ChangePasswordComponent, data: { title: 'CHANGE PASSWORD' }},
+  { path:  'home', component:  DashboardComponent,canActivate: [AuthGuard], data: { title: 'DASHBOARD' }},
+  { path:  'change-password', component:  ChangePasswordComponent, canActivate: [AuthGuard], data: { title: 'CHANGE PASSWORD' }},
 
-  { path:  'schools-list', component:  SchoolsListComponent, data: { title: 'LIST SCHOOLS' }},
-  { path:  'school/view/:id', component:  ViewSchoolComponent, data: { title: 'VIEW SCHOOL' }},
-  { path:  'school/update/:id', component:  UpdateSchoolComponent, data: { title: 'UPDATE SCHOOL' }},
-  { path:  'school/create', component:  UpdateSchoolComponent, data: { title: 'ADD SCHOOL' }},
+  { path:  'schools-list', component:  SchoolsListComponent, canActivate: [AuthGuard], data: { title: 'LIST SCHOOLS' }},
+  { path:  'school/view/:id', component:  ViewSchoolComponent, canActivate: [AuthGuard], data: { title: 'VIEW SCHOOL' }},
+  { path:  'school/update/:id', component:  UpdateSchoolComponent, canActivate: [AuthGuard], data: { title: 'UPDATE SCHOOL' }},
+  { path:  'school/create', component:  UpdateSchoolComponent, canActivate: [AuthGuard], data: { title: 'ADD SCHOOL' }},
 
-  { path:  'users-list', component:  UsersListComponent, data: { title: 'LIST USERS' }},
-  { path:  'fiscal-year', component:  FiscalYearComponent, data: { title: 'LIST FISCAL YEARS' }},
-  { path:  'academic-year', component:  AcademicYearComponent, data: { title: 'LIST ACADEMIC YEARS' }},
-  { path:  'signatory', component:  SignatoryComponent, data: { title: 'LIST SIGNATORY' }},
-  { path:  'scholarship/list', component:  ScholarshipListComponents, data: { title: 'LIST SCHOLARSHIP' }},
-  { path:  'stationary/list', component:  StationaryComponent, data: { title: 'LIST STATIONARY' }},
-  { path:  'administrative-expenses', component:  AdministrativeExpensesComponent, data: { title: 'LIST ADMINISTRATIVE EXPENSES' }},
-  { path:  'infrastructure/list', component:  InfrastructureListComponent, data: { title: 'LIST INSFRASTRUCTURES' }},
+  { path:  'users-list', component:  UsersListComponent, canActivate: [AuthGuard], data: { title: 'LIST USERS' }},
+  { path:  'fiscal-year', component:  FiscalYearComponent, canActivate: [AuthGuard], data: { title: 'LIST FISCAL YEARS' }},
+  { path:  'academic-year', component:  AcademicYearComponent, canActivate: [AuthGuard], data: { title: 'LIST ACADEMIC YEARS' }},
+  { path:  'signatory', component:  SignatoryComponent, canActivate: [AuthGuard], data: { title: 'LIST SIGNATORY' }},
+  { path:  'scholarship/list', component:  ScholarshipListComponents, canActivate: [AuthGuard], data: { title: 'LIST SCHOLARSHIP' }},
+  { path:  'stationary/list', component:  StationaryComponent, canActivate: [AuthGuard], data: { title: 'LIST STATIONARY' }},
+  { path:  'administrative-expenses', component:  AdministrativeExpensesComponent, canActivate: [AuthGuard], data: { title: 'LIST ADMINISTRATIVE EXPENSES' }},
+  { path:  'infrastructure/list', component:  InfrastructureListComponent, canActivate: [AuthGuard], data: { title: 'LIST INSFRASTRUCTURES' }},
 
-  { path:  'magform-item-list', component:  MagFormItemComponent, data: { title: 'LIST MAGFORM ITEMS' }},
-  { path:  'magform-setting', component:  MagFormSettingComponent, data: { title: 'LIST MAGFORM SETTING' }},
-  { path:  'magform-setting/view/:id', component:  MagformSettingViewComponent, data: { title: 'VIEW MAGFORM SETTING' }},
-  { path:  'magform-setting/itemDetail/:id', component:  MagformSettingItemdetailComponent, data: { title: 'ADD/REMOVE MAGFORM DETAIL' }},
+  { path:  'magform-item-list', component:  MagFormItemComponent, canActivate: [AuthGuard], data: { title: 'LIST MAGFORM ITEMS' }},
+  { path:  'magform-setting', component:  MagFormSettingComponent, canActivate: [AuthGuard], data: { title: 'LIST MAGFORM SETTING' }},
+  { path:  'magform-setting/view/:id', component:  MagformSettingViewComponent, canActivate: [AuthGuard], data: { title: 'VIEW MAGFORM SETTING' }},
+  { path:  'magform-setting/itemDetail/:id', component:  MagformSettingItemdetailComponent, canActivate: [AuthGuard], data: { title: 'ADD/REMOVE MAGFORM DETAIL' }},
 
-  { path:  'employee-detail/list', component:  EmployeeDetailComponent, data: { title: 'LIST EMPLOYEE DETAIL' }},
-  { path:  'employee-detail/update/:id', component:  EmployeeDetailUpdateComponent, data: { title: 'UPDATE EMPLOYEE DETAIL' }},
-  { path:  'employee-detail/create', component:  EmployeeDetailUpdateComponent, data: { title: 'CREATE EMPLOYEE DETAIL' }},
-  { path:  'employee-detail/view/:id', component:  EmployeeDetailViewComponent, data: { title: 'VIEW EMPLOYEE DETAIL' }},
+  { path:  'employee-detail/list', component:  EmployeeDetailComponent, canActivate: [AuthGuard], data: { title: 'LIST EMPLOYEE DETAIL' }},
+  { path:  'employee-detail/update/:id', component:  EmployeeDetailUpdateComponent, canActivate: [AuthGuard], data: { title: 'UPDATE EMPLOYEE DETAIL' }},
+  { path:  'employee-detail/create', component:  EmployeeDetailUpdateComponent, canActivate: [AuthGuard], data: { title: 'CREATE EMPLOYEE DETAIL' }},
+  { path:  'employee-detail/view/:id', component:  EmployeeDetailViewComponent, canActivate: [AuthGuard], data: { title: 'VIEW EMPLOYEE DETAIL' }},
 
 
   
-  { path:  'grade-limit/list', component:  GradeLimitComponent, data: { title: 'LIST GRADE LIMIT' }},
-  { path:  'grade-limit/create', component:  CreateGradeLimitComponent, data: { title: 'CREATE GRADE LIMIT' }},
-  { path:  'grade-limit/update/:id', component:  CreateGradeLimitComponent, data: { title: 'UPDATE GRADE LIMIT' }},
-  { path:  'grade-limit/view/:id', component:  GradeLimitViewComponent, data: { title: 'VIEW GRADE LIMIT' }},
+  { path:  'grade-limit/list', component:  GradeLimitComponent, canActivate: [AuthGuard], data: { title: 'LIST GRADE LIMIT' }},
+  { path:  'grade-limit/create', component:  CreateGradeLimitComponent, canActivate: [AuthGuard], data: { title: 'CREATE GRADE LIMIT' }},
+  { path:  'grade-limit/update/:id', component:  CreateGradeLimitComponent, canActivate: [AuthGuard], data: { title: 'UPDATE GRADE LIMIT' }},
+  { path:  'grade-limit/view/:id', component:  GradeLimitViewComponent, canActivate: [AuthGuard], data: { title: 'VIEW GRADE LIMIT' }},
 
-  { path:  'basic-scale/list', component:  BasicScaleListComponent, data: { title: 'LIST BASIC SCALE' }},
-  { path:  'basic-scale/create', component:  CreateBasicScaleComponent, data: { title: 'CREATE BASIC SCALE' }},
-  { path:  'basic-scale/update/:id', component:  CreateBasicScaleComponent, data: { title: 'UPDATE BASIC SCALE' }},
-  { path:  'basic-scale/view/:id', component:  ViewBasicScaleComponent, data: { title: 'VIEW BASIC SCALE' }},
+  { path:  'basic-scale/list', component:  BasicScaleListComponent, canActivate: [AuthGuard], data: { title: 'LIST BASIC SCALE' }},
+  { path:  'basic-scale/create', component:  CreateBasicScaleComponent, canActivate: [AuthGuard], data: { title: 'CREATE BASIC SCALE' }},
+  { path:  'basic-scale/update/:id', component:  CreateBasicScaleComponent, canActivate: [AuthGuard], data: { title: 'UPDATE BASIC SCALE' }},
+  { path:  'basic-scale/view/:id', component:  ViewBasicScaleComponent, canActivate: [AuthGuard], data: { title: 'VIEW BASIC SCALE' }},
 
-  { path:  'grade-scale/list', component:  GradeScaleListComponent, data: { title: 'LIST GRADE SCALE' }},
-  { path:  'grade-scale/create', component:  GradeScaleCreateComponent, data: { title: 'CREATE GRADE SCALE' }},
-  { path:  'grade-scale/update/:id', component:  GradeScaleCreateComponent, data: { title: 'UPDATE GRADE SCALE' }},
-  { path:  'grade-scale/view/:id', component:  GradeScaleViewComponent, data: { title: 'VIEW GRADE SCALE' }},
+  { path:  'grade-scale/list', component:  GradeScaleListComponent, canActivate: [AuthGuard], data: { title: 'LIST GRADE SCALE' }},
+  { path:  'grade-scale/create', component:  GradeScaleCreateComponent, canActivate: [AuthGuard], data: { title: 'CREATE GRADE SCALE' }},
+  { path:  'grade-scale/update/:id', component:  GradeScaleCreateComponent, canActivate: [AuthGuard], data: { title: 'UPDATE GRADE SCALE' }},
+  { path:  'grade-scale/view/:id', component:  GradeScaleViewComponent, canActivate: [AuthGuard], data: { title: 'VIEW GRADE SCALE' }},
 
-  { path:  'admin-setting/list', component:  AdministrativeSettingsListComponent, data: { title: 'LIST ADMINISTRATIVE SCALE' }},
-  { path:  'admin-setting/create', component:  CreateAdministrativeSettingsComponent, data: { title: 'CREATE ADMINISTRATIVE SCALE' }},
-  { path:  'admin-setting/update/:id', component:  CreateAdministrativeSettingsComponent, data: { title: 'UPDATE ADMINISTRATIVE SCALE' }},
-  { path:  'admin-setting/view/:id', component:  ViewAdminitrativeSettingsComponent, data: { title: 'VIEW ADMINISTRATIVE SCALE' }},
+  { path:  'admin-setting/list', component:  AdministrativeSettingsListComponent, canActivate: [AuthGuard], data: { title: 'LIST ADMINISTRATIVE SCALE' }},
+  { path:  'admin-setting/create', component:  CreateAdministrativeSettingsComponent, canActivate: [AuthGuard], data: { title: 'CREATE ADMINISTRATIVE SCALE' }},
+  { path:  'admin-setting/update/:id', component:  CreateAdministrativeSettingsComponent, canActivate: [AuthGuard], data: { title: 'UPDATE ADMINISTRATIVE SCALE' }},
+  { path:  'admin-setting/view/:id', component:  ViewAdminitrativeSettingsComponent, canActivate: [AuthGuard], data: { title: 'VIEW ADMINISTRATIVE SCALE' }},
   
-  { path:  'infrastructure-scale/list', component:  InfrastructureScaleListComponent, data: { title: 'LIST INFRASTRUCTURE SCALE' }},
-  { path:  'infrastructure-scale/create', component:  CreateInsfrastructureScaleComponent, data: { title: 'CREATE INFRASTRUCTURE SCALE' }},
-  { path:  'infrastructure-scale/update/:id', component:  CreateInsfrastructureScaleComponent, data: { title: 'UPDATE INFRASTRUCTURE SCALE' }},
-  { path:  'infrastructure-scale/view/:id', component:  ViewInsfrastructureScaleComponent, data: { title: 'VIEW INFRASTRUCTURE SCALE' }},
+  { path:  'infrastructure-scale/list', component:  InfrastructureScaleListComponent, canActivate: [AuthGuard], data: { title: 'LIST INFRASTRUCTURE SCALE' }},
+  { path:  'infrastructure-scale/create', component:  CreateInsfrastructureScaleComponent, canActivate: [AuthGuard], data: { title: 'CREATE INFRASTRUCTURE SCALE' }},
+  { path:  'infrastructure-scale/update/:id', component:  CreateInsfrastructureScaleComponent, canActivate: [AuthGuard], data: { title: 'UPDATE INFRASTRUCTURE SCALE' }},
+  { path:  'infrastructure-scale/view/:id', component:  ViewInsfrastructureScaleComponent, canActivate: [AuthGuard], data: { title: 'VIEW INFRASTRUCTURE SCALE' }},
   
-  { path:  'stationary-khaja/list', component:  StationaryKhajaScaleListComponent, data: { title: 'STATIONERY/DIWA KHAJA FINANCIAL SETTING LIST CLASS WISE' }},
-  { path:  'stationary-khaja/create', component:  CreateStationaryKhajaScaleComponent, data: { title: 'GENERATE CLASSWISE FINANCIAL SETTING' }},
-  { path:  'stationary-khaja/view/:id', component:  ViewStationaryKhajaScaleComponent, data: { title: 'VIEW CLASSWISE FINANCIAL SETTING' }},
-  { path:  'stationary-khaja/update/:id', component:  CreateStationaryKhajaScaleComponent, data: { title: 'UPDATE CLASSWISE FINANCIAL SETTING' }},
+  { path:  'stationary-khaja/list', component:  StationaryKhajaScaleListComponent, canActivate: [AuthGuard], data: { title: 'STATIONERY/DIWA KHAJA FINANCIAL SETTING LIST CLASS WISE' }},
+  { path:  'stationary-khaja/create', component:  CreateStationaryKhajaScaleComponent, canActivate: [AuthGuard], data: { title: 'GENERATE CLASSWISE FINANCIAL SETTING' }},
+  { path:  'stationary-khaja/view/:id', component:  ViewStationaryKhajaScaleComponent, canActivate: [AuthGuard], data: { title: 'VIEW CLASSWISE FINANCIAL SETTING' }},
+  { path:  'stationary-khaja/update/:id', component:  CreateStationaryKhajaScaleComponent, canActivate: [AuthGuard], data: { title: 'UPDATE CLASSWISE FINANCIAL SETTING' }},
   
-  { path:  'user-management', component:  UserManagementComponent, data: { title: 'USER MANAGEMENT' }},
-  { path:  'user/create', component:  UserCreateComponent, data: { title: 'CREATE USER' }},
-  { path:  'user/update/:id', component:  UserCreateComponent, data: { title: 'CREATE USER' }},
+  { path:  'user-management', component:  UserManagementComponent, canActivate: [AuthGuard], data: { title: 'USER MANAGEMENT' }},
+  { path:  'user/create', component:  UserCreateComponent, canActivate: [AuthGuard], data: { title: 'CREATE USER' }},
+  { path:  'user/update/:id', component:  UserCreateComponent, canActivate: [AuthGuard], data: { title: 'CREATE USER' }},
 
-  { path:  'scholarship-setting', component:  ScholarshipSettingsComponent, data: { title: 'SCHOLARSHIP SETTING' }},
+  { path:  'scholarship-setting', component:  ScholarshipSettingsComponent, canActivate: [AuthGuard], data: { title: 'SCHOLARSHIP SETTING' }},
   
-  { path:  'employee-bhatta', component:  EmployeeBhattaComponent, data: { title: 'EMPLOYEE BHATTA' }},
+  { path:  'employee-bhatta', component:  EmployeeBhattaComponent, canActivate: [AuthGuard], data: { title: 'EMPLOYEE BHATTA' }},
   
-  { path:  'employee-bhatta/create', component:  CreateEmployeeBhattaComponent, data: { title: 'CREATE EMPLOYEE BHATTA' }},
-  { path:  'employee-bhatta/update/:id', component:  CreateEmployeeBhattaComponent, data: { title: 'EDIT EMPLOYEE BHATTA' }},
+  { path:  'employee-bhatta/create', component:  CreateEmployeeBhattaComponent, canActivate: [AuthGuard], data: { title: 'CREATE EMPLOYEE BHATTA' }},
+  { path:  'employee-bhatta/update/:id', component:  CreateEmployeeBhattaComponent, canActivate: [AuthGuard], data: { title: 'EDIT EMPLOYEE BHATTA' }},
   
-  { path:  'scholarship-amount/create', component:  CreateScholarshipAmountComponent, data: { title: 'ADD SCHOLARSHIP AMOUNT' }},
-  { path:  'scholarship-amount/update/:id', component:  CreateScholarshipAmountComponent, data: { title: 'EDIT SCHOLARSHIP AMOUNT' }},
+  { path:  'scholarship-amount/create', component:  CreateScholarshipAmountComponent, canActivate: [AuthGuard], data: { title: 'ADD SCHOLARSHIP AMOUNT' }},
+  { path:  'scholarship-amount/update/:id', component:  CreateScholarshipAmountComponent, canActivate: [AuthGuard], data: { title: 'EDIT SCHOLARSHIP AMOUNT' }},
+  
+  { path:  'administrative-expenses-detail/:id', component:  AdministrativeExpensesDetailComponent, canActivate: [AuthGuard], data: { title: 'प्रशासनिक खर्च विवण भर्नुस' }},
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled' , useHash : true})],
   exports: [RouterModule],
-  providers: []
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

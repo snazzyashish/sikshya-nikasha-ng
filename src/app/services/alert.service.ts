@@ -21,7 +21,9 @@ export class AlertService {
 
  openSnackBar(message:any, action:any){
   this._snackBar.open(message, 'Clear', {
-    duration: 3000
+    duration: 3000,
+    verticalPosition: 'bottom',
+    horizontalPosition: 'right',
   });
  }
 

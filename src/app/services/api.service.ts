@@ -458,5 +458,29 @@ export class ApiService {
     return this._http.postJson(url, params);
   }
    //------------------------------------------------------------------//
+   public listAdministration(params:any){
+    let url = 'administration/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewAdministration(params:any){
+    let url = 'administration/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveAdministration(params:any){
+    let url = 'administration/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateAdministration(params:any){
+    let url = 'administration/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteAdministration(params:any){
+    let url = 'administration/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
 
 }

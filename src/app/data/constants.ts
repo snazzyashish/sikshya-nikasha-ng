@@ -1,6 +1,9 @@
 export const SERVER_URL = "http://localhost:8000/";
 export const SERVER_API_URL = "http://localhost:8000/api/";
 export const SITE_HEADER = 'डेमो नगरपालिकाको विद्यालय निकासा प्रणाली';
+export const SITE_NAGARPALIKA = 'डेमो नगरपालिका';
+export const SITE_ADDRESS = 'डेमो, जिल्ला';
+
 
 export const USER_ROLES = {
   1:'account_dataentry',

@@ -106,7 +106,7 @@
 <!-- modal -->
 <ng-template #content let-modal>
 	<div class="modal-header">
-        <h4 class="modal-title" id="modal-title">Edit School Record</h4>
+        <h4 class="modal-title" id="modal-title">प्रशासनिक खर्च विवण भर्नुस</h4>
         <button
             type="button"
             class="btn-close"
@@ -115,43 +115,27 @@
             (click)="modal.dismiss('Cross click')"
         ></button>
     </div>
-    <form [formGroup]="schoolForm">
-        <div class="modal-body">
-            <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">School Name</label>
-                <div class="col-sm-8">
-                    <input formControlName="school_name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
-                </div>
-            </div>
-            <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Account</label>
-                <div class="col-sm-8">
-                    <input formControlName="account" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
-                </div>
-            </div>
-            <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Type</label>
-                <div class="col-sm-8">
-                    <input formControlName="type" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
-                </div>
-            </div>
-            <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Principal Name</label>
-                <div class="col-sm-8">
-                    <input formControlName="principal_name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
-                </div>
-            </div>
-            <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Principal No</label>
-                <div class="col-sm-8">
-                    <input formControlName="principal_no" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
-                </div>
-            </div>
-            
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-            <button type="submit" style="color: white;" ngbAutofocus class="btn btn-danger">Save</button>
-        </div>
-    </form>
+    <form [formGroup]="cmpForm" (ngSubmit)="onFormSubmit()">
+      <div class="modal-body">
+          <div class="password mb-3 form-group row">
+              <label for="inputPassword" class="col-sm-4 col-form-label">School Name</label>
+              <div class="col-sm-8">
+                  <select class="form-select" formControlName="school_id" (change)="onSchoolSelectionChange()">
+                      <option value=""></option>
+                      <option value="{{item.id}}" *ngFor="let item of schoolList">{{item.school}}</option>
+                    </select>
+              </div>
+          </div>
+          <div class="password mb-3 form-group row">
+              <label for="inputPassword" class="col-sm-4 col-form-label">Year</label>
+              <div class="col-sm-8">
+                  <input formControlName="finacialyear" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+          <button type="submit" style="color: white;" ngbAutofocus class="btn btn-danger">Save</button>
+      </div>
+  </form>
 </ng-template>

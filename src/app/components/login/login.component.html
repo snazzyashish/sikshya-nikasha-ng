@@ -5,29 +5,29 @@
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
-                    <div class="row">
+                    <div class="row login-form">
                         <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
                         <div class="col-lg-10" style="margin: 0 auto;">
                             <div class="p-5">
                                 <div class="text-center">
                                     <img src="assets/img/moe-logo.png" alt="" class="login-moe-logo my-3">
-                                    <h1 class="h4 text-gray-900 mb-4 my-3">डेमो नगरपालिका<br/>
+                                    <h1 class="h4 text-white mb-4 my-3">डेमो नगरपालिका<br/>
                                         ABC प्रदेश, डेमो, जिल्ला<br/>ABC प्रदेश <br/>
                                         शिक्षा शाखा</h1>
                                 </div>
-                                <form class="user">
+                                <form class="user" [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Enter Email Address...">
+                                            placeholder="Enter Username" formControlName="username">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            id="exampleInputPassword" placeholder="Password" formControlName="password">
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Login
-                                    </a>
+                                    </button>
                                 </form>
                                 <hr>
                                 <!-- <div class="text-center">
