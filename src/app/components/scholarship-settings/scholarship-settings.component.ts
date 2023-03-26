@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert.service';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-scholarship-settings',
@@ -25,7 +26,7 @@ export class ScholarshipSettingsComponent {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public toastify:AlertService, public router:Router){
+  constructor(public modal:ModalService ,public fb:FormBuilder, public toastify:AlertService, public router:Router, public api:ApiService){
     this.userForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -107,7 +108,7 @@ export class ScholarshipSettingsComponent {
   onEditModeOpen(id:any){
     this.mode = 'edit'
     var me = this;
-    this.router.navigate(['user/update/'+id])
+    this.router.navigate(['scholarship-amount/update/'+id])
   }
   onNewModeOpen(){
     var me = this;
@@ -117,26 +118,15 @@ export class ScholarshipSettingsComponent {
     // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.listUsers();
+    this.loadGrid();
   }
 
-  listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+  loadGrid(){
+    this.api.listScholarshipScale({}).subscribe(res=>{
       // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'username' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'principal_uname' : 'headteacher1',
-            'principal_pass' : 'ac2bd348bf36a7128fbd',
-            'data_entry_uname' : 'dataentry1',
-            'data_entry_pass' : 'bardibas1',
-         },
-      ]
-        this.gridApi.setRowData(obj);
+        this.gridApi.setRowData(res.data);
       // }
-    // })
+    })
   }
 
   onSaveClick(){
@@ -145,7 +135,7 @@ export class ScholarshipSettingsComponent {
 
   onAddClick(){
     this.mode = 'new';
-    this.router.navigate(['user/create']);
+    this.router.navigate(['scholarship-amount/create']);
     // this.userForm.patchValue({
     //   school_name: '',
     //   principal_uname : '', 

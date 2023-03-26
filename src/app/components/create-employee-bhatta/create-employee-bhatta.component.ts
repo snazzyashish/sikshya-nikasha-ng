@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { USER_ROLES } from 'src/app/data/constants';
 import { ApiService } from 'src/app/services/api.service';
 import { AlertService } from 'src/app/services/alert.service';
@@ -16,7 +16,7 @@ export class CreateEmployeeBhattaComponent {
   public mode='new';
   public schoolList:any;
   public cmpForm:FormGroup
-  constructor(private route: ActivatedRoute, public api:ApiService, public fb:FormBuilder, public toastify:AlertService) {
+  constructor(public router:Router,private route: ActivatedRoute, public api:ApiService, public fb:FormBuilder, public toastify:AlertService) {
     this.cmpForm =  this.fb.group({
       id : [''],
       level : ['', Validators.required],
@@ -33,21 +33,42 @@ export class CreateEmployeeBhattaComponent {
     if(this.id){
       this.mode = 'edit';
     }
-    this.getSchoolList();
+    this.getFormData();
   }
 
-  getSchoolList(){
-    this.api.listSchools({}).subscribe(res=>{
-      if(res.success){
-        this.schoolList=res.data; 
-      }
+  getFormData(){
+    let params = {
+      id  : this.id
+    }
+    this.api.viewEmployeeBhatta(params).subscribe(res=>{
+      // if(res.success){
+        this.cmpForm.patchValue({
+          id : res.data.id,
+          level : res.data.level,
+          title : res.data.title,
+          area : res.data.area,
+          remark : res.data.remark,
+          amount : res.data.amount,
+        });
+      // }
     })
   }
 
   onFormSubmit(){
-    this.api.saveEmployeeBhatta(this.cmpForm.value).subscribe(res=>{
-      debugger;
-    })
-    this.toastify.openSnackBar('User Created', 'OK');
+    if(this.mode == 'new'){
+      this.api.saveEmployeeBhatta(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.toastify.openSnackBar(res.message, 'OK');
+          this.router.navigate(['employee-bhatta']);
+        }
+      })
+    }else if(this.mode == 'edit'){
+      this.api.updateEmployeeBhatta(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.toastify.openSnackBar(res.message, 'OK');
+          this.router.navigate(['employee-bhatta']);
+        }
+      })
+    }
   }
 }

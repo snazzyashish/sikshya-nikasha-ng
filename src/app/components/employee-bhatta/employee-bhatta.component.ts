@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert.service';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-employee-bhatta',
@@ -25,7 +26,7 @@ export class EmployeeBhattaComponent {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public toastify:AlertService, public router:Router){
+  constructor(public api:ApiService, public modal:ModalService ,public fb:FormBuilder, public toastify:AlertService, public router:Router){
     this.userForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -73,7 +74,7 @@ export class EmployeeBhattaComponent {
       },
       {
         headerName : 'Topic',
-        field : 'topic',
+        field : 'title',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -99,7 +100,7 @@ export class EmployeeBhattaComponent {
   onEditModeOpen(id:any){
     this.mode = 'edit'
     var me = this;
-    this.router.navigate(['user/update/'+id])
+    this.router.navigate(['employee-bhatta/update/'+id])
   }
   onNewModeOpen(){
     var me = this;
@@ -113,21 +114,11 @@ export class EmployeeBhattaComponent {
   }
 
   listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+    this.api.listEmployeeBhatta({}).subscribe(res=>{
       // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'level' : 'मा.शि.',
-            'topic' : 'pra_a_bhatta',
-            'amount' : '500',
-            'status' : 'सक्रिय',
-         },
-      ]
-        this.gridApi.setRowData(obj);
+        this.gridApi.setRowData(res.data);
       // }
-    // })
+    })
   }
 
   onSaveClick(){
@@ -137,13 +128,5 @@ export class EmployeeBhattaComponent {
   onAddClick(){
     this.mode = 'new';
     this.router.navigate(['employee-bhatta/create']);
-    // this.userForm.patchValue({
-    //   school_name: '',
-    //   principal_uname : '', 
-    //   principal_pass : '', 
-    //   data_entry_uname : '', 
-    //   data_entry_pass : '', 
-    // })
-    // this.onNewModeOpen();
   }
 }

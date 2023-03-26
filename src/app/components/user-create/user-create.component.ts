@@ -33,8 +33,27 @@ export class UserCreateComponent {
     this.id = this.route.snapshot.paramMap.get('id');
     if(this.id){
       this.mode = 'edit';
+      // this.getFormData();
     }
     this.getSchoolList();
+  }
+
+  getFormData(){
+    let params = {
+      id  : this.id
+    }
+    this.api.viewUser(params).subscribe(res=>{
+      // if(res.success){
+        this.cmpForm.patchValue({
+          id : res.data.id,
+          username : res.data.username,
+          email : res.data.email,
+          password : res.data.password,
+          role : res.data.role,
+          school : res.data.school
+        });
+      // }
+    })
   }
 
   getSchoolList(){

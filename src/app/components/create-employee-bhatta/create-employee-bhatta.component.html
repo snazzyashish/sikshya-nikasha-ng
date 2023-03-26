@@ -12,28 +12,48 @@
         <div class="card-body p-3">
             <div class="row">
                 <div class="mb-3 col-sm-6">
-                    <label for="inputName" class="col-sm-12 col-form-label">Level </label>
+                    <label for="inputName" class="col-sm-12 col-form-label">तह </label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" formControlName="level">
+                        <select class="form-select" formControlName="level">
+                            <option value=""></option>
+                            <option value="उ.मा.शि.">उ.मा.शि.</option>
+                            <option value="मा.शि.">मा.शि.</option>
+                            <option value="नि.मा.शि.">नि.मा.शि.</option>
+                            <option value="प्रा.शि.">प्रा.शि.</option>
+                            <option value="प्रशिक्षक">प्रशिक्षक</option>
+                            <option value="प्रशिक्षक सहायक">प्रशिक्षक सहायक</option>
+                            <option value="का.सहायक">का.सहायक</option>
+                            <option value="बिधालय सहयोगी">बिधालय सहयोगी</option>
+                            <option value="बा.शि">बा.शि</option>
+                            <option value="परिचर">परिचर</option>
+                            <option value="का.स">का.स</option>
+                            <option value="लेखापाल">लेखापाल</option>
+                            <option value="सि.के">सि.के</option>
+                          </select>
                     </div>
                 </div>
                 <div class="mb-3 col-sm-6">
-                    <label for="inputName" class="col-sm-12 col-form-label">Title </label>
+                    <label for="inputName" class="col-sm-12 col-form-label">शीर्षक </label>
                     <div class="col-sm-12">
-                        <input type="email" class="form-control" formControlName="topic">
+                        <select class="form-select" formControlName="title">
+                            <option value="bhatta" selected="selected">भट्टा</option>
+                            <option value="posak_bhatta">पोसक भट्टा</option>
+                            <option value="pra_a_bhatta">प्र.अ. भट्टा</option>
+                            <option value="mahangi_bhatta">महङी भट्टा</option>
+                        </select>
                     </div>
                 </div>
             </div>
     
             <div class="row">
                 <div class="mb-3 col-sm-6">
-                    <label for="inputName" class="col-sm-12 col-form-label">Area</label>
+                    <label for="inputName" class="col-sm-12 col-form-label">लागू गरिएको क्षेत्र</label>
                     <div class="col-sm-12">
-                        <input type="password" class="form-control" formControlName="area">
+                        <input type="text" class="form-control" formControlName="area">
                     </div>
                 </div>
                 <div class="mb-3 col-sm-6">
-                    <label for="inputName" class="col-sm-12 col-form-label">Amount</label>
+                    <label for="inputName" class="col-sm-12 col-form-label">रकम</label>
                     <div class="col-sm-12">
                         <input type="number" class="form-control" formControlName="amount">
                     </div>
@@ -41,7 +61,7 @@
             </div>
             <div class="row">
                 <div class="mb-3 col-sm-12">
-                    <label for="inputName" class="col-sm-12 col-form-label">Comment</label>
+                    <label for="inputName" class="col-sm-12 col-form-label">टिप्पणी</label>
                     <div class="col-sm-12">
                         <textarea class="form-control" formControlName="comment"></textarea>
                     </div>

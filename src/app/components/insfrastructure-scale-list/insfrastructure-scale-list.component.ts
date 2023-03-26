@@ -4,6 +4,7 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 declare var $ : any;
 @Component({
@@ -24,7 +25,7 @@ export class InfrastructureScaleListComponent implements AfterViewInit {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router){
+  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService){
     this.schoolForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -57,15 +58,7 @@ export class InfrastructureScaleListComponent implements AfterViewInit {
         width : 70,
         sortingOrder : ['asc','desc'],
         filter:true,
-        hide:true
-      },
-      {
-        headerName : 'SN',
-        field : '',
-        width : 70,
-        sortingOrder : ['asc','desc'],
-        filter:true,
-        resizeable : true
+        hide:false
       },
       {
         headerName : 'Level',
@@ -128,22 +121,12 @@ export class InfrastructureScaleListComponent implements AfterViewInit {
   }
 
   listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+    this.api.listInfrastructureScale({}).subscribe(res=>{
       // if(res.success){
         // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'type' : 'Community',
-            'principal_name' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-         },
-      ]
-        this.gridApi.setRowData(obj);
+        this.gridApi.setRowData(res.data);
       // }
-    // })
+    })
   }
 
   onAddClick(){

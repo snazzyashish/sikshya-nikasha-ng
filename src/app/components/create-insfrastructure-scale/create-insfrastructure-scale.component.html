@@ -9,56 +9,70 @@
 
 <div class="card o-hidden border-0 shadow-lg my-3">
     <div class="card-body p-3">
-        <div class="row">
-            <div class="mb-3 col-sm-12">
-                <label for="inputName" class="col-sm-12 col-form-label">Level </label>
-                <div class="col-sm-12">
-                  <select class="form-select">
-                    <option value=""></option>
-                    <option value="उ.मा.शि.">उ.मा.शि.</option>
-                    <option value="मा.शि.">मा.शि.</option>
-                    <option value="नि.मा.शि.">नि.मा.शि.</option>
-                    <option value="प्रा.शि.">प्रा.शि.</option>
-                    <option value="प्रशिक्षक">प्रशिक्षक</option>
-                    <option value="प्रशिक्षक सहायक">प्रशिक्षक सहायक</option>
-                    <option value="का.सहायक">का.सहायक</option>
-                    <option value="बिधालय सहयोगी">बिधालय सहयोगी</option>
-                    <option value="बा.शि">बा.शि</option>
-                    <option value="परिचर">परिचर</option>
-                    <option value="का.स">का.स</option>
-                    <option value="लेखापाल">लेखापाल</option>
-                    <option value="सि.के">सि.के</option>
-                    </select>
+        <form [formGroup]="cmpForm" (ngSubmit)="onFormSubmit()">
+            <div class="row">
+                <div class="mb-3 col-sm-12">
+                    <label for="inputName" class="col-sm-12 col-form-label">Level </label>
+                    <div class="col-sm-12">
+                      <select class="form-select" formControlName="level">
+                        <option value=""></option>
+                        <option value="उ.मा.शि.">उ.मा.शि.</option>
+                        <option value="मा.शि.">मा.शि.</option>
+                        <option value="नि.मा.शि.">नि.मा.शि.</option>
+                        <option value="प्रा.शि.">प्रा.शि.</option>
+                        <option value="प्रशिक्षक">प्रशिक्षक</option>
+                        <option value="प्रशिक्षक सहायक">प्रशिक्षक सहायक</option>
+                        <option value="का.सहायक">का.सहायक</option>
+                        <option value="बिधालय सहयोगी">बिधालय सहयोगी</option>
+                        <option value="बा.शि">बा.शि</option>
+                        <option value="परिचर">परिचर</option>
+                        <option value="का.स">का.स</option>
+                        <option value="लेखापाल">लेखापाल</option>
+                        <option value="सि.के">सि.के</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="mb-3 col-sm-12">
-                <label for="inputName" class="col-sm-12 col-form-label">Infrastructure</label>
-                <div class="col-sm-12">
-                  <select class="form-select">
-                    <option value=""></option>
-                    <option value="भवन">भवन</option>
-                    <option value="क्यान्टीन">क्यान्टीन</option>
-                    <option value="पिउने पानी">पिउने पानी</option>
-                    <option value="शौचालय">शौचालय</option>
-                    </select>
+            <div class="row">
+                <div class="mb-3 col-sm-12">
+                    <label for="inputName" class="col-sm-12 col-form-label" >Infrastructure</label>
+                    <div class="col-sm-12">
+                      <select class="form-select" formControlName="infrastructure">
+                        <option value=""></option>
+                        <option value="भवन">भवन</option>
+                        <option value="क्यान्टीन">क्यान्टीन</option>
+                        <option value="पिउने पानी">पिउने पानी</option>
+                        <option value="शौचालय">शौचालय</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="mb-3 col-sm-12">
-                <label for="inputName" class="col-sm-12 col-form-label">Amount</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control">
+    
+            <div class="row">
+                <div class="mb-3 col-sm-12">
+                    <label for="inputName" class="col-sm-12 col-form-label">Amount</label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" formControlName="amount">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mb-3 my-5">
-            <div class="col-sm-4 btn-cnt">
-                <button type="submit" class="btn btn-primary">Create</button>
+            <div class="row">
+                <div class="mb-3 col-sm-12">
+                    <label for="inputName" class="col-sm-12 col-form-label">Status</label>
+                    <div class="col-sm-12">
+                      <select class="form-select" formControlName="status">
+                        <option value=""></option>
+                        <option value="ACTIVE">ACTIVE</option>
+                        <option value="INACTIVE">INACTIVE</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="mb-3 my-5">
+                <div class="col-sm-4 btn-cnt">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

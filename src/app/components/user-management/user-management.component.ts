@@ -37,24 +37,24 @@ export class UserManagementComponent {
     });
 
     this.columnDefs=[
-      {
-        headerName : 'Action',
-        field: '',
-        width : 100,
-        suppressNavigable: true,
-        cellClass: 'no-border',
-        cellRenderer: ActionButtonsComponent,
-        cellRendererParams: {
-          clicked: (id: any, type:any) => {
-            if(type == 'edit'){
-              this.onEditModeOpen(id);
-            }else if(type=='delete'){
-              // this.toastify.openSnackBar('Deleted','OK')
-              this.toastify.openDialog(this.confirmDialog)
-            }
-          }
-        },
-      },
+      // {
+      //   headerName : 'Action',
+      //   field: '',
+      //   width : 100,
+      //   suppressNavigable: true,
+      //   cellClass: 'no-border',
+      //   cellRenderer: ActionButtonsComponent,
+      //   cellRendererParams: {
+      //     clicked: (id: any, type:any) => {
+      //       if(type == 'edit'){
+      //         this.onEditModeOpen(id);
+      //       }else if(type=='delete'){
+      //         // this.toastify.openSnackBar('Deleted','OK')
+      //         this.toastify.openDialog(this.confirmDialog)
+      //       }
+      //     }
+      //   },
+      // },
       {
         headerName : 'ID',
         field : 'id',
@@ -62,12 +62,13 @@ export class UserManagementComponent {
         sortingOrder : ['asc','desc'],
         filter:true,
         suppressNavigable: true,
+        hide: true,
         cellClass: 'no-border',
       },
       {
         headerName : 'Username',
         field : 'username',
-        width : 250,
+        width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
         filter: 'agTextColumnFilter',
@@ -75,13 +76,13 @@ export class UserManagementComponent {
       {
         headerName : 'Email',
         field : 'email',
-        width : 150,
+        width : 200,
         sortingOrder : ['asc','desc'],
         editable: true,
       },
       {
         headerName : 'School/Mun',
-        field : 'school_mun',
+        field : 'school',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,

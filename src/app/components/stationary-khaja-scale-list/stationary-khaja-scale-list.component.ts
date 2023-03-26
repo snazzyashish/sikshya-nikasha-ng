@@ -4,6 +4,7 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-stationary-khaja-scale-list',
@@ -23,7 +24,7 @@ export class StationaryKhajaScaleListComponent {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router){
+  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService){
     this.schoolForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -56,7 +57,7 @@ export class StationaryKhajaScaleListComponent {
         width : 70,
         sortingOrder : ['asc','desc'],
         filter:true,
-        hide:true
+        hide:false
       },
       {
         headerName : 'SN',
@@ -64,11 +65,12 @@ export class StationaryKhajaScaleListComponent {
         width : 70,
         sortingOrder : ['asc','desc'],
         filter:true,
-        resizeable : true
+        resizeable : true,
+        hide : true
       },
       {
-        headerName : 'Level',
-        field : 'level',
+        headerName : 'Type',
+        field : 'type',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -76,8 +78,8 @@ export class StationaryKhajaScaleListComponent {
         filter: 'agTextColumnFilter',
       },
       {
-        headerName : 'Infrastructure',
-        field : 'infrastructure',
+        headerName : 'Class',
+        field : 'class',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -120,29 +122,19 @@ export class StationaryKhajaScaleListComponent {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.gridColumnApi.autoSizeColumns();
-    this.listUsers();
+    this.laodGrid();
   }
   open(content:any){
     this.modal.open(content);
   }
 
-  listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+  laodGrid(){
+    this.api.listLunchScale({}).subscribe(res=>{
       // if(res.success){
         // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'type' : 'Community',
-            'principal_name' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-         },
-      ]
-        this.gridApi.setRowData(obj);
+        this.gridApi.setRowData(res.data);
       // }
-    // })
+    })
   }
 
   onAddClick(){
@@ -154,17 +146,17 @@ export class StationaryKhajaScaleListComponent {
       principal_name : '', 
       principal_no : '',
     })
-    this.router.navigate(['infrastructure-scale/create'])
+    this.router.navigate(['stationary-khaja/create'])
     // this.onNewModeOpen();
   }
 
   onEditModeOpen(id:any){
     var me = this;
-    this.router.navigate(['infrastructure-scale/update/'+id])
+    this.router.navigate(['stationary-khaja/update/'+id])
   }
   onViewModeOpen(id:any){
     var me = this;
-    this.router.navigate(['infrastructure-scale/view/'+id])
+    this.router.navigate(['stationary-khaja/view/'+id])
   }
 
 }

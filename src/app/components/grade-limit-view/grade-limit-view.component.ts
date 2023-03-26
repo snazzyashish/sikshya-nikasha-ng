@@ -13,9 +13,9 @@ export class GradeLimitViewComponent {
     level : '',
     position : '',
     gradelimit : '',
-    status : '1',
-    created_at : '0000-00-00 00:00:00',
-    updated_at : '2020-06-09 12:16:12',
+    status : '',
+    created_at : '',
+    updated_at : '',
   }
   constructor(public route:ActivatedRoute, public api:ApiService){
     this.id = this.route.snapshot.paramMap.get('id');

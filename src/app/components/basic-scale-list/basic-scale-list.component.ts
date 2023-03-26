@@ -4,6 +4,7 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 declare var $ : any;
 @Component({
@@ -17,22 +18,13 @@ export class BasicScaleListComponent implements AfterViewInit {
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
-  schoolForm: FormGroup;
   public mode = 'new';
   public tableConfig = TABLE_CONFIG;
   ngAfterViewInit() {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router){
-    this.schoolForm =  this.fb.group({
-      id: [''],
-      school_name: ['', Validators.required],
-      account : ['', Validators.required], 
-      type : ['', Validators.required], 
-      principal_name : ['', Validators.required], 
-      principal_no : ['', Validators.required], 
-    });
+  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService){
     this.columnDefs=[
       {
         headerName : 'Action',
@@ -60,15 +52,7 @@ export class BasicScaleListComponent implements AfterViewInit {
         hide:true
       },
       {
-        headerName : 'SN',
-        field : '',
-        width : 70,
-        sortingOrder : ['asc','desc'],
-        filter:true,
-        resizeable : true
-      },
-      {
-        headerName : 'Level',
+        headerName : 'कर्मचारी तह',
         field : 'level',
         width : 150,
         sortingOrder : ['asc','desc'],
@@ -77,8 +61,8 @@ export class BasicScaleListComponent implements AfterViewInit {
         filter: 'agTextColumnFilter',
       },
       {
-        headerName : 'Sherni',
-        field : 'grade',
+        headerName : 'श्रेणी/ग्रेड',
+        field : 'position',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -96,7 +80,7 @@ export class BasicScaleListComponent implements AfterViewInit {
       },
       {
         headerName : 'Internal Amount',
-        field : 'internal_amount',
+        field : 'amount',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -105,7 +89,7 @@ export class BasicScaleListComponent implements AfterViewInit {
       },
       {
         headerName : 'Rupees',
-        field : 'rupees',
+        field : 'total_amount',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -131,40 +115,21 @@ export class BasicScaleListComponent implements AfterViewInit {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.gridColumnApi.autoSizeColumns();
-    this.listUsers();
+    this.loadGrid();
   }
   open(content:any){
     this.modal.open(content);
   }
 
-  listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+  loadGrid(){
+    this.api.listEmployeeSalaryScale({}).subscribe(res=>{
       // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'type' : 'Community',
-            'principal_name' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-         },
-      ]
-        this.gridApi.setRowData(obj);
+        this.gridApi.setRowData(res.data);
       // }
-    // })
+    })
   }
 
   onAddClick(){
-    this.mode = 'new'
-    this.schoolForm.patchValue({
-      school_name: '',
-      account : '', 
-      type : '', 
-      principal_name : '', 
-      principal_no : '',
-    })
     this.router.navigate(['basic-scale/create'])
     // this.onNewModeOpen();
   }

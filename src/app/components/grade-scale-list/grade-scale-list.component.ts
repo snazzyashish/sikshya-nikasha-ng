@@ -4,6 +4,7 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 declare var $ : any;
 @Component({
@@ -24,7 +25,7 @@ export class GradeScaleListComponent implements AfterViewInit {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router){
+  constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService){
     this.schoolForm =  this.fb.group({
       id: [''],
       school_name: ['', Validators.required],
@@ -60,15 +61,7 @@ export class GradeScaleListComponent implements AfterViewInit {
         hide:true
       },
       {
-        headerName : 'SN',
-        field : '',
-        width : 70,
-        sortingOrder : ['asc','desc'],
-        filter:true,
-        resizeable : true
-      },
-      {
-        headerName : 'Level',
+        headerName : 'कर्मचारी तह',
         field : 'level',
         width : 150,
         sortingOrder : ['asc','desc'],
@@ -77,7 +70,16 @@ export class GradeScaleListComponent implements AfterViewInit {
         filter: 'agTextColumnFilter',
       },
       {
-        headerName : 'Sherni',
+        headerName : 'श्रेणी',
+        field : 'position',
+        width : 150,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        floatingFilter : true,
+        filter: 'agTextColumnFilter',
+      },
+      {
+        headerName : 'ग्रेड',
         field : 'grade',
         width : 150,
         sortingOrder : ['asc','desc'],
@@ -86,31 +88,13 @@ export class GradeScaleListComponent implements AfterViewInit {
         filter: 'agTextColumnFilter',
       },
       {
-        headerName : 'Center Amount',
-        field : 'center_amount',
-        width : 150,
-        sortingOrder : ['asc','desc'],
-        editable: true,
-        floatingFilter : true,
-        filter: 'agTextColumnFilter',
-      },
-      {
-        headerName : 'Internal Amount',
-        field : 'internal_amount',
+        headerName : 'रु',
+        field : 'amount',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
         filter: 'agTextColumnFilter',
         floatingFilter : true,
-      },
-      {
-        headerName : 'Rupees',
-        field : 'rupees',
-        width : 150,
-        sortingOrder : ['asc','desc'],
-        editable: true,
-        filter: 'agTextColumnFilter',
-        floatingFilter : true
       },
       {
         headerName : 'Status',
@@ -138,22 +122,12 @@ export class GradeScaleListComponent implements AfterViewInit {
   }
 
   listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+    this.api.listEmployeeGradeScale({}).subscribe(res=>{
       // if(res.success){
         // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'type' : 'Community',
-            'principal_name' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-         },
-      ]
-        this.gridApi.setRowData(obj);
+        this.gridApi.setRowData(res.data);
       // }
-    // })
+    })
   }
 
   onAddClick(){

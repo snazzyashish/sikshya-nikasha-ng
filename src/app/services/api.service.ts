@@ -125,22 +125,27 @@ export class ApiService {
   }
   //------------------------------------------------------------------//
   public listEmployeeBhatta(params:any){
-    let url = 'school/list';
+    let url = 'employeeAllowanceScale/list';
     return this._http.getRequest(url, params);
 
   }
   public viewEmployeeBhatta(params:any){
-    let url = 'school/'+params.id;
+    let url = 'employeeAllowanceScale/view/'+params.id;
     return this._http.getRequest(url, {});
 
   }
   public saveEmployeeBhatta(params:any){
-    let url = 'employeeAllowanceScale/save';
+    let url = 'employeeAllowanceScaleScale/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateEmployeeBhatta(params:any){
+    let url = 'employeeAllowanceScale/update/'+params.id;
     return this._http.postJson(url, params);
 
   }
   public saveEmployeeBhattaGrid(params:any){
-    let url = 'school/save';
+    let url = 'employeeAllowanceScale/save';
     return this._http.postJson(url, params);
   }
   //------------------------------------------------------------------//
@@ -306,6 +311,150 @@ export class ApiService {
   }
   public deleteMagformFiscalYear(params:any){
     let url = 'salarysheet/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+   public listEmployeeSalaryScale(params:any){
+    let url = 'employeesalaryscale/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewEmployeeSalaryScale(params:any){
+    let url = 'employeesalaryscale/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveEmployeeSalaryScale(params:any){
+    let url = 'employeesalaryscale/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateEmployeeSalaryScale(params:any){
+    let url = 'employeesalaryscale/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteEmployeeSalaryScale(params:any){
+    let url = 'employeesalaryscale/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+   public listEmployeeGradeScale(params:any){
+    let url = 'employeegradescale/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewEmployeeGradeScale(params:any){
+    let url = 'employeegradescale/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveEmployeeGradeScale(params:any){
+    let url = 'employeegradescale/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateEmployeeGradeScale(params:any){
+    let url = 'employeegradescale/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteEmployeeGradeScale(params:any){
+    let url = 'employeegradescale/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+   public listLunchScale(params:any){
+    let url = 'lunchScale/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewLunchScale(params:any){
+    let url = 'lunchScale/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveLunchScale(params:any){
+    let url = 'lunchScale/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateLunchScale(params:any){
+    let url = 'lunchScale/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteLunchScale(params:any){
+    let url = 'lunchScale/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+   public listScholarshipScale(params:any){
+    let url = 'scholarshipScale/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewScholarshipScale(params:any){
+    let url = 'scholarshipScale/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveScholarshipScale(params:any){
+    let url = 'scholarshipScale/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateScholarshipScale(params:any){
+    let url = 'scholarshipScale/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteScholarshipScale(params:any){
+    let url = 'scholarshipScale/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+  public listInfrastructureScale(params:any){
+    let url = 'infrastructureScale/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewInfrastructureScale(params:any){
+    let url = 'infrastructureScale/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveInfrastructureScale(params:any){
+    let url = 'infrastructureScale/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateInfrastructureScale(params:any){
+    let url = 'infrastructureScale/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteInfrastructureScale(params:any){
+    let url = 'infrastructureScale/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+   public listAdministrationScale(params:any){
+    let url = 'administrationScale/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewAdministrationScale(params:any){
+    let url = 'administrationScale/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveAdministrationScale(params:any){
+    let url = 'administrationScale/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateAdministrationScale(params:any){
+    let url = 'administrationScale/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteAdministrationScale(params:any){
+    let url = 'administrationScale/delete/'+params.id;
     return this._http.postJson(url, params);
   }
    //------------------------------------------------------------------//

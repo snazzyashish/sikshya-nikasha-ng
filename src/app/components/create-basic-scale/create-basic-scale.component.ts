@@ -21,8 +21,11 @@ export class CreateBasicScaleComponent {
     this.cmpForm = this.fb.group({
       id : [''],
       level : ['', Validators.required],
-      gradelimit : ['', Validators.required],
-      position : ['', Validators.required],
+      type : ['', Validators.required],
+      grade : ['', Validators.required],
+      amount : ['', Validators.required],
+      center_amount : ['', Validators.required],
+      total_amount : ['', Validators.required],
     })
   }
 
@@ -30,6 +33,7 @@ export class CreateBasicScaleComponent {
     this.id = this.route.snapshot.paramMap.get('id');
     if(this.id){
       this.mode = 'edit';
+      this.getFormData();
     }
   }
 
@@ -37,13 +41,17 @@ export class CreateBasicScaleComponent {
     let params = {
       id  : this.id
     }
-    this.api.viewEmployeeGradeLimit(params).subscribe(res=>{
+    this.api.viewEmployeeSalaryScale(params).subscribe(res=>{
       // if(res.success){
         this.cmpForm.patchValue({
           id : res.data.id,
           level : res.data.level,
           position : res.data.position,
-          gradelimit : res.data.gradelimit
+          type : res.data.type,
+          grade : res.data.grade,
+          total_amount : res.data.total_amount,
+          amount : res.data.amount,
+          center_amount : res.data.center_amount
         });
       // }
     })
@@ -51,17 +59,17 @@ export class CreateBasicScaleComponent {
 
   onFormSubmit(){
     if(this.mode == 'new'){
-      this.api.saveEmployeeGradeLimit(this.cmpForm.value).subscribe(res=>{
+      this.api.saveEmployeeSalaryScale(this.cmpForm.value).subscribe(res=>{
         if(res.success){
           this.alert.openSnackBar(res.message, 'OK');
-          this.router.navigate(['grade-limit/list']);
+          this.router.navigate(['basic-scale/list']);
         }
       })
     }else if(this.mode == 'edit'){
-      this.api.updateEmployeeGradeLimit(this.cmpForm.value).subscribe(res=>{
+      this.api.updateEmployeeSalaryScale(this.cmpForm.value).subscribe(res=>{
         if(res.success){
           this.alert.openSnackBar(res.message, 'OK');
-          this.router.navigate(['grade-limit/list']);
+          this.router.navigate(['basic-scale/list']);
         }
       })
     }

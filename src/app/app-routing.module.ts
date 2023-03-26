@@ -47,6 +47,7 @@ import { ScholarshipSettingsComponent } from './components/scholarship-settings/
 import { EmployeeBhattaComponent } from './components/employee-bhatta/employee-bhatta.component';
 import { CreateEmployeeBhattaComponent } from './components/create-employee-bhatta/create-employee-bhatta.component';
 import { MagformSettingItemdetailComponent } from './components/magform-setting-itemdetail/magform-setting-itemdetail.component';
+import { CreateScholarshipAmountComponent } from './components/create-scholarship-amount/create-scholarship-amount.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
@@ -95,15 +96,15 @@ const routes: Routes = [
   { path:  'grade-scale/update/:id', component:  GradeScaleCreateComponent, data: { title: 'UPDATE GRADE SCALE' }},
   { path:  'grade-scale/view/:id', component:  GradeScaleViewComponent, data: { title: 'VIEW GRADE SCALE' }},
 
-  { path:  'admin-setting/list', component:  AdministrativeSettingsListComponent, data: { title: 'LIST ADMINISTRATIVE SETTINGS' }},
-  { path:  'admin-setting/create', component:  CreateAdministrativeSettingsComponent, data: { title: 'CREATE ADMINISTRATIVE SETTINGS' }},
-  { path:  'admin-setting/update/:id', component:  CreateAdministrativeSettingsComponent, data: { title: 'UPDATE ADMINISTRATIVE SETTINGS' }},
-  { path:  'admin-setting/view/:id', component:  ViewAdminitrativeSettingsComponent, data: { title: 'VIEW ADMINISTRATIVE SETTINGS' }},
+  { path:  'admin-setting/list', component:  AdministrativeSettingsListComponent, data: { title: 'LIST ADMINISTRATIVE SCALE' }},
+  { path:  'admin-setting/create', component:  CreateAdministrativeSettingsComponent, data: { title: 'CREATE ADMINISTRATIVE SCALE' }},
+  { path:  'admin-setting/update/:id', component:  CreateAdministrativeSettingsComponent, data: { title: 'UPDATE ADMINISTRATIVE SCALE' }},
+  { path:  'admin-setting/view/:id', component:  ViewAdminitrativeSettingsComponent, data: { title: 'VIEW ADMINISTRATIVE SCALE' }},
   
-  { path:  'infrastructure-scale/list', component:  InfrastructureScaleListComponent, data: { title: 'LIST INFRASTRUCTURE SETTINGS' }},
-  { path:  'infrastructure-scale/create', component:  CreateInsfrastructureScaleComponent, data: { title: 'CREATE INFRASTRUCTURE SETTINGS' }},
-  { path:  'infrastructure-scale/update/:id', component:  CreateInsfrastructureScaleComponent, data: { title: 'UPDATE INFRASTRUCTURE SETTINGS' }},
-  { path:  'infrastructure-scale/view/:id', component:  ViewInsfrastructureScaleComponent, data: { title: 'VIEW INFRASTRUCTURE SETTINGS' }},
+  { path:  'infrastructure-scale/list', component:  InfrastructureScaleListComponent, data: { title: 'LIST INFRASTRUCTURE SCALE' }},
+  { path:  'infrastructure-scale/create', component:  CreateInsfrastructureScaleComponent, data: { title: 'CREATE INFRASTRUCTURE SCALE' }},
+  { path:  'infrastructure-scale/update/:id', component:  CreateInsfrastructureScaleComponent, data: { title: 'UPDATE INFRASTRUCTURE SCALE' }},
+  { path:  'infrastructure-scale/view/:id', component:  ViewInsfrastructureScaleComponent, data: { title: 'VIEW INFRASTRUCTURE SCALE' }},
   
   { path:  'stationary-khaja/list', component:  StationaryKhajaScaleListComponent, data: { title: 'STATIONERY/DIWA KHAJA FINANCIAL SETTING LIST CLASS WISE' }},
   { path:  'stationary-khaja/create', component:  CreateStationaryKhajaScaleComponent, data: { title: 'GENERATE CLASSWISE FINANCIAL SETTING' }},
@@ -119,6 +120,10 @@ const routes: Routes = [
   { path:  'employee-bhatta', component:  EmployeeBhattaComponent, data: { title: 'EMPLOYEE BHATTA' }},
   
   { path:  'employee-bhatta/create', component:  CreateEmployeeBhattaComponent, data: { title: 'CREATE EMPLOYEE BHATTA' }},
+  { path:  'employee-bhatta/update/:id', component:  CreateEmployeeBhattaComponent, data: { title: 'EDIT EMPLOYEE BHATTA' }},
+  
+  { path:  'scholarship-amount/create', component:  CreateScholarshipAmountComponent, data: { title: 'ADD SCHOLARSHIP AMOUNT' }},
+  { path:  'scholarship-amount/update/:id', component:  CreateScholarshipAmountComponent, data: { title: 'EDIT SCHOLARSHIP AMOUNT' }},
 
 ];
 

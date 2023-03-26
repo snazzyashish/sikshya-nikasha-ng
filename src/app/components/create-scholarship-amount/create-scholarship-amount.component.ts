@@ -7,21 +7,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AlertService } from 'src/app/services/alert.service';
 
-
 @Component({
-  selector: 'app-create-insfrastructure-scale',
-  templateUrl: './create-insfrastructure-scale.component.html',
-  styleUrls: ['./create-insfrastructure-scale.component.css']
+  selector: 'app-create-scholarship-amount',
+  templateUrl: './create-scholarship-amount.component.html',
+  styleUrls: ['./create-scholarship-amount.component.css']
 })
-export class CreateInsfrastructureScaleComponent {
+export class CreateScholarshipAmountComponent {
   public cmpForm : FormGroup;
   public id:any;
   public mode='new';
   constructor(public modal:ModalService ,public fb:FormBuilder, public router:Router, public api:ApiService, public alert:AlertService, public route:ActivatedRoute){
     this.cmpForm = this.fb.group({
       id : [''],
-      level : ['', Validators.required],
-      infrastructure : ['', Validators.required],
+      type : ['', Validators.required],
+      class : ['', Validators.required],
       amount : ['', Validators.required],
       status : ['', Validators.required],
     })
@@ -39,14 +38,14 @@ export class CreateInsfrastructureScaleComponent {
     let params = {
       id  : this.id
     }
-    this.api.viewInfrastructureScale(params).subscribe(res=>{
+    this.api.viewScholarshipScale(params).subscribe(res=>{
       // if(res.success){
         this.cmpForm.patchValue({
           id : res.data.id,
-          level : res.data.level,
-          infrastructure : res.data.infrastructure,
-          status : res.data.status,
-          amount : res.data.amount
+          type : res.data.level,
+          class : res.data.class,
+          amount : res.data.amount,
+          status : res.data.status
         });
       // }
     })
@@ -54,20 +53,19 @@ export class CreateInsfrastructureScaleComponent {
 
   onFormSubmit(){
     if(this.mode == 'new'){
-      this.api.saveInfrastructureScale(this.cmpForm.value).subscribe(res=>{
+      this.api.saveScholarshipScale(this.cmpForm.value).subscribe(res=>{
         if(res.success){
           this.alert.openSnackBar(res.message, 'OK');
-          this.router.navigate(['infrastructure-scale/list']);
+          this.router.navigate(['scholarship-setting']);
         }
       })
     }else if(this.mode == 'edit'){
-      this.api.updateInfrastructureScale(this.cmpForm.value).subscribe(res=>{
+      this.api.updateScholarshipScale(this.cmpForm.value).subscribe(res=>{
         if(res.success){
           this.alert.openSnackBar(res.message, 'OK');
-          this.router.navigate(['infrastructure-scale/list']);
+          this.router.navigate(['scholarship-setting']);
         }
       })
     }
   }
-
 }
