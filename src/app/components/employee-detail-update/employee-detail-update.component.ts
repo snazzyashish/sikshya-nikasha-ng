@@ -58,6 +58,7 @@ export class EmployeeDetailUpdateComponent {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.getSchoolList();
     if(this.id){
       this.mode = 'edit';
       this.getFormData();
@@ -76,14 +77,20 @@ export class EmployeeDetailUpdateComponent {
   onFormSubmit(){
     if(this.mode == 'edit'){
       this.api.udpdateEmployees(this.cmpForm.value).subscribe(res=>{
-        debugger;
+        if(res.success){
+          this.toast.openSnackBar(res.message,'OK');
+          this.router.navigate(['employee-detail/list']);
+        }else{
+          this.toast.openSnackBar(res.message,'ERROR');
+        }
       })
     }else{
       this.api.saveEmployees(this.cmpForm.value).subscribe(res=>{
         if(res.success){
-  
-        }else{
           this.toast.openSnackBar(res.message,'OK');
+          this.router.navigate(['employee-detail/list']);
+        }else{
+          this.toast.openSnackBar(res.message,'ERROR');
         }
       })
     }

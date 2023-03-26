@@ -34,7 +34,38 @@ export class CreateBasicScaleComponent {
   }
 
   getFormData(){
-
+    let params = {
+      id  : this.id
+    }
+    this.api.viewEmployeeGradeLimit(params).subscribe(res=>{
+      // if(res.success){
+        this.cmpForm.patchValue({
+          id : res.data.id,
+          level : res.data.level,
+          position : res.data.position,
+          gradelimit : res.data.gradelimit
+        });
+      // }
+    })
   }
+
+  onFormSubmit(){
+    if(this.mode == 'new'){
+      this.api.saveEmployeeGradeLimit(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.alert.openSnackBar(res.message, 'OK');
+          this.router.navigate(['grade-limit/list']);
+        }
+      })
+    }else if(this.mode == 'edit'){
+      this.api.updateEmployeeGradeLimit(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.alert.openSnackBar(res.message, 'OK');
+          this.router.navigate(['grade-limit/list']);
+        }
+      })
+    }
+  }
+
 
 }

@@ -23,7 +23,7 @@ export class UserCreateComponent {
       name : ['', Validators.required],
       email : ['', Validators.required],
       password : ['', Validators.required],
-      role : ['', Validators.required],
+      role_id : ['', Validators.required],
       school : ['', Validators.required],
 
     })

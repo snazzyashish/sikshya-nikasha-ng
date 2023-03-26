@@ -68,6 +68,8 @@ import { UserCreateComponent } from './components/user-create/user-create.compon
 import { ScholarshipSettingsComponent } from './components/scholarship-settings/scholarship-settings.component';
 import { EmployeeBhattaComponent } from './components/employee-bhatta/employee-bhatta.component';
 import { CreateEmployeeBhattaComponent } from './components/create-employee-bhatta/create-employee-bhatta.component';
+import { MagformSettingViewComponent } from './components/magform-setting-view/magform-setting-view.component';
+import { MagformSettingItemdetailComponent } from './components/magform-setting-itemdetail/magform-setting-itemdetail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -119,7 +121,9 @@ import { CreateEmployeeBhattaComponent } from './components/create-employee-bhat
     UserCreateComponent,
     ScholarshipSettingsComponent,
     EmployeeBhattaComponent,
-    CreateEmployeeBhattaComponent
+    CreateEmployeeBhattaComponent,
+    MagformSettingViewComponent,
+    MagformSettingItemdetailComponent
   ],
   imports: [
     HttpClientModule,

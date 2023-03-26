@@ -20,6 +20,7 @@ export class ActionButtonsComponent {
     '/admin-setting/list',
     '/infrastructure-scale/list',
     '/users-list',
+    '/magform-setting'
 
   ]
   constructor(public modal:ModalService, public router:Router){

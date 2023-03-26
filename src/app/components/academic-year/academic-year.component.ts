@@ -32,10 +32,10 @@ export class AcademicYearComponent implements AfterViewInit {
     this.cmpForm =  this.fb.group({
       id: [''],
       name: ['', Validators.required],
-      starting_nepali_date : ['', Validators.required], 
-      starting_english_date : ['', Validators.required], 
-      end_nepali_date : ['', Validators.required], 
-      end_english_date : ['', Validators.required], 
+      from_date_nep : ['', Validators.required], 
+      from_date_eng : ['', Validators.required], 
+      to_date_nep : ['', Validators.required], 
+      to_date_eng : ['', Validators.required], 
       status : ['', Validators.required], 
     });
     this.columnDefs=[
@@ -66,7 +66,7 @@ export class AcademicYearComponent implements AfterViewInit {
       },
       {
         headerName : 'Year',
-        field : 'title',
+        field : 'name',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -75,7 +75,7 @@ export class AcademicYearComponent implements AfterViewInit {
       },
       {
         headerName : 'Starting Nepali Date',
-        field : 'starting_nepali_date',
+        field : 'from_date_nep',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -86,7 +86,7 @@ export class AcademicYearComponent implements AfterViewInit {
       },
       {
         headerName : 'Starting English Date',
-        field : 'starting_english_date',
+        field : 'from_date_eng',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -97,7 +97,7 @@ export class AcademicYearComponent implements AfterViewInit {
       },
       {
         headerName : 'End Nepali Date',
-        field : 'end_nepali_date',
+        field : 'to_date_nep',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -108,7 +108,7 @@ export class AcademicYearComponent implements AfterViewInit {
       },
       {
         headerName : 'End English Date',
-        field : 'end_english_date',
+        field : 'to_date_eng',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -151,10 +151,10 @@ export class AcademicYearComponent implements AfterViewInit {
     this.mode = 'new'
     this.cmpForm.patchValue({
       name:'',
-      starting_nepali_date :'',
-      starting_english_date :'',
-      end_nepali_date :'',
-      end_english_date :'',
+      from_date_nep :'',
+      from_date_eng :'',
+      to_date_nep :'',
+      to_date_eng :'',
       status :'',
     })
     this.onNewModeOpen();

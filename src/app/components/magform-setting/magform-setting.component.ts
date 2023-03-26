@@ -2,6 +2,9 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { Router } from '@angular/router';
 
 declare var $ : any;
 @Component({
@@ -15,17 +18,19 @@ export class MagFormSettingComponent implements AfterViewInit {
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
+  public fiscalYears:any;
   componentForm: FormGroup;
   public mode = 'new';
   ngAfterViewInit() {
     
   }
 
-  constructor(public modal:ModalService ,public fb:FormBuilder){
+  constructor(public modal:ModalService ,public fb:FormBuilder, public api:ApiService, public toastify:AlertService, public router:Router){
     this.componentForm =  this.fb.group({
       id: [''],
-      fiscal_year: ['', Validators.required],
+      fiscalyear: ['', Validators.required],
       name : ['', Validators.required], 
+      header : ['', Validators.required], 
       nagar_teacher : ['', Validators.required], 
       status : ['1', Validators.required], 
     });
@@ -33,7 +38,7 @@ export class MagFormSettingComponent implements AfterViewInit {
       {
         headerName : 'Action',
         field: 'id',
-        width : 120,
+        width : 150,
         suppressNavigable: true,
         cellClass: 'no-border',
         cellRenderer: ActionButtonsComponent,
@@ -41,6 +46,8 @@ export class MagFormSettingComponent implements AfterViewInit {
           clicked: (id: any, type:any) => {
             if(type == 'edit'){
               this.onEditModeOpen();
+            }else  if(type == 'view'){
+              this.onViewModeOpen(id);
             }
           }
         },
@@ -55,7 +62,7 @@ export class MagFormSettingComponent implements AfterViewInit {
       },
       {
         headerName : 'Fiscal Year',
-        field : 'fiscal_year',
+        field : 'fiscalyear',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -65,6 +72,15 @@ export class MagFormSettingComponent implements AfterViewInit {
       {
         headerName : 'Name',
         field : 'name',
+        width : 200,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        floatingFilter : true,
+        filter: 'agTextColumnFilter',
+      },
+      {
+        headerName : 'Header',
+        field : 'header',
         width : 200,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -99,55 +115,48 @@ export class MagFormSettingComponent implements AfterViewInit {
         }
       },
     ]
+    this.listFiscalYears();
+  }
+
+  listFiscalYears(){
+    this.api.listFiscalYear({}).subscribe(res=>{
+      this.fiscalYears = res.data;
+    })
   }
 
   onGridReady(params:any){
     // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.listGrid();
+    this.loadGrid();
   }
   open(content:any){
     this.modal.open(content);
   }
 
-  listGrid(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+  loadGrid(){
+    this.api.listMagformFiscalYear({}).subscribe(res=>{
       // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            id: '1',
-            fiscal_year: '2078/79',
-            name : 'मंसिर महिनाको',
-            nagar_teacher : 'NO',
-            status : '1',
-          },
-          {
-            id: '2',
-            fiscal_year: '2078/79',
-            name : 'पौष महिनाको',
-            nagar_teacher : 'NO',
-            status : '1',
-          },
-      ]
-        this.gridApi.setRowData(obj);
+        this.gridApi.setRowData(res.data);
       // }
-    // })
+    })
   }
 
   onAddClick(){
     this.mode = 'new'
     this.componentForm.patchValue({
+      id : '',
       name: '',
-      from_date : '', 
-      to_date : '', 
+      fiscalyear: '',
+      header: '',
+      nagar_teacher : '', 
       status : '', 
     })
     this.onNewModeOpen();
   }
 
   onEditModeOpen(){
+    this.mode = 'edit';
     var me = this;
     this.modal.open(this.modalContent);
     setTimeout(function(){ 
@@ -155,8 +164,45 @@ export class MagFormSettingComponent implements AfterViewInit {
     }, 50);
   }
 
+  onViewModeOpen(id:any){
+    this.router.navigate(['magform-setting/view/'+id]);
+  }
+
   onNewModeOpen(){
     var me = this;
     this.modal.open(this.modalContent);
+  }
+
+  onFormSubmit(){
+    if(this.mode == 'edit'){
+      let params = {
+        
+      }
+      this.api.updateMagformFiscalYear(this.componentForm.value).subscribe(res=>{
+        if(res.success){
+          this.toastify.openSnackBar(res.message,'OK');
+          // this.router.navigate(['scholarship/list']);
+          this.modal.close('')
+          this.loadGrid();
+          
+        }else{
+          this.toastify.openSnackBar(res.message,'ERROR');
+        }
+      })
+    }else{
+      this.api.saveMagformFiscalYear(this.componentForm.value).subscribe(res=>{
+        if(res.success){
+          this.toastify.openSnackBar(res.message,'OK');
+          // this.router.navigate(['scholarship/list']);
+          this.modal.close('')
+          this.loadGrid();
+          
+        }else{
+          this.toastify.openSnackBar(res.message,'ERROR');
+        }
+      })
+    }
+    // this.toast.openSnackBar('Saved','OK');
+    // this.router.navigate(['schools-list']);
   }
 }

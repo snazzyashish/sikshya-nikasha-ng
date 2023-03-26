@@ -107,7 +107,8 @@
 <!-- modal -->
 <ng-template #content let-modal>
 	<div class="modal-header">
-        <h4 class="modal-title" id="modal-title">Edit School Record</h4>
+        <h4 *ngIf="mode=='new'" class="modal-title" id="modal-title">Add Stationary</h4>
+        <h4 *ngIf="mode=='edit'" class="modal-title" id="modal-title">Edit Stationary</h4>
         <button
             type="button"
             class="btn-close"
@@ -116,12 +117,15 @@
             (click)="modal.dismiss('Cross click')"
         ></button>
     </div>
-    <form [formGroup]="schoolForm">
+    <form [formGroup]="cmpForm" (ngSubmit)="onFormSubmit()">
         <div class="modal-body">
-            <div class="password mb-3 form-group row">
+           <div class="password mb-3 form-group row">
                 <label for="inputPassword" class="col-sm-4 col-form-label">School Name</label>
                 <div class="col-sm-8">
-                    <input formControlName="school_name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                    <select class="form-select" formControlName="school">
+                        <option value=""></option>
+                        <option value="{{item.school}}" *ngFor="let item of schoolList">{{item.school}}</option>
+                      </select>
                 </div>
             </div>
             <div class="password mb-3 form-group row">
@@ -131,24 +135,17 @@
                 </div>
             </div>
             <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Type</label>
+                <label for="inputPassword" class="col-sm-4 col-form-label">Amount</label>
                 <div class="col-sm-8">
-                    <input formControlName="type" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                    <input formControlName="total" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
                 </div>
             </div>
             <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Principal Name</label>
-                <div class="col-sm-8">
-                    <input formControlName="principal_name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
-                </div>
-            </div>
-            <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Principal No</label>
-                <div class="col-sm-8">
-                    <input formControlName="principal_no" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
-                </div>
-            </div>
-            
+              <label for="inputPassword" class="col-sm-4 col-form-label">Remarks</label>
+              <div class="col-sm-8">
+                  <input formControlName="remark" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+              </div>
+          </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>

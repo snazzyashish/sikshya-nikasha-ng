@@ -114,13 +114,13 @@ export class SchoolsListComponent implements AfterViewInit {
     // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.listUsers();
+    this.loadGridData();
   }
   open(content:any){
     this.modal.open(content);
   }
 
-  listUsers(){
+  loadGridData(){
     this.api.listSchools({}).subscribe(res=>{
       if(res.success){
         this.gridApi.setRowData(res.data);

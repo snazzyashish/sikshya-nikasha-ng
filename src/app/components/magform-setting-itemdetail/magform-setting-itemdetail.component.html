@@ -1,0 +1,70 @@
+<!-- Page Heading -->
+<app-page-header></app-page-header>
+
+<div class="card o-hidden border-0 shadow-lg my-3">
+    <div class="card-body p-4 border-1">
+        <div class="row g-3">
+            <div class="col-sm-12">
+                <div class="card-body p-0">
+                    <table class="table table-bordered text-justify ">
+                        <tbody>
+                            <tr>
+                                <td> Fiscal Year </td>
+                                <td>2078/2079</td>
+                            </tr>
+                            <tr>
+                                <td> Title </td>
+                                <td>मंसिर महिनाको</td>
+                            </tr>
+                            <tr>
+                                <td> Nagar Teacher </td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td> Status </td>
+                                <td>Active</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3 my-4">
+            <div class="col-sm-12">
+                <div class="card-body p-0">
+                    <table class="table table-bordered text-justify ">
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="text-center"><h5>INCLUDED MAGFORM ITEM </h5></td>
+                            </tr>
+                            <tr>
+                                <td> MAGFORM ITEM LISTS </td>
+                                <td>REGISTERED ITEM LIST</td>
+                            </tr>
+                            <tr>
+                                <td> 
+                                    <span *ngFor="let item of magFormItemList">
+                                        <input class="form-check-input mx-1" type="checkbox" value="{{item.name}}" id="flexCheckDefault">
+                                        <label class="form-check-label mx-4" for="flexCheckDefault">
+                                          {{item.name}}
+                                        </label> <br/>
+                                    </span>
+                                    <button type="button" class="btn btn-success my-3" routerLink="/magform-setting/itemDetail/1" (click)="onAddItemClick()">Add Item</button>
+                                </td>
+                                <td> 
+                                    <span *ngFor="let item of registeredItemList">
+                                        <input class="form-check-input mx-1" type="checkbox" value="{{item.name}}" id="flexCheckDefault">
+                                        <label class="form-check-label mx-4" for="flexCheckDefault">
+                                          {{item.name}}
+                                        </label> <br/>
+                                    </span>
+                                    <button type="button" class="btn btn-danger my-3" routerLink="/magform-setting/itemDetail/1">Remove Item</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

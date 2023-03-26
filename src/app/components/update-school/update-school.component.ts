@@ -62,14 +62,22 @@ export class UpdateSchoolComponent {
         
       }
       this.api.updateSchool(this.cmpForm.value).subscribe(res=>{
-        debugger;
+        if(res.success){
+          this.toast.openSnackBar(res.message,'OK');
+          this.router.navigate(['schools-list']);
+          
+        }else{
+          this.toast.openSnackBar(res.message,'ERROR');
+        }
       })
     }else{
       this.api.saveSchool(this.cmpForm.value).subscribe(res=>{
         if(res.success){
-  
-        }else{
           this.toast.openSnackBar(res.message,'OK');
+          this.router.navigate(['schools-list']);
+          
+        }else{
+          this.toast.openSnackBar(res.message,'ERROR');
         }
       })
     }

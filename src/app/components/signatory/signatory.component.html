@@ -19,7 +19,8 @@
 <!-- modal -->
 <ng-template #content let-modal>
 	<div class="modal-header">
-        <h4 class="modal-title" id="modal-title">School Record</h4>
+        <h4 *ngIf="mode=='add'" class="modal-title" id="modal-title">Add Signatory</h4>
+        <h4 *ngIf="mode=='edit'" class="modal-title" id="modal-title">Edit Signatory</h4>
         <button
             type="button"
             class="btn-close"
@@ -28,39 +29,35 @@
             (click)="modal.dismiss('Cross click')"
         ></button>
     </div>
-    <form [formGroup]="userForm">
+    <form [formGroup]="cmpForm" (ngSubmit)="onFormSubmit()">
         <div class="modal-body">
             <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">School Name</label>
+                <label for="inputPassword" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
-                    <input formControlName="school_name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                    <input formControlName="name" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
                 </div>
             </div>
             <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Principal Username</label>
+                <label for="inputPassword" class="col-sm-4 col-form-label">Post</label>
                 <div class="col-sm-8">
-                    <input formControlName="principal_uname" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                    <input formControlName="post" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
                 </div>
             </div>
             <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Principal Pasword</label>
+                <label for="inputPassword" class="col-sm-4 col-form-label">Signature</label>
                 <div class="col-sm-8">
-                    <input formControlName="principal_pass" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                    <input formControlName="signature" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
                 </div>
             </div>
             <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Data Entry Usename</label>
+                <label for="inputPassword" class="col-sm-4 col-form-label">Status</label>
                 <div class="col-sm-8">
-                    <input formControlName="data_entry_uname" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
+                    <select class="form-select" formControlName="status">
+                        <option value="1">ACTIVE</option>
+                        <option value="0">INACTIVE</option>
+                    </select>
                 </div>
             </div>
-            <div class="password mb-3 form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Data Entry Password</label>
-                <div class="col-sm-8">
-                    <input formControlName="data_entry_pass" id="signin-password" name="signin-password" type="text" class="form-control signin-password"  required="required">
-                </div>
-            </div>
-            
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>

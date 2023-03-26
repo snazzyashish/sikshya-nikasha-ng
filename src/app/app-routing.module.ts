@@ -15,6 +15,7 @@ import { MagFormItemComponent } from './components/magform-item/magform-item.com
 import { SignatoryComponent } from './components/signatory/signatory.component';
 import { AcademicYearComponent } from './components/academic-year/academic-year.component';
 import { MagFormSettingComponent } from './components/magform-setting/magform-setting.component';
+import { MagformSettingViewComponent } from './components/magform-setting-view/magform-setting-view.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { EmployeeDetailUpdateComponent } from './components/employee-detail-update/employee-detail-update.component';
 import { EmployeeDetailViewComponent } from './components/employee-detail-view/employee-detail-view.component';
@@ -45,6 +46,7 @@ import { UserCreateComponent } from './components/user-create/user-create.compon
 import { ScholarshipSettingsComponent } from './components/scholarship-settings/scholarship-settings.component';
 import { EmployeeBhattaComponent } from './components/employee-bhatta/employee-bhatta.component';
 import { CreateEmployeeBhattaComponent } from './components/create-employee-bhatta/create-employee-bhatta.component';
+import { MagformSettingItemdetailComponent } from './components/magform-setting-itemdetail/magform-setting-itemdetail.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
@@ -68,6 +70,8 @@ const routes: Routes = [
 
   { path:  'magform-item-list', component:  MagFormItemComponent, data: { title: 'LIST MAGFORM ITEMS' }},
   { path:  'magform-setting', component:  MagFormSettingComponent, data: { title: 'LIST MAGFORM SETTING' }},
+  { path:  'magform-setting/view/:id', component:  MagformSettingViewComponent, data: { title: 'VIEW MAGFORM SETTING' }},
+  { path:  'magform-setting/itemDetail/:id', component:  MagformSettingItemdetailComponent, data: { title: 'ADD/REMOVE MAGFORM DETAIL' }},
 
   { path:  'employee-detail/list', component:  EmployeeDetailComponent, data: { title: 'LIST EMPLOYEE DETAIL' }},
   { path:  'employee-detail/update/:id', component:  EmployeeDetailUpdateComponent, data: { title: 'UPDATE EMPLOYEE DETAIL' }},

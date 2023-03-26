@@ -154,6 +154,11 @@ export class ApiService {
     return this._http.getRequest(url, {});
 
   }
+  public updateSignature(params:any){
+    let url = 'signature/update/'+params.id;
+    return this._http.postJson(url, params);
+
+  }
   public saveSignature(params:any){
     let url = 'signature/save';
     return this._http.postJson(url, params);
@@ -231,4 +236,78 @@ export class ApiService {
     return this._http.postJson(url, params);
   }
   //------------------------------------------------------------------//
+
+   public listScholarship(params:any){
+    let url = 'scholarship/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewScholarship(params:any){
+    let url = 'scholarship/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveScholarship(params:any){
+    let url = 'scholarship/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateScholarship(params:any){
+    let url = 'scholarship/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteScholarship(params:any){
+    let url = 'scholarship/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+   public listStationary(params:any){
+    let url = 'studymaterial/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewStationary(params:any){
+    let url = 'studymaterial/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveStationary(params:any){
+    let url = 'studymaterial/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateStationary(params:any){
+    let url = 'studymaterial/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteStationary(params:any){
+    let url = 'studymaterial/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+   public listMagformFiscalYear(params:any){
+    let url = 'salarysheet/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewMagformFiscalYear(params:any){
+    let url = 'salarysheet/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveMagformFiscalYear(params:any){
+    let url = 'salarysheet/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateMagformFiscalYear(params:any){
+    let url = 'salarysheet/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteMagformFiscalYear(params:any){
+    let url = 'salarysheet/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+
 }

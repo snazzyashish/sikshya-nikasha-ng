@@ -34,8 +34,8 @@ export class FiscalYearComponent implements AfterViewInit {
     this.cmpForm =  this.fb.group({
       id: [''],
       name: ['', Validators.required],
-      from_date : ['', Validators.required], 
-      to_date : ['', Validators.required], 
+      from_date_eng : ['', Validators.required], 
+      to_date_eng : ['', Validators.required], 
       status : ['', Validators.required], 
     });
     this.columnDefs=[
@@ -74,7 +74,7 @@ export class FiscalYearComponent implements AfterViewInit {
       },
       {
         headerName : 'From Date',
-        field : 'from_date',
+        field : 'from_date_eng',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -83,7 +83,7 @@ export class FiscalYearComponent implements AfterViewInit {
       },
       {
         headerName : 'To Date',
-        field : 'to_date',
+        field : 'to_date_eng',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -123,8 +123,8 @@ export class FiscalYearComponent implements AfterViewInit {
     this.mode = 'new'
     this.cmpForm.patchValue({
       name: '',
-      from_date : '', 
-      to_date : '', 
+      from_date_eng : '', 
+      to_date_eng : '', 
       status : '', 
     })
     this.onNewModeOpen();

@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { TABLE_CONFIG } from 'src/app/data/constants';
 import { ApiService } from 'src/app/services/api.service';
 
+
 @Component({
   selector: 'app-signatory',
   templateUrl: './signatory.component.html',
@@ -19,14 +20,14 @@ export class SignatoryComponent {
   public columnDefs:any;
   private gridColumnApi:any;
   public mode:any = 'new';
-  userForm: FormGroup;
+  cmpForm: FormGroup;
   public tableConfig = TABLE_CONFIG;
   ngAfterViewInit() {
     
   }
 
   constructor(public modal:ModalService ,public fb:FormBuilder, public alert: AlertService, public api:ApiService){
-    this.userForm =  this.fb.group({
+    this.cmpForm =  this.fb.group({
       id: [''],
       name: ['', Validators.required],
       post : ['', Validators.required], 
@@ -109,7 +110,7 @@ export class SignatoryComponent {
     var me = this;
     this.modal.open(this.modalContent);
     setTimeout(function(){ 
-      me.userForm.patchValue(me.gridApi.getSelectedRows()[0]);
+      me.cmpForm.patchValue(me.gridApi.getSelectedRows()[0]);
     }, 50);
   }
   onNewModeOpen(){
@@ -134,14 +135,47 @@ export class SignatoryComponent {
 
   onAddClick(){
     this.mode = 'new'
-    this.userForm.patchValue({
-      school_name: '',
-      principal_uname : '', 
-      principal_pass : '', 
-      data_entry_uname : '', 
-      data_entry_pass : '', 
+    this.cmpForm.patchValue({
+      id:'',
+      name: '',
+      signature : '', 
+      post : '', 
+      status : '', 
     })
     this.onNewModeOpen();
+  }
+
+  onFormSubmit(){
+    if(this.mode == 'edit'){
+      let params = {
+        
+      }
+      this.api.updateSignature(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.alert.openSnackBar(res.message,'OK');
+          // this.router.navigate(['scholarship/list']);
+          this.modal.close('')
+          this.loadGrid();
+          
+        }else{
+          this.alert.openSnackBar(res.message,'ERROR');
+        }
+      })
+    }else{
+      this.api.saveSignature(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.alert.openSnackBar(res.message,'OK');
+          // this.router.navigate(['scholarship/list']);
+          this.modal.close('')
+          this.loadGrid();
+          
+        }else{
+          this.alert.openSnackBar(res.message,'ERROR');
+        }
+      })
+    }
+    // this.toast.openSnackBar('Saved','OK');
+    // this.router.navigate(['schools-list']);
   }
  
 }

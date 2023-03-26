@@ -138,22 +138,11 @@ export class UserManagementComponent {
   }
 
   listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
+    this.api.listUsers({}).subscribe(res=>{
       // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'username' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'principal_uname' : 'headteacher1',
-            'principal_pass' : 'ac2bd348bf36a7128fbd',
-            'data_entry_uname' : 'dataentry1',
-            'data_entry_pass' : 'bardibas1',
-         },
-      ]
-        this.gridApi.setRowData(obj);
+        this.gridApi.setRowData(res.data);
       // }
-    // })
+    })
   }
 
 

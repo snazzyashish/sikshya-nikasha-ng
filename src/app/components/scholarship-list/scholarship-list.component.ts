@@ -4,6 +4,8 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 import { TABLE_CONFIG } from 'src/app/data/constants';
+import { ApiService } from 'src/app/services/api.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 
 declare var $ : any;
@@ -18,22 +20,23 @@ export class ScholarshipListComponents implements AfterViewInit {
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
-  schoolForm: FormGroup;
+  cmpForm: FormGroup;
   public mode = 'new';
   public showSearchForm:boolean = false;
   public tableConfig = TABLE_CONFIG;
+  public schoolList:any = [];
   ngAfterViewInit() {
     
   }
 
-  constructor(public router:Router, public modal:ModalService ,public fb:FormBuilder){
-    this.schoolForm =  this.fb.group({
+  constructor(public router:Router, public modal:ModalService ,public fb:FormBuilder, public api:ApiService, public toastify:AlertService){
+    this.cmpForm =  this.fb.group({
       id: [''],
-      school_name: ['', Validators.required],
-      account : ['', Validators.required], 
-      type : ['', Validators.required], 
-      principal_name : ['', Validators.required], 
-      principal_no : ['', Validators.required], 
+      school: [''],
+      year  : [''], 
+      account : [''], 
+      total : [''], 
+      remark : [''], 
     });
     this.columnDefs=[
       {
@@ -71,7 +74,16 @@ export class ScholarshipListComponents implements AfterViewInit {
       },
       {
         headerName : 'विद्यालय',
-        field : 'school_name',
+        field : 'school',
+        width : 250,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        filter: 'agTextColumnFilter',
+        floatingFilter : true
+      },
+      {
+        headerName : 'Year',
+        field : 'year',
         width : 250,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -98,7 +110,7 @@ export class ScholarshipListComponents implements AfterViewInit {
       },
       {
         headerName : 'कैफियत',
-        field : 'kaifiyat',
+        field : 'remark',
         width : 150,
         sortingOrder : ['asc','desc'],
         editable: true,
@@ -106,104 +118,57 @@ export class ScholarshipListComponents implements AfterViewInit {
         filter: 'agTextColumnFilter',
       }
     ]
+
+    this.getSchoolList();
   }
 
   onFormHeaderClick(){
     this.showSearchForm = !this.showSearchForm;
   }
 
-  onFormSubmit(){
-    this.showSearchForm = !this.showSearchForm;
-  }
+  // onFormSubmit(){
+  //   this.showSearchForm = !this.showSearchForm;
+  // }
 
   onGridReady(params:any){
     // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.listUsers();
+    this.loadGridData();
   }
   open(content:any){
     this.modal.open(content);
   }
 
-  listUsers(){
-    // this.api.listStoreCredentials(this.queryParams).subscribe(res=>{
-      // if(res.success){
-        // this.storeName = res.store_name;
-        let obj = [
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'total' : 'Community',
-            'kaifiyat' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-          },
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'total' : 'Community',
-            'kaifiyat' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-          },
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'total' : 'Community',
-            'kaifiyat' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-          },
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'total' : 'Community',
-            'kaifiyat' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-          },
-          {
-              'id' : 1,
-              'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-              'account' : '006301084470013',
-              'total' : 'Community',
-              'kaifiyat' : '	इन्द्रराज लामा',
-              'principal_no' : '9844223050',
-          },
-          {
-            'id' : 1,
-            'school_name' : '1-SCHOOL/1-विद्यालय , 1 - टोल',
-            'account' : '006301084470013',
-            'total' : 'Community',
-            'kaifiyat' : '	इन्द्रराज लामा',
-            'principal_no' : '9844223050',
-          },
-      ]
-        this.gridApi.setRowData(obj);
-      // }
-    // })
+  loadGridData(){
+    this.api.listScholarship({}).subscribe(res=>{
+      if(res.success){
+        this.gridApi.setRowData(res.data);
+      }
+    })
   }
 
   onAddClick(){
     this.mode = 'new'
-    this.schoolForm.patchValue({
-      school_name: '',
+    this.cmpForm.patchValue({
+      id: '',
+      school: '',
+      year  : '', 
       account : '', 
-      type : '', 
-      principal_name : '', 
-      principal_no : '',
+      total : '', 
+      remark : ''
     })
     this.onNewModeOpen();
   }
 
   onEditModeOpen(id:any){
+    this.mode = 'edit';
     var me = this;
-    this.router.navigate(['/employee-detail/update/'+id]);
-    // this.modal.open(this.modalContent);
-    // setTimeout(function(){ 
-    //   me.schoolForm.patchValue(me.gridApi.getSelectedRows()[0]);
-    // }, 50);
+    // this.router.navigate(['/employee-detail/update/'+id]);
+    this.modal.open(this.modalContent);
+    setTimeout(function(){ 
+      me.cmpForm.patchValue(me.gridApi.getSelectedRows()[0]);
+    }, 50);
   }
   onViewModeOpen(id:any){
     var me = this;
@@ -213,5 +178,46 @@ export class ScholarshipListComponents implements AfterViewInit {
   onNewModeOpen(){
     var me = this;
     this.modal.open(this.modalContent);
+  }
+
+  onFormSubmit(){
+    if(this.mode == 'edit'){
+      let params = {
+        
+      }
+      this.api.updateScholarship(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.toastify.openSnackBar(res.message,'OK');
+          // this.router.navigate(['scholarship/list']);
+          this.modal.close('')
+          this.loadGridData();
+          
+        }else{
+          this.toastify.openSnackBar(res.message,'ERROR');
+        }
+      })
+    }else{
+      this.api.saveScholarship(this.cmpForm.value).subscribe(res=>{
+        if(res.success){
+          this.toastify.openSnackBar(res.message,'OK');
+          // this.router.navigate(['scholarship/list']);
+          this.modal.close('')
+          this.loadGridData();
+          
+        }else{
+          this.toastify.openSnackBar(res.message,'ERROR');
+        }
+      })
+    }
+    // this.toast.openSnackBar('Saved','OK');
+    // this.router.navigate(['schools-list']);
+  }
+
+  getSchoolList(){
+    this.api.listSchools({}).subscribe(res=>{
+      if(res.data){
+        this.schoolList = res.data;
+      }
+    })
   }
 }

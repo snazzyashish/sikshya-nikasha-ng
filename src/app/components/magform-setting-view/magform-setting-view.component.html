@@ -1,0 +1,87 @@
+<!-- Page Heading -->
+<app-page-header></app-page-header>
+
+<div class="card o-hidden border-0 shadow-lg my-3">
+    <div class="card-body p-4 border-1">
+        <div class="row g-3">
+            <div class="col-sm-12">
+                <div class="card-body p-0">
+                    <button type="button" style="float:right" class="btn btn-primary my-1" routerLink="/magform-setting/itemDetail/1">Add Items</button>
+                    <table class="table table-bordered text-justify ">
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="text-center"><h5>DETAIL INFORMATION : #2078/2079 </h5></td>
+                            </tr>
+                            <tr>
+                                <td> Fiscal Year </td>
+                                <td>2078/2079</td>
+                            </tr>
+                            <tr>
+                                <td> Name </td>
+                                <td>मंसिर महिनाको</td>
+                            </tr>
+                            <tr>
+                                <td> Status </td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td> Created At </td>
+                                <td>1 / 2021-12-22 13:33:22</td>
+                            </tr>
+                            <tr>
+                                <td> Updated At </td>
+                                <td>1 / 2023-02-13 14:53:24</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body p-4 border-1">
+        <div class="row g-3">
+            <div class="col-sm-12">
+                <div class="card-body p-0">
+                    <h5 class="text-center">INCLUDED MAGFORM ITEM</h5>
+                    <ag-grid-angular 
+                        style="width: 100%; height: 400px;" 
+                        class="ag-theme-alpine"
+                        (gridReady)="onGridReady($event)"
+                        [columnDefs]="columnDefs"
+                        [pagination]="true"
+                        [paginationPageSize]=20
+                        >
+                        </ag-grid-angular>
+                    <!-- <table class="table table-bordered text-justify ">
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="text-center"><h5>INCLUDED MAGFORM ITEM</h5></td>
+                            </tr>
+                            <tr>
+                                <td> Fiscal Year </td>
+                                <td>2078/2079</td>
+                            </tr>
+                            <tr>
+                                <td> Name </td>
+                                <td>मंसिर महिनाको</td>
+                            </tr>
+                            <tr>
+                                <td> Status </td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td> Created At </td>
+                                <td>1 / 2021-12-22 13:33:22</td>
+                            </tr>
+                            <tr>
+                                <td> Updated At </td>
+                                <td>1 / 2023-02-13 14:53:24</td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
