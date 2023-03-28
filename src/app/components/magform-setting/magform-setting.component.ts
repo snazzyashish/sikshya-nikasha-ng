@@ -31,7 +31,7 @@ export class MagFormSettingComponent implements AfterViewInit {
       fiscalyear: ['', Validators.required],
       name : ['', Validators.required], 
       header : ['', Validators.required], 
-      nagar_teacher : ['', Validators.required], 
+      nagarTeacher : ['', Validators.required], 
       status : ['1', Validators.required], 
     });
     this.columnDefs=[
@@ -89,12 +89,21 @@ export class MagFormSettingComponent implements AfterViewInit {
       },
       {
         headerName : 'Nagar Teacher',
-        field : 'nagar_teacher',
+        field : 'nagarTeacher',
         width : 200,
         sortingOrder : ['asc','desc'],
         editable: true,
         floatingFilter : true,
         filter: 'agTextColumnFilter',
+        // cellRenderer: (params:any) => {
+        //   if(params.value == 'हो'){
+        //     return 'YES';
+        //   }else if(params.value == 'होइन'){
+        //     return 'NO';
+        //   }else{
+        //     return params.value;
+        //   }
+        // }
       },
       {
         headerName : 'Status',
@@ -135,7 +144,7 @@ export class MagFormSettingComponent implements AfterViewInit {
   }
 
   loadGrid(){
-    this.api.listMagformFiscalYear({}).subscribe(res=>{
+    this.api.listMagformSetting({}).subscribe(res=>{
       // if(res.success){
         this.gridApi.setRowData(res.data);
       // }
@@ -149,7 +158,7 @@ export class MagFormSettingComponent implements AfterViewInit {
       name: '',
       fiscalyear: '',
       header: '',
-      nagar_teacher : '', 
+      nagarTeacher : '', 
       status : '', 
     })
     this.onNewModeOpen();
@@ -178,7 +187,7 @@ export class MagFormSettingComponent implements AfterViewInit {
       let params = {
         
       }
-      this.api.updateMagformFiscalYear(this.componentForm.value).subscribe(res=>{
+      this.api.updateMagformSetting(this.componentForm.value).subscribe(res=>{
         if(res.success){
           this.toastify.openSnackBar(res.message,'OK');
           // this.router.navigate(['scholarship/list']);
@@ -190,7 +199,7 @@ export class MagFormSettingComponent implements AfterViewInit {
         }
       })
     }else{
-      this.api.saveMagformFiscalYear(this.componentForm.value).subscribe(res=>{
+      this.api.saveMagformSetting(this.componentForm.value).subscribe(res=>{
         if(res.success){
           this.toastify.openSnackBar(res.message,'OK');
           // this.router.navigate(['scholarship/list']);

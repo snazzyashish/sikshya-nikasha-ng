@@ -10,19 +10,19 @@
                         <tbody>
                             <tr>
                                 <td> Fiscal Year </td>
-                                <td>2078/2079</td>
+                                <td>{{record.fiscalyear}}</td>
                             </tr>
                             <tr>
                                 <td> Title </td>
-                                <td>मंसिर महिनाको</td>
+                                <td>{{record.name}}</td>
                             </tr>
                             <tr>
                                 <td> Nagar Teacher </td>
-                                <td>Yes</td>
+                                <td>{{record.nagarTeacher}}</td>
                             </tr>
                             <tr>
                                 <td> Status </td>
-                                <td>Active</td>
+                                <td>{{record.status}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -43,22 +43,22 @@
                             </tr>
                             <tr>
                                 <td> 
-                                    <span *ngFor="let item of magFormItemList">
-                                        <input class="form-check-input mx-1" type="checkbox" value="{{item.name}}" id="flexCheckDefault">
+                                    <span *ngFor="let item of magFormItemList;let i = index">
+                                        <input class="form-check-input mx-1" type="checkbox" value="{{item.name}}" id="flexCheckDefault" (change)="onCheckboxSelectionChange(item,i)">
                                         <label class="form-check-label mx-4" for="flexCheckDefault">
                                           {{item.name}}
                                         </label> <br/>
                                     </span>
-                                    <button type="button" class="btn btn-success my-3" routerLink="/magform-setting/itemDetail/1" (click)="onAddItemClick()">Add Item</button>
+                                    <button type="button" class="btn btn-success my-3" (click)="onAddItemClick()">Add Item</button>
                                 </td>
                                 <td> 
-                                    <span *ngFor="let item of registeredItemList">
-                                        <input class="form-check-input mx-1" type="checkbox" value="{{item.name}}" id="flexCheckDefault">
+                                    <span *ngFor="let item of registeredItemList; let i = index">
+                                        <input class="form-check-input mx-1" type="checkbox" value="{{item.name}}" id="flexCheckDefault" (change)="onRegisteredCheckboxSelectionChange(item,i)">
                                         <label class="form-check-label mx-4" for="flexCheckDefault">
                                           {{item.name}}
                                         </label> <br/>
                                     </span>
-                                    <button type="button" class="btn btn-danger my-3" routerLink="/magform-setting/itemDetail/1">Remove Item</button>
+                                    <button (click)="onRemoveClick()" type="button" class="btn btn-danger my-3">Remove Item</button>
                                 </td>
                             </tr>
                         </tbody>

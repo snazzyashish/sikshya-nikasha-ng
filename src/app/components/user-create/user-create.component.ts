@@ -20,7 +20,7 @@ export class UserCreateComponent {
   constructor(private route: ActivatedRoute, public api:ApiService, public fb:FormBuilder, public toastify:AlertService) {
     this.cmpForm =  this.fb.group({
       id : [''],
-      name : ['', Validators.required],
+      username : ['', Validators.required],
       email : ['', Validators.required],
       password : ['', Validators.required],
       role_id : ['', Validators.required],

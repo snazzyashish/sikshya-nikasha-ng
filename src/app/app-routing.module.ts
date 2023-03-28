@@ -50,6 +50,7 @@ import { CreateEmployeeBhattaComponent } from './components/create-employee-bhat
 import { MagformSettingItemdetailComponent } from './components/magform-setting-itemdetail/magform-setting-itemdetail.component';
 import { CreateScholarshipAmountComponent } from './components/create-scholarship-amount/create-scholarship-amount.component';
 import { AdministrativeExpensesDetailComponent } from './components/administrative-expenses-detail/administrative-expenses-detail.component';
+import { InfrastructureExpensesDetailComponent } from './components/infrastructure-expenses-detail/infrastructure-expenses-detail.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, 
@@ -128,6 +129,7 @@ const routes: Routes = [
   { path:  'scholarship-amount/update/:id', component:  CreateScholarshipAmountComponent, canActivate: [AuthGuard], data: { title: 'EDIT SCHOLARSHIP AMOUNT' }},
   
   { path:  'administrative-expenses-detail/:id', component:  AdministrativeExpensesDetailComponent, canActivate: [AuthGuard], data: { title: 'प्रशासनिक खर्च विवण भर्नुस' }},
+  { path:  'infrastructure-expenses-detail/:id', component:  InfrastructureExpensesDetailComponent, canActivate: [AuthGuard], data: { title: 'भौतिक निर्माण विवण भर्नुस' }},
 
 ];
 

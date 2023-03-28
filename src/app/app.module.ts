@@ -73,6 +73,7 @@ import { MagformSettingItemdetailComponent } from './components/magform-setting-
 import { CreateScholarshipAmountComponent } from './components/create-scholarship-amount/create-scholarship-amount.component';
 import { AdministrativeExpensesDetailComponent } from './components/administrative-expenses-detail/administrative-expenses-detail.component';
 import { AdministrativeExpensesDetailViewComponent } from './components/administrative-expenses-detail-view/administrative-expenses-detail-view.component';
+import { InfrastructureExpensesDetailComponent } from './components/infrastructure-expenses-detail/infrastructure-expenses-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,7 +130,8 @@ import { AdministrativeExpensesDetailViewComponent } from './components/administ
     MagformSettingItemdetailComponent,
     CreateScholarshipAmountComponent,
     AdministrativeExpensesDetailComponent,
-    AdministrativeExpensesDetailViewComponent
+    AdministrativeExpensesDetailViewComponent,
+    InfrastructureExpensesDetailComponent
   ],
   imports: [
     HttpClientModule,

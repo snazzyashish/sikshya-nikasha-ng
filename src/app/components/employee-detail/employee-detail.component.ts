@@ -60,16 +60,8 @@ export class EmployeeDetailComponent implements AfterViewInit {
         field : 'id',
         width : 70,
         sortingOrder : ['asc','desc'],
-        filter:true
-      },
-      {
-        headerName : 'School',
-        field : 'school_name',
-        width : 250,
-        sortingOrder : ['asc','desc'],
-        editable: true,
-        filter: 'agTextColumnFilter',
-        floatingFilter : true
+        filter:true,
+        hide:true
       },
       {
         headerName : 'Name',
@@ -79,6 +71,28 @@ export class EmployeeDetailComponent implements AfterViewInit {
         editable: true,
         floatingFilter : true,
         filter: 'agTextColumnFilter',
+        // resizable: true,
+        valueGetter: (params:any) => {
+          if(params.data.mname_eng){
+            return params.data.fname_eng+' '+params.data.mname_eng+' '+params.data.lname_eng;
+          }else{
+            return params.data.fname_eng+' '+params.data.lname_eng;
+          }
+        }
+      },
+      {
+        headerName : 'School',
+        field : 'school_name',
+        width : 250,
+        sortingOrder : ['asc','desc'],
+        editable: true,
+        filter: 'agTextColumnFilter',
+        floatingFilter : true,
+        wrapText:true,
+        suppressSizeToFit:true
+        // autoHeight: true,  
+        // type: 'justified'
+        
       },
       {
         headerName : 'Level',
@@ -158,6 +172,8 @@ export class EmployeeDetailComponent implements AfterViewInit {
   onGridReady(params:any){
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+    this.gridApi.autoSizeAllColumns = true;
+    // this.gridApi.sizeColumnsToFit()
     this.listUsers();
   }
   open(content:any){

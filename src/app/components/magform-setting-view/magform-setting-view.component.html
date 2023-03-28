@@ -6,31 +6,31 @@
         <div class="row g-3">
             <div class="col-sm-12">
                 <div class="card-body p-0">
-                    <button type="button" style="float:right" class="btn btn-primary my-1" routerLink="/magform-setting/itemDetail/1">Add Items</button>
+                    <button type="button" style="float:right" class="btn btn-primary my-1" routerLink="/magform-setting/itemDetail/{{record.id}}">Add Items</button>
                     <table class="table table-bordered text-justify ">
                         <tbody>
                             <tr>
-                                <td colspan="2" class="text-center"><h5>DETAIL INFORMATION : #2078/2079 </h5></td>
+                                <td colspan="2" class="text-center"><h5>DETAIL INFORMATION : {{record.fiscalyear}} </h5></td>
                             </tr>
                             <tr>
                                 <td> Fiscal Year </td>
-                                <td>2078/2079</td>
+                                <td>{{record.fiscalyear}}</td>
                             </tr>
                             <tr>
                                 <td> Name </td>
-                                <td>मंसिर महिनाको</td>
+                                <td>{{record.name}}</td>
                             </tr>
                             <tr>
                                 <td> Status </td>
-                                <td>Active</td>
+                                <td>{{record.status}}</td>
                             </tr>
                             <tr>
                                 <td> Created At </td>
-                                <td>1 / 2021-12-22 13:33:22</td>
+                                <td>{{record.created_at}}</td>
                             </tr>
                             <tr>
                                 <td> Updated At </td>
-                                <td>1 / 2023-02-13 14:53:24</td>
+                                <td>{{record.updated_at}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -29,7 +29,7 @@
               (click)="modal.dismiss('Cross click')"
           ></button>
       </div>
-      <form [formGroup]="magForm">
+      <form [formGroup]="cmpForm" (ngSubmit)="onFormSubmit()">
           <div class="modal-body">
               <div class="password mb-3 form-group row">
                   <label for="inputPassword" class="col-sm-4 col-form-label">Month</label>

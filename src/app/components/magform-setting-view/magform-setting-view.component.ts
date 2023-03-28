@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { SITE_ADDRESS, SITE_NAGARPALIKA } from 'src/app/data/constants';
 import { ApiService } from 'src/app/services/api.service';
-import { ActionButtonsComponent } from '../action-buttons/action-buttons.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
+
+
 
 
 @Component({
@@ -10,10 +14,11 @@ import { ActionButtonsComponent } from '../action-buttons/action-buttons.compone
 })
 export class MagformSettingViewComponent {
   public record:any;
+  public id:any;
   private gridApi:any;
   public columnDefs:any;
   private gridColumnApi:any;
-  constructor(public api:ApiService){
+  constructor(public api:ApiService, public route:ActivatedRoute, public router:Router, public toastify:AlertService){
     this.columnDefs=[
       // {
       //   headerName : 'Action',
@@ -97,15 +102,34 @@ export class MagformSettingViewComponent {
     ]
   }
 
+  ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.getViewInfo();
+  }
+
+  getViewInfo(){
+    let params = {
+      id : this.id
+    }
+    this.api.viewMagformSetting(params).subscribe(res=>{
+      this.record = res.data;
+      this.loadGrid(res.data.magh_form_detail_ids);
+    })
+  }
+
   onGridReady(params:any){
     // this.getGroups();
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.loadGrid();
+    // this.loadGrid();
   }
 
-  loadGrid(){
-    this.api.listMagformFiscalYear({}).subscribe(res=>{
+  loadGrid(magh_form_detail_ids:any){
+    let params = {
+      id : this.id,
+      magh_form_detail_ids : magh_form_detail_ids
+    }
+    this.api.listMagformSettingDetail(params).subscribe(res=>{
       // if(res.success){
         this.gridApi.setRowData(res.data);
       // }

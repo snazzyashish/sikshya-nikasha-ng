@@ -178,10 +178,6 @@ export class AdministrativeExpensesComponent implements AfterViewInit {
   onEditModeOpen(id:any){
     var me = this;
     this.router.navigate(['/administrative-expenses-detail/'+id]);
-    // this.modal.open(this.modalContent);
-    // setTimeout(function(){ 
-    //   me.cmpForm.patchValue(me.gridApi.getSelectedRows()[0]);
-    // }, 50);
   }
   onViewModeOpen(id:any){
     var me = this;

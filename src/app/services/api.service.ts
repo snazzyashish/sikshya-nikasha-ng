@@ -458,7 +458,7 @@ export class ApiService {
     return this._http.postJson(url, params);
   }
    //------------------------------------------------------------------//
-   public listAdministration(params:any){
+  public listAdministration(params:any){
     let url = 'administration/list';
     return this._http.getRequest(url, params);
 
@@ -479,6 +479,78 @@ export class ApiService {
   }
   public deleteAdministration(params:any){
     let url = 'administration/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+  public listInfrastructure(params:any){
+    let url = 'infrastructure/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewInfrastructure(params:any){
+    let url = 'infrastructure/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveInfrastructure(params:any){
+    let url = 'infrastructure/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateInfrastructure(params:any){
+    let url = 'infrastructure/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteInfrastructure(params:any){
+    let url = 'infrastructure/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  //------------------------------------------------------------------//
+  public listMagformSetting(params:any){
+    let url = 'maghformsetting/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewMagformSetting(params:any){
+    let url = 'maghformsetting/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveMagformSetting(params:any){
+    let url = 'maghformsetting/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateMagformSetting(params:any){
+    let url = 'maghformsetting/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteMagformSetting(params:any){
+    let url = 'maghformsetting/delete/'+params.id;
+    return this._http.postJson(url, params);
+  }
+   //------------------------------------------------------------------//
+   public listMagformSettingDetail(params:any){
+    let url = 'maghformsettingDetails/list';
+    return this._http.getRequest(url, params);
+
+  }
+  public viewMagformSettingDetail(params:any){
+    let url = 'maghformsettingDetails/view/'+params.id;
+    return this._http.getRequest(url, {});
+
+  }
+  public saveMagformSettingDetail(params:any){
+    let url = 'maghformsettingDetails/save';
+    return this._http.postJson(url, params);
+
+  }
+  public updateMagformSettingDetail(params:any){
+    let url = 'maghformsettingDetails/update/'+params.id;
+    return this._http.postJson(url, params);
+  }
+  public deleteMagformSettingDetail(params:any){
+    let url = 'maghformsettingDetails/delete/'+params.id;
     return this._http.postJson(url, params);
   }
    //------------------------------------------------------------------//

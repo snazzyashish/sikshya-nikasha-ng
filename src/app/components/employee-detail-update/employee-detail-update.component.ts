@@ -26,7 +26,7 @@ export class EmployeeDetailUpdateComponent {
       father_name: ['', Validators.required],
       mother_name: ['', Validators.required],
       signal_no:[''],
-      dob: ['', Validators.required],
+      DOB: ['', Validators.required],
       gender: ['', Validators.required],
       account_no: ['', Validators.required],
       position: ['', Validators.required],
